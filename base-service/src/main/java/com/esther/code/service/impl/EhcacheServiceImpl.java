@@ -1,5 +1,6 @@
 package com.esther.code.service.impl;
 
+import com.esther.code.annotation.MyCacheable;
 import com.esther.code.api.IEhcacheService;
 import com.esther.code.api.IUserService;
 import com.esther.code.model.User;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 /**
@@ -47,8 +49,7 @@ public class EhcacheServiceImpl implements IEhcacheService {
     @Override
     public String refreshData(String key) {
         System.out.println("模拟从数据库中加载数据");
-        return key;
-        //  return key + "::" + String.valueOf(Math.round(Math.random()*1000000));
+        return key + "::" + String.valueOf(Math.round(Math.random()*1000000));
     }
 
     // ------------------------------------------------------------------------
@@ -67,7 +68,6 @@ public class EhcacheServiceImpl implements IEhcacheService {
     @Cacheable(value = "UserCache", condition = "#userId<=2", unless = "#result==null")
     public User findUserById(Integer userId) {
         System.out.println("模拟从数据库中查询数据");
-        System.out.println("UserCache:" + userId);
         return userService.selectByPrimaryKey(userId);
     }
 
@@ -96,5 +96,19 @@ public class EhcacheServiceImpl implements IEhcacheService {
     @CacheEvict(value = "UserCache", allEntries = true)
     public void removeAllUser() {
         System.out.println("UserCache delete all");
+    }
+
+    @Override
+    @Caching(evict = @CacheEvict(value = "UserCache",allEntries=true),cacheable = {@Cacheable("HelloWorldCache")})
+    public String testCaching(String param){
+        System.out.println("UserCache delete all");
+        Long timestamp = System.currentTimeMillis();
+        return timestamp.toString();
+    }
+
+    @Override
+    @MyCacheable
+    public User get(Integer userId) {
+        return userService.selectByPrimaryKey(userId);
     }
 }

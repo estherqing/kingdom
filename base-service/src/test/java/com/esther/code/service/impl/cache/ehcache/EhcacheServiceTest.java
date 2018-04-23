@@ -2,8 +2,14 @@ package com.esther.code.service.impl.cache.ehcache;
 
 import com.esther.code.api.IEhcacheService;
 import com.esther.code.service.impl.base.BaseService;
+import net.sf.ehcache.CacheManager;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author esther
@@ -14,6 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class EhcacheServiceTest extends BaseService {
     @Autowired
     private IEhcacheService ehcacheService;
+
+    @Autowired
+    private CacheManager cacheManager;
 
     // 有效时间是5秒，第一次和第二次获取的值是一样的，因第三次是5秒之后所以会获取新的值
     @Test
@@ -91,5 +100,41 @@ public class EhcacheServiceTest extends BaseService {
 //      UserCache delete all
 //      模拟从数据库中查询数据
 //      模拟从数据库中查询数据
+    }
+
+    @Test
+    public void testCaching() {
+        lookCacheStatus();
+        ehcacheService.findUserById(1);
+
+        lookCacheStatus();
+        ehcacheService.findUserById(1);
+
+        lookCacheStatus();
+        ehcacheService.testCaching("param");
+
+        lookCacheStatus();
+        ehcacheService.findUserById(1);
+
+        lookCacheStatus();
+        ehcacheService.testCaching("param");
+    }
+
+    @Test
+    public void testgetUserById() {
+        ehcacheService.removeAllUser();
+        lookCacheStatus();
+        ehcacheService.get(1); // 模拟从数据库中查询数据
+        lookCacheStatus();
+        ehcacheService.get(1);
+    }
+
+    public void lookCacheStatus(){
+        Map<String, List<String>> map = new HashMap<>();
+        Arrays.stream(cacheManager.getCacheNames()).forEach(c -> {
+            List list = cacheManager.getCache(c).getKeys();
+            map.put(c, list);
+        });
+        System.out.println(map);
     }
 }

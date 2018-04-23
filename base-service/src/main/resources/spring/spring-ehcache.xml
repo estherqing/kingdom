@@ -10,6 +10,7 @@
     <description>ehcache缓存配置管理文件</description>
 
     <!-- 启用缓存注解开关，这个是必须的，否则注解不会生效。另外，该注解一定要声明在spring主配置文件中才会生效 -->
+    <!-- 自定义CacheKeyGenerator，当缓存没有定义key的时候有效-->
     <cache:annotation-driven cache-manager="cacheManager" key-generator="cacheKeyGenerator"/>
     <bean id="cacheKeyGenerator" class="com.esther.code.util.CacheKeyGenerator"/>
 

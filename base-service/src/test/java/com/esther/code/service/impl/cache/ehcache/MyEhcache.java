@@ -5,6 +5,11 @@ import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 /**
  * @author esther
@@ -46,6 +51,16 @@ public class MyEhcache {
 
         System.out.println(demo.get("hello").getObjectValue());
         System.out.println(((User) e.getObjectValue()).getUserRealName());
+
+        System.out.println("-------------------------");
+
+        Map<String, List<String>> map = new HashMap<>();
+        Arrays.stream(manager.getCacheNames()).forEach(c -> {
+            List list = manager.getCache(c).getKeys();
+            map.put(c, list);
+
+        });
+        System.out.println(map);
 
         //卸载缓存管理器，关闭Cache
         manager.shutdown();

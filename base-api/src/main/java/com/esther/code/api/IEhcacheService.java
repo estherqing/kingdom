@@ -27,4 +27,10 @@ public interface IEhcacheService {
     public void removeUser(Integer userId);
 
     public void removeAllUser();
+
+    // @Caching注解实现
+    public String testCaching(String param);
+
+    // 自定义注解实现
+    User get(Integer userId);
 }
