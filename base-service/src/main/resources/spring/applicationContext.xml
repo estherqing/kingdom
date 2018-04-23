@@ -22,8 +22,8 @@
 
 	<import resource="classpath*:/spring/spring-datasource.xml"/>
 
-	<!-- ehcache 
-	<import resource="spring-config-cache.xml"/>-->
+	<!--ehcache 缓存-->
+	<import resource="classpath*:/spring/spring-ehcache.xml"/>
 	
 	<!-- dubbo 服务  --> 
 	<import resource="classpath*:spring/dubbo-provider.xml"/>

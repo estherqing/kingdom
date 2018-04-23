@@ -11,5 +11,6 @@
                      group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
     <dubbo:reference id="dictService" registry="base_center" interface="com.esther.code.api.IDictService"
                      group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
-
+    <dubbo:reference id="ehcacheService" registry="base_center" interface="com.esther.code.api.IEhcacheService"
+                     group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
 </beans>

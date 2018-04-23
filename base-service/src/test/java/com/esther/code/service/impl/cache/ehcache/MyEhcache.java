@@ -1,4 +1,4 @@
-package com.esther.code.cache.ehcache;
+package com.esther.code.service.impl.cache.ehcache;
 
 import com.esther.code.model.User;
 import net.sf.ehcache.Cache;

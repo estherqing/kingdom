@@ -24,8 +24,6 @@
     <!--开启aop-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
-    <import resource="classpath:spring/spring-aop.xml"/>
-
     <!--下面这个注释不要删除，备用-->
 <!--    <mvc:annotation-driven>
         <mvc:message-converters>
