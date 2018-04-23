@@ -41,6 +41,8 @@ public class EhcacheServiceImpl implements IEhcacheService {
         System.out.println("从数据库中删除数据");
     }
 
+    // 使用@CachePut标注的方法在执行前不会去检查缓存中是否存在之前执行过的结果，而是每次都会执行该方法，并将执行结果以键值对的形式存入指定的缓存中。
+   // 每次都会执行方法，并将结果存入指定的缓存中
     @CachePut(value = "HelloWorldCache", key = "#key")
     @Override
     public String refreshData(String key) {
@@ -52,18 +54,19 @@ public class EhcacheServiceImpl implements IEhcacheService {
     // ------------------------------------------------------------------------
 
     /**
+     * 没有定义key的话，使用xml文件中配置的CacheKeyGenerator
+     *
      * unless过滤方法返回值。当方法返回空值时，就不会被缓存起来
      * condition：对传入的参数进行筛选. 触发条件，只有满足条件的情况才会加入缓存，默认为空，既表示全部都加入缓存，支持SpEL。
      * expire：过期时间，单位为秒。
+     * beforeInvocation: 是否在方法执行前就清空，缺省为 false，如果指定为 true，则在方法还没有执行的时候就清空缓存，缺省情况下，如果方法执行抛出异常，则不会清空缓存
      * @param userId
      * @return
      */
     @Override
-    @Cacheable(value = "UserCache", key = "'user:' + #userId", condition = "#userId<=2", unless = "#result==null")
+    @Cacheable(value = "UserCache", condition = "#userId<=2", unless = "#result==null")
     public User findUserById(Integer userId) {
         System.out.println("模拟从数据库中查询数据");
-
-
         System.out.println("UserCache:" + userId);
         return userService.selectByPrimaryKey(userId);
     }

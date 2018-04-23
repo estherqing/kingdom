@@ -49,8 +49,9 @@ public class EhcacheServiceTest extends BaseService {
 
     @Test
     public void testfindUserById() {
-        ehcacheService.findUserById(55); // 模拟从数据库中查询数据
-        ehcacheService.findUserById(55);
+        ehcacheService.removeAllUser();
+        ehcacheService.findUserById(1); // 模拟从数据库中查询数据
+        ehcacheService.findUserById(1);
     }
 
     @Test
