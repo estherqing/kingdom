@@ -1,4 +1,4 @@
-package com.esther.code.util;
+package com.esther.code.cache;
 
 import com.google.common.hash.Hashing;
 import org.slf4j.Logger;
@@ -26,7 +26,10 @@ public class CacheKeyGenerator implements KeyGenerator {
 
     @Override
     public Object generate(Object target, Method method, Object... params) {
-
+        if (Void.class == method.getReturnType()) {
+            log.error("无返回值的方法不可缓存 {}", method.getName());
+            return null;
+        }
         StringBuilder key = new StringBuilder();
         key.append(target.getClass().getSimpleName()).append(".").append(method.getName()).append("(");
         if (params.length == 0) {

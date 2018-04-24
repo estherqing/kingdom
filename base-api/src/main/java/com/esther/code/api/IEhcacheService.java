@@ -33,4 +33,7 @@ public interface IEhcacheService {
 
     // 自定义注解实现
     User get(Integer userId);
+
+    // 测试二级缓存，一级为ehcache，二级为redis
+    User testSecondCache(Integer userId);
 }

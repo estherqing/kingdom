@@ -18,7 +18,7 @@ import java.util.Map;
  * 如果对象的方法是内部调用（即 this 引用）而不是外部引用，则会导致 proxy 失效，那么我们的切面就失效，
  * 也就是说上面定义的各种注释包括 @Cacheable、@CachePut 和 @CacheEvict 都会失效。
  * 要避免这个问题，就是要避免对缓存方法的内部调用，或者避免使用基于 proxy 的 AOP 模式，可以使用基于 aspectJ 的 AOP 模式来解决这个问题。
- *
+ * <p>
  * 和内部调用问题类似，非 public 方法如果想实现基于注释的缓存，必须采用基于 AspectJ 的 AOP 机制，
  */
 
@@ -64,6 +64,7 @@ public class EhcacheServiceTest extends BaseService {
     @Test
     public void testfindUserById() {
         ehcacheService.removeAllUser();
+        lookCacheStatus();
         ehcacheService.findUserById(1); // 模拟从数据库中查询数据
         lookCacheStatus();
         ehcacheService.findUserById(1);
@@ -127,7 +128,7 @@ public class EhcacheServiceTest extends BaseService {
     }
 
     @Test
-    public void testgetUserById() {
+    public void testGetUserById() {
         ehcacheService.removeAllUser();
         lookCacheStatus();
         ehcacheService.get(1); // 模拟从数据库中查询数据
@@ -135,7 +136,21 @@ public class EhcacheServiceTest extends BaseService {
         ehcacheService.get(1);
     }
 
-    public void lookCacheStatus(){
+    @Test
+    public void testSecondCache() {
+        lookCacheStatus();
+        ehcacheService.testSecondCache(1);
+        lookCacheStatus();
+        for (int i = 0; i < 10; i++) {
+            System.out.println("---------------------------------:第"+(i+1)+"条");
+            ehcacheService.testSecondCache(1);
+        }
+        lookCacheStatus();
+        ehcacheService.testSecondCache(1);
+
+    }
+
+    public void lookCacheStatus() {
         Map<String, List<String>> map = new HashMap<>();
         Arrays.stream(cacheManager.getCacheNames()).forEach(c -> {
             List list = cacheManager.getCache(c).getKeys();

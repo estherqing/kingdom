@@ -20,8 +20,8 @@
     我们前面提到的@Cacheable、@cacheEvict等也可以标注在接口上，这对于基于接口的代理来说是没有什么问题的，
     但是需要注意的是当我们设置proxy-target-class为true或者mode为aspectj时，是直接基于class进行操作的，
     定义在接口上的@Cacheable等Cache注解不会被识别到，那对应的Spring Cache也不会起作用了。-->
-    <cache:annotation-driven cache-manager="cacheManager" key-generator="cacheKeyGenerator" mode="proxy" proxy-target-class="true"/>
-    <bean id="cacheKeyGenerator" class="com.esther.code.util.CacheKeyGenerator"/>
+  <!--  <cache:annotation-driven cache-manager="cacheManager" key-generator="cacheKeyGenerator" mode="proxy" proxy-target-class="true"/>
+    <bean id="cacheKeyGenerator" class="com.esther.code.cache.CacheKeyGenerator"/>-->
 
     <!--一般的缓存管理器，如EhCache-->
     <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
@@ -32,8 +32,14 @@
     </bean>
 
     <!-- 定义一个Ehcache -->
-    <bean id="userCache2" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+    <bean id="user" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <!--  cacheName对应ehcache.xml中的cache name="user" -->
         <property name="cacheName" value="user"/>
+        <property name="cacheManager" ref="ehcache"/>
+    </bean>
+    <bean id="UserCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <!--  cacheName对应ehcache.xml中的cache name="user" -->
+        <property name="cacheName" value="UserCache"/>
         <property name="cacheManager" ref="ehcache"/>
     </bean>
 

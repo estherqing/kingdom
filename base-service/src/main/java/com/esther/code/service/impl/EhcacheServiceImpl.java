@@ -65,7 +65,7 @@ public class EhcacheServiceImpl implements IEhcacheService {
      * @return
      */
     @Override
-    @Cacheable(value = "user", condition = "#userId<=2", unless = "#result==null")
+    @Cacheable(value = "UserCache", condition = "#userId<=2", unless = "#result==null")
     public User findUserById(Integer userId) {
         System.out.println("模拟从数据库中查询数据");
         return userService.selectByPrimaryKey(userId);
@@ -121,4 +121,12 @@ public class EhcacheServiceImpl implements IEhcacheService {
     public User get(Integer userId) {
         return userService.selectByPrimaryKey(userId);
     }
+
+    @Override
+    @Cacheable(value = "user", unless = "#result==null")
+    public User testSecondCache(Integer userId) {
+        System.out.println("模拟从数据库中查询数据");
+        return userService.selectByPrimaryKey(userId);
+    }
+
 }

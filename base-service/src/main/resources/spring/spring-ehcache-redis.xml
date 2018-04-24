@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache-3.2.xsd">
+    <!--ehcache 缓存-->
+    <import resource="classpath*:/spring/spring-ehcache.xml"/>
+    <!--redis缓存-->
+    <import resource="classpath*:/spring/spring-redis.xml"/>
+
+    <!-- 自定义ehcache+redis-->
+    <bean id="ehRedisCacheManager2" class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <bean  id="ehRedisCache" class="com.esther.code.cache.EhCacheRedisCache">
+                    <property name="redisTemplate" ref="redisTemplate" />
+                    <property name="ehCache" ref="user"/>
+                    <property name="name" value="user"/>
+                    <!-- <property name="liveTime" value="3600"/>  -->
+                </bean>
+                <bean  id="ehRedisCache2" class="com.esther.code.cache.EhCacheRedisCache">
+                    <property name="redisTemplate" ref="redisTemplate" />
+                    <property name="ehCache" ref="UserCache"/>
+                    <property name="name" value="UserCache"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+    <!--Dummy CacheManager：在找不到对应缓存时（如UserCache），可以设置标志位fallbackToNoOpCache=true，禁用缓存。
+    如果找不到对应缓存，且fallbackToNoOpCache=false，抛异常java.lang.IllegalArgumentException: Cannot find cache named 'UserCache' for CacheEvictOperation-->
+    <bean id="ehRedisCacheManager" class="org.springframework.cache.support.CompositeCacheManager">
+        <property name="cacheManagers">
+            <list>
+                <!--<ref bean="ehcacheManager"/>-->
+                <ref bean="ehRedisCacheManager2"/>
+            </list>
+        </property>
+        <property name="fallbackToNoOpCache" value="false"/>
+    </bean>
+
+</beans>
