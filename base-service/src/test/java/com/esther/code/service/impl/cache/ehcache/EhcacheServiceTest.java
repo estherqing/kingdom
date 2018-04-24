@@ -14,7 +14,12 @@ import java.util.Map;
 /**
  * @author esther
  * 2018-04-23 11:07
- * $DESCRIPTION}
+ * spring cache 的原理，即它是基于动态生成的 proxy 代理机制来对方法的调用进行切面，这里关键点是对象的引用问题，
+ * 如果对象的方法是内部调用（即 this 引用）而不是外部引用，则会导致 proxy 失效，那么我们的切面就失效，
+ * 也就是说上面定义的各种注释包括 @Cacheable、@CachePut 和 @CacheEvict 都会失效。
+ * 要避免这个问题，就是要避免对缓存方法的内部调用，或者避免使用基于 proxy 的 AOP 模式，可以使用基于 aspectJ 的 AOP 模式来解决这个问题。
+ *
+ * 和内部调用问题类似，非 public 方法如果想实现基于注释的缓存，必须采用基于 AspectJ 的 AOP 机制，
  */
 
 public class EhcacheServiceTest extends BaseService {
@@ -60,6 +65,7 @@ public class EhcacheServiceTest extends BaseService {
     public void testfindUserById() {
         ehcacheService.removeAllUser();
         ehcacheService.findUserById(1); // 模拟从数据库中查询数据
+        lookCacheStatus();
         ehcacheService.findUserById(1);
     }
 

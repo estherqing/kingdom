@@ -32,7 +32,7 @@
            overflowToDisk="false"
            memoryStoreEvictionPolicy="LRU"/>
 
-    <cache name="UserCache"
+    <cache name="UserCache1"
            maxElementsInMemory="1000"
            eternal="false"
            timeToIdleSeconds="1800"

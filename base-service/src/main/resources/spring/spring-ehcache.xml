@@ -11,15 +11,40 @@
 
     <!-- 启用缓存注解开关，这个是必须的，否则注解不会生效。另外，该注解一定要声明在spring主配置文件中才会生效 -->
     <!-- 自定义CacheKeyGenerator，当缓存没有定义key的时候有效-->
-    <cache:annotation-driven cache-manager="cacheManager" key-generator="cacheKeyGenerator"/>
+    <!--mode属性，可选值有proxy和aspectj。默认是使用proxy。
+    当mode为proxy时，只有缓存方法在外部被调用的时候Spring Cache才会发生作用，
+    这也就意味着如果一个缓存方法在其声明对象内部被调用时Spring Cache是不会发生作用的。而mode为aspectj时就不会有这种问题。
+    另外使用proxy时，只有public方法上的@Cacheable等标注才会起作用，如果需要非public方法上的方法也可以使用Spring Cache时把mode设置为aspectj。
+
+    此外，<cache:annotation-driven/>还可以指定一个proxy-target-class属性，表示是否要代理class，默认为false。
+    我们前面提到的@Cacheable、@cacheEvict等也可以标注在接口上，这对于基于接口的代理来说是没有什么问题的，
+    但是需要注意的是当我们设置proxy-target-class为true或者mode为aspectj时，是直接基于class进行操作的，
+    定义在接口上的@Cacheable等Cache注解不会被识别到，那对应的Spring Cache也不会起作用了。-->
+    <cache:annotation-driven cache-manager="cacheManager" key-generator="cacheKeyGenerator" mode="proxy" proxy-target-class="true"/>
     <bean id="cacheKeyGenerator" class="com.esther.code.util.CacheKeyGenerator"/>
 
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+    <!--一般的缓存管理器，如EhCache-->
+    <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
         <property name="cacheManager" ref="ehcache"/>
     </bean>
-
     <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
         <property name="configLocation" value="classpath:ehcache.xml"/>
     </bean>
 
+    <!-- 定义一个Ehcache -->
+    <bean id="userCache2" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheName" value="user"/>
+        <property name="cacheManager" ref="ehcache"/>
+    </bean>
+
+    <!--Dummy CacheManager：在找不到对应缓存时（如UserCache），可以设置标志位fallbackToNoOpCache=true，禁用缓存。
+    如果找不到对应缓存，且fallbackToNoOpCache=false，抛异常java.lang.IllegalArgumentException: Cannot find cache named 'UserCache' for CacheEvictOperation-->
+    <bean id="cacheManager" class="org.springframework.cache.support.CompositeCacheManager">
+        <property name="cacheManagers">
+            <list>
+                <ref bean="ehcacheManager"/>
+            </list>
+        </property>
+        <property name="fallbackToNoOpCache" value="true"/>
+    </bean>
 </beans>
