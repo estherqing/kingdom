@@ -1,4 +1,4 @@
-package com.esther.code.cache;
+package com.esther.code.cache.L2cache;
 
 import net.sf.ehcache.Element;
 import org.slf4j.Logger;

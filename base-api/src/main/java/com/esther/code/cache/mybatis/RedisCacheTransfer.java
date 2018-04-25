@@ -1,4 +1,4 @@
-package com.esther.code.cache;
+package com.esther.code.cache.mybatis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;

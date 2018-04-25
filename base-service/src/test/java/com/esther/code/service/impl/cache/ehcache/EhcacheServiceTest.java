@@ -2,9 +2,12 @@ package com.esther.code.service.impl.cache.ehcache;
 
 import com.esther.code.api.IEhcacheService;
 import com.esther.code.service.impl.base.BaseService;
+import com.esther.code.service.impl.cache.redis.RedisUtil;
 import net.sf.ehcache.CacheManager;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.support.CompositeCacheManager;
+import org.springframework.data.redis.cache.RedisCacheManager;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,6 +31,12 @@ public class EhcacheServiceTest extends BaseService {
 
     @Autowired
     private CacheManager cacheManager;
+
+    @Autowired
+    private CompositeCacheManager ehRedisCacheManager;
+
+    @Autowired
+    private RedisCacheManager redisCacheManager;
 
     // 有效时间是5秒，第一次和第二次获取的值是一样的，因第三次是5秒之后所以会获取新的值
     @Test
@@ -65,9 +74,10 @@ public class EhcacheServiceTest extends BaseService {
     public void testfindUserById() {
         ehcacheService.removeAllUser();
         lookCacheStatus();
-        ehcacheService.findUserById(1); // 模拟从数据库中查询数据
+        System.out.println(ehcacheService.findUserById(1)); // 模拟从数据库中查询数据
         lookCacheStatus();
-        ehcacheService.findUserById(1);
+        System.out.println(RedisUtil.getJedis().get("userService"));
+        System.out.println( ehcacheService.findUserById(1));
     }
 
     @Test
@@ -150,11 +160,41 @@ public class EhcacheServiceTest extends BaseService {
 
     }
 
+    @Test
+    public void testGetUserList(){
+
+        lookEhRedisCacheManagerStatus();
+        System.out.println(ehcacheService.getUserList());
+        lookEhRedisCacheManagerStatus();
+        System.out.println(ehcacheService.getUserList());
+    }
+
+
+
     public void lookCacheStatus() {
         Map<String, List<String>> map = new HashMap<>();
         Arrays.stream(cacheManager.getCacheNames()).forEach(c -> {
             List list = cacheManager.getCache(c).getKeys();
             map.put(c, list);
+        });
+        System.out.println(map);
+    }
+
+    public void lookEhRedisCacheManagerStatus() {
+        Map<String,Object> map = new HashMap<>();
+        ehRedisCacheManager.getCacheNames().stream().forEach(c -> {
+
+            Object list = ehRedisCacheManager.getCache(c).get("userService");
+            map.put(c, list);
+        });
+        System.out.println(map);
+    }
+
+    public void lookRedisCacheStatus(){
+        Map<String,Object> map = new HashMap<>();
+        redisCacheManager.getCacheNames().stream().forEach(c->{
+         Object o=  redisCacheManager.getCache(c).get("userService");
+            map.put(c, o);
         });
         System.out.println(map);
     }

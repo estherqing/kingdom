@@ -1,4 +1,4 @@
-package com.esther.code.cache;
+package com.esther.code.cache.mybatis;
 
 import org.apache.ibatis.cache.Cache;
 import org.slf4j.Logger;

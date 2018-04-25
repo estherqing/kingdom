@@ -15,13 +15,13 @@
     <bean id="ehRedisCacheManager2" class="org.springframework.cache.support.SimpleCacheManager">
         <property name="caches">
             <set>
-                <bean  id="ehRedisCache" class="com.esther.code.cache.EhCacheRedisCache">
+                <bean  id="ehRedisCache" class="com.esther.code.cache.L2cache.EhCacheRedisCache">
                     <property name="redisTemplate" ref="redisTemplate" />
                     <property name="ehCache" ref="user"/>
                     <property name="name" value="user"/>
                     <!-- <property name="liveTime" value="3600"/>  -->
                 </bean>
-                <bean  id="ehRedisCache2" class="com.esther.code.cache.EhCacheRedisCache">
+                <bean  id="ehRedisCache2" class="com.esther.code.cache.L2cache.EhCacheRedisCache">
                     <property name="redisTemplate" ref="redisTemplate" />
                     <property name="ehCache" ref="UserCache"/>
                     <property name="name" value="UserCache"/>
@@ -35,8 +35,9 @@
     <bean id="ehRedisCacheManager" class="org.springframework.cache.support.CompositeCacheManager">
         <property name="cacheManagers">
             <list>
-                <!--<ref bean="ehcacheManager"/>-->
-                <ref bean="ehRedisCacheManager2"/>
+                <!--<ref bean="ecacheManager"/>-->
+                <ref bean="redisCacheManager"/>
+                <!--<ref bean="ehRedisCacheManager2"/>-->
             </list>
         </property>
         <property name="fallbackToNoOpCache" value="false"/>

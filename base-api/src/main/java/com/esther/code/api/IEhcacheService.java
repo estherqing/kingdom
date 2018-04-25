@@ -2,6 +2,8 @@ package com.esther.code.api;
 
 import com.esther.code.model.User;
 
+import java.util.List;
+
 /**
  * @author esther
  * 2018-04-23 10:58
@@ -36,4 +38,6 @@ public interface IEhcacheService {
 
     // 测试二级缓存，一级为ehcache，二级为redis
     User testSecondCache(Integer userId);
+
+    List<User> getUserList();
 }

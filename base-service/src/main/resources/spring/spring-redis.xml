@@ -26,8 +26,29 @@
         <property name="connectionFactory" ref="jedisConnectionFactory"/>
     </bean>
 
+   <!--以下为可单独使用的缓存管理器-->
+
+    <!--开始：配置RedisCacheManager缓存管理器..................................................................... ..-->
+    <!-- 配置RedisCacheManager -->
+    <bean id="redisCacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg name="redisOperations" ref="redisTemplate"/>
+        <!--缓存时间单位s,默认一直生效-->
+        <property name="defaultExpiration" value="${redis.expiration}"/>
+    </bean>
+
+    <!-- 配置RedisCacheConfig -->
+    <bean id="redisCacheConfig" class="com.esther.code.cache.redis.RedisCacheConfig">
+        <constructor-arg ref="jedisConnectionFactory"/>
+        <constructor-arg ref="redisTemplate"/>
+        <constructor-arg ref="redisCacheManager"/>
+    </bean>
+    <!--结束：配置RedisCacheManager缓存管理器........................................................................-->
+
+
+    <!--开始：redis缓存mybatis.......................................................................................-->
     <!-- 使用中间类解决RedisCache.jedisConnectionFactory的静态注入，从而使MyBatis实现第三方缓存 -->
-    <bean id="redisCacheTransfer" class="com.esther.code.cache.RedisCacheTransfer">
+    <bean id="redisCacheTransfer" class="com.esther.code.cache.mybatis.RedisCacheTransfer">
         <property name="jedisConnectionFactory" ref="jedisConnectionFactory"/>
     </bean>
+    <!--结束：.......................................................................................................-->
 </beans>
