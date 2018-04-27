@@ -12,6 +12,8 @@
         <module>base-service</module>
         <module>base-web</module>
         <module>basic-test</module>
+        <module>design-schema-api</module>
+        <module>design-schema-service</module>
     </modules>
     <packaging>pom</packaging>
 
