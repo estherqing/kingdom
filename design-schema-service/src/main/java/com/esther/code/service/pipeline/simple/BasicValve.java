@@ -1,7 +1,7 @@
-package com.esther.code.service.pipeline;
+package com.esther.code.service.pipeline.simple;
 
 
-import com.esther.code.api.pipeline.Valve;
+import com.esther.code.api.pipeline.simple.StandardValve;
 
 /**
  * @author esther
@@ -9,10 +9,10 @@ import com.esther.code.api.pipeline.Valve;
  * $DESCRIPTION}
  */
 
-public class BasicValve implements Valve {
-    protected Valve next = null;
+public class BasicValve implements StandardValve {
+    protected StandardValve next = null;
 
-    public Valve getNext() {
+    public StandardValve getNext() {
         return next;
     }
 
@@ -21,7 +21,7 @@ public class BasicValve implements Valve {
         System.out.println("基础阀门处理完后：" + handling);
     }
 
-    public void setNext(Valve valve) {
+    public void setNext(StandardValve valve) {
         this.next = valve;
     }
 }

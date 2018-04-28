@@ -1,10 +1,10 @@
 package com.esther.code.pipeline;
 
 
-import com.esther.code.service.pipeline.BasicValve;
-import com.esther.code.service.pipeline.SecondValve;
-import com.esther.code.service.pipeline.StandardPipeline;
-import com.esther.code.service.pipeline.ThirdValve;
+import com.esther.code.service.pipeline.simple.BasicValve;
+import com.esther.code.service.pipeline.simple.SecondValve;
+import com.esther.code.service.pipeline.simple.StandardPipelineImpl;
+import com.esther.code.service.pipeline.simple.ThirdValve;
 
 /**
  * @author esther
@@ -21,7 +21,7 @@ import com.esther.code.service.pipeline.ThirdValve;
 public class PipelineTest {
     public static void main(String[] args) {
         String handling = "aabb1122zzyy";
-        StandardPipeline pipeline = new StandardPipeline();
+        StandardPipelineImpl pipeline = new StandardPipelineImpl();
         BasicValve basicValve = new BasicValve();
         SecondValve secondValve = new SecondValve();
         ThirdValve thirdValve = new ThirdValve();

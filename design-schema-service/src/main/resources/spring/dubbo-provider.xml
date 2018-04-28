@@ -6,9 +6,9 @@
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="base_serivce" logger="slf4j"/>
-    <dubbo:registry address="${dubbo.esther.address}" protocol="zookeeper"/>
-    <dubbo:protocol name="dubbo" port="${dubbo.esther.port}" />
+    <dubbo:application name="schema_serivce" logger="slf4j"/>
+    <dubbo:registry address="${dubbo.esther.schema.address.address}" protocol="zookeeper"/>
+    <dubbo:protocol name="dubbo" port="${dubbo.esther.schema.port}" />
 
     <import resource="classpath*:dubbo.provider/*.xml" />
 </beans>
