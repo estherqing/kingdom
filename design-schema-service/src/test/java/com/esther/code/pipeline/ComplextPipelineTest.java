@@ -2,7 +2,7 @@ package com.esther.code.pipeline;
 
 import com.esther.code.base.BaseService;
 import com.esther.code.model.User;
-import com.esther.code.service.pipeline.complex.ProcessFlowAction;
+import com.esther.code.api.flow.ProcessFlowAction;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,7 +23,7 @@ public class ComplextPipelineTest extends BaseService {
         user.setPassword("123456");
         user.setUserRealName("esther");
         boolean isOk = true;
-        processFlowAction.doSubmit(user, isOk);
+        processFlowAction.submit(user, isOk);
         System.out.println(user);
     }
 }

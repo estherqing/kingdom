@@ -34,4 +34,6 @@ public interface IUserService {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    List<User> getUserListForFlowNode(@Param("flowType") String flowType,@Param("flowNode") String flowNode);
 }

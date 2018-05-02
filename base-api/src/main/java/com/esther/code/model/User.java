@@ -22,6 +22,13 @@ public class User implements Serializable{
 
     private Date createDate;
 
+    public User(){}
+
+    public User(Integer id,String userName){
+        this.id=id;
+        this.userName=userName;
+    }
+
     public Integer getId() {
         return id;
     }

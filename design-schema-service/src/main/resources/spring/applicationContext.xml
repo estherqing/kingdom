@@ -35,6 +35,9 @@
     <import resource="classpath*:/spring/spring-datasource.xml"/>
 
     <!--管道-->
+    <import resource="classpath*:/spring/pipeline.xml"/>
+
+    <!--流程-->
     <import resource="classpath*:/spring/flow-context.xml"/>
 
     <!-- dubbo 服务  -->

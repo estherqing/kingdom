@@ -57,12 +57,12 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public int updateByExampleSelective(User record, UserExample example) {
-        return userMapper.updateByExampleSelective(record,example);
+        return userMapper.updateByExampleSelective(record, example);
     }
 
     @Override
     public int updateByExample(User record, UserExample example) {
-        return userMapper.updateByExample(record,example);
+        return userMapper.updateByExample(record, example);
     }
 
     @Override
@@ -73,5 +73,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public int updateByPrimaryKey(User record) {
         return userMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<User> getUserListForFlowNode(String flowType, String flowNode) {
+        return userMapper.getUserListForFlowNode(flowType, flowNode);
     }
 }
