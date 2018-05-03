@@ -1,14 +1,15 @@
-package com.esther.code.api.flow;
+package com.esther.code.service.pipeline.complex.flow;
 
+import com.esther.code.api.flow.AbstractProcessFlowAction;
 import com.esther.code.model.User;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @author esther
  * 2018-04-27 17:52
  * $DESCRIPTION}
  */
-@Component("processFlowAction")
+@Service("processFlowAction")
 public class ProcessFlowAction extends AbstractProcessFlowAction<Exception> {
 
     @Override

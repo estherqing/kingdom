@@ -3,6 +3,7 @@ package com.esther.code.model;
 import com.esther.code.api.flow.enums.ActionMethod;
 import com.esther.code.api.flow.flownode.BusinessType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import java.util.Objects;
  * $DESCRIPTION}
  */
 
-public class SubmitParam {
+public class SubmitParam implements Serializable{
     private User user;
     private boolean isOk;
 

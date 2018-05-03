@@ -12,8 +12,11 @@ public class ControllerTest {
     public static void main(String[] args) {
         testAllDictList();
     }
+
     private static void testAllDictList() {
-        String url = "http://localhost:8086/kingdom/user/get?id=1";
-         HttpClientUtil.sendPost(url, "");
+        String url = "http://localhost:8086/kingdom/flow/submit2next?boId=1&nextNodeUserId=2&nextNodeUserName=rose";//"http://localhost:8086/kingdom/user/get?id=1";
+        HttpClientUtil.sendPost(url, "");
     }
+
+
 }

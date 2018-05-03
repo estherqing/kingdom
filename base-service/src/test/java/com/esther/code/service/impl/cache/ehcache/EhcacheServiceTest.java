@@ -76,7 +76,7 @@ public class EhcacheServiceTest extends BaseService {
         lookCacheStatus();
         System.out.println(ehcacheService.findUserById(1)); // 模拟从数据库中查询数据
         lookCacheStatus();
-        System.out.println(RedisUtil.getJedis().get("userService"));
+        System.out.println(RedisUtil.getJedis().get("userService".getBytes()));
         System.out.println( ehcacheService.findUserById(1));
     }
 

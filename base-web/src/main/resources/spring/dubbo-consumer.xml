@@ -9,6 +9,7 @@
     <dubbo:application name="all_serivce"/>
 
     <dubbo:registry id="base_center" register="false" protocol="dubbo" address="${dubbo.esther.address}" timeout="10000"/>
+    <dubbo:registry id="schema_center" register="false" protocol="dubbo" address="${dubbo.esther.address}" timeout="10000"/>
 
     <dubbo:consumer timeout="20000" retries="0"/>
 

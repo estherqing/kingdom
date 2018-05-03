@@ -23,7 +23,7 @@
         <entry key="TEST_FLOW#REVIEW" value-ref="P3ReviewActionImpl"></entry>
     </util:map>
 
-    <bean id="testFlowNodeActionMapper" class="com.esther.code.api.flow.ProcessNodeActionMapper">
+    <bean id="testProcessNodeActionMapper" class="com.esther.code.api.flow.ProcessNodeActionMapper">
         <property name="nodeActionMapper" ref="testFlowNodeActionMap"/>
     </bean>
 </beans>

@@ -18,7 +18,7 @@ import com.esther.code.model.SubmitParam;
  * @param <E>
  */
 
-public interface IBaseProcessAction<E extends Exception> extends CancelableProcessAction<Exception>,
+public interface IBaseProcessAction<E extends Exception> extends CancelableProcessAction<E>,
         InitializedProcessAction<E> {
 
     /**
