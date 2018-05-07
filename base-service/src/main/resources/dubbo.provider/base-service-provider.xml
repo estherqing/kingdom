@@ -7,8 +7,8 @@
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:service ref="userService" interface="com.esther.code.api.IUserService"  group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
-    <dubbo:service ref="dictService" interface="com.esther.code.api.IDictService"  group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
-    <dubbo:service ref="ehcacheService" interface="com.esther.code.api.IEhcacheService"  group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
+    <dubbo:service ref="userService" interface="com.esther.code.schema.api.IUserService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
+    <dubbo:service ref="dictService" interface="com.esther.code.schema.api.IDictService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
+    <dubbo:service ref="ehcacheService" interface="com.esther.code.schema.api.IEhcacheService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
 
 </beans>

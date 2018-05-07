@@ -1,6 +1,6 @@
 package com.esther.code.controller;
 
-import com.esther.code.api.IUserService;
+import com.esther.code.schema.api.IUserService;
 import com.esther.code.model.User;
 import com.esther.code.util.WebUtil;
 import org.springframework.beans.factory.annotation.Autowired;

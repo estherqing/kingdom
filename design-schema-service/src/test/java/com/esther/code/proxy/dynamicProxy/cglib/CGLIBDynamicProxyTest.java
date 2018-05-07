@@ -1,7 +1,7 @@
 package com.esther.code.proxy.dynamicProxy.cglib;
 
-import com.esther.code.service.proxy.dynamicProxy.cglib.CGLIBDynamicProxy;
-import com.esther.code.service.proxy.dynamicProxy.cglib.Hello;
+import com.esther.code.schema.service.proxy.dynamicProxy.cglib.CGLIBDynamicProxy;
+import com.esther.code.schema.service.proxy.dynamicProxy.cglib.Hello;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,7 +24,7 @@ public class CGLIBDynamicProxyTest {
 
         try {
             Class<?> c = Class.forName("com.esther.code.service.proxy.dynamicProxy.cglib.Hello$$EnhancerByCGLIB$$ae8cd9e3");
-            Class<?> beanc = Class.forName("com.esther.code.service.proxy.dynamicProxy.cglib.Hello");
+            Class<?> beanc = Class.forName("com.esther.code.schema.service.proxy.dynamicProxy.cglib.Hello");
 
             Method[] beanc_method = beanc.getMethods();
             int i = 1;

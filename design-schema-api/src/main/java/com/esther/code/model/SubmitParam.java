@@ -1,7 +1,7 @@
 package com.esther.code.model;
 
-import com.esther.code.api.flow.enums.ActionMethod;
-import com.esther.code.api.flow.flownode.BusinessType;
+import com.esther.code.flow.enums.ActionMethod;
+import com.esther.code.flow.flownode.BusinessType;
 
 import java.io.Serializable;
 import java.util.ArrayList;

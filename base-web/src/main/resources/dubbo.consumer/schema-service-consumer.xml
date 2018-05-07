@@ -8,18 +8,18 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <dubbo:reference id="testFlowProcessActionAdapterImpl" registry="schema_center"
-                     interface="com.esther.code.api.flow.adapter.TestFlowProcessActionAdapter"
+                     interface="com.esther.code.flow.adapter.TestFlowProcessActionAdapter"
                      group="${dubbo.esther.schema.group}" version="${dubbo.esther.schema.version}" check="false"/>
     <dubbo:reference id="defaultBOProcessInfoService" registry="schema_center"
-                     interface="com.esther.code.api.flow.IBusinessObjectProcessInfoService"
+                     interface="com.esther.code.flow.IBusinessObjectProcessInfoService"
                      group="${dubbo.esther.schema.group}" version="${dubbo.esther.schema.version}" check="false"/>
     <dubbo:reference id="enumBaseFlowNodeService" registry="schema_center"
-                     interface="com.esther.code.api.flow.flownode.IFlowNodeService"
+                     interface="com.esther.code.flow.flownode.IFlowNodeService"
                      group="${dubbo.esther.schema.group}" version="${dubbo.esther.schema.version}"/>
     <dubbo:reference id="enumBaseFlowService" registry="schema_center"
-                     interface="com.esther.code.api.flow.flownode.IFlowService"
+                     interface="com.esther.code.flow.flownode.IFlowService"
                      group="${dubbo.esther.schema.group}" version="${dubbo.esther.schema.version}"/>
     <dubbo:reference id="processFlowAction" registry="schema_center"
-                     interface="com.esther.code.api.flow.IBaseProcessAction"
+                     interface="com.esther.code.flow.IBaseProcessAction"
                      group="${dubbo.esther.schema.group}" version="${dubbo.esther.schema.version}"/>
 </beans>
