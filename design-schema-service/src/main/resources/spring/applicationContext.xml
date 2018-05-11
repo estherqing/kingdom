@@ -41,5 +41,5 @@
     <import resource="classpath*:/spring/flow-context.xml"/>
 
     <!-- dubbo 服务  -->
-    <import resource="classpath*:/spring/dubbo-provider.xml"/>
+    <!--<import resource="classpath*:/spring/dubbo-provider.xml"/>-->
 </beans>
