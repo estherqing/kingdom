@@ -5,7 +5,7 @@ import com.esther.code.schema.api.decorator.IProgrammer;
 /**
  * @author esther
  * 2018-05-07 16:40
- * $DESCRIPTION}
+ * 业务类
  */
 
 public class JavaProgrammer implements IProgrammer {

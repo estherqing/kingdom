@@ -23,7 +23,7 @@ public class CGLIBDynamicProxyTest {
         System.out.println("实际调用者的父类：" + hello.getClass().getSuperclass());
 
         try {
-            Class<?> c = Class.forName("com.esther.code.service.proxy.dynamicProxy.cglib.Hello$$EnhancerByCGLIB$$ae8cd9e3");
+            Class<?> c = Class.forName("com.esther.code.schema.service.proxy.dynamicProxy.cglib.Hello$$EnhancerByCGLIB$$736395e0");
             Class<?> beanc = Class.forName("com.esther.code.schema.service.proxy.dynamicProxy.cglib.Hello");
 
             Method[] beanc_method = beanc.getMethods();

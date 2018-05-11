@@ -3,6 +3,7 @@ package com.esther.code.flow.enums;
 import com.esther.code.flow.flownode.BusinessType;
 import com.esther.code.flow.flownode.FlowNodeOperator;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -10,8 +11,8 @@ import java.util.stream.Stream;
  * Author:jiyanbin@zafh.com.cn
  * JDK: 1.8
  * Created on 2015/11/27.
- *
- * 征信流程的节点定义
+ * <p>
+ * 测试流程的节点定义
  */
 public enum TestNode implements FlowNodeOperator<TestNode> {
     LAUNCH(1, "开始", ""),
@@ -65,5 +66,9 @@ public enum TestNode implements FlowNodeOperator<TestNode> {
                 .filter(node -> Objects.equals(node.name(), nodeCode))
                 .findAny()
                 .orElse(null);
+    }
+
+    public static void main(String[] args) {
+        Arrays.stream(TestNode.values()).forEach(node -> System.out.println(node+"["+node.name()+"]"));
     }
 }
