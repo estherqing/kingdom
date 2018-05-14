@@ -38,6 +38,13 @@
     <!--两级缓存，一级:EhCache,二级为redis Cache-->
     <import resource="classpath*:/spring/spring-ehcache-redis.xml"/>
 
+
+    <!--管道-->
+    <import resource="classpath*:/spring/pipeline.xml"/>
+
+    <!--流程-->
+    <import resource="classpath*:/spring/flow-context.xml"/>
+
     <!-- dubbo 服务  -->
     <import resource="classpath*:spring/dubbo-provider.xml"/>
 </beans>

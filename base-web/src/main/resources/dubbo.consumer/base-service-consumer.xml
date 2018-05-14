@@ -7,10 +7,10 @@
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:reference id="userService" registry="base_center" interface="com.esther.code.schema.api.IUserService"
+    <dubbo:reference id="userService" registry="base_center" interface="com.esther.code.api.IUserService"
                      group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
-    <dubbo:reference id="dictService" registry="base_center" interface="com.esther.code.schema.api.IDictService"
+    <dubbo:reference id="dictService" registry="base_center" interface="com.esther.code.api.IDictService"
                      group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
-    <dubbo:reference id="ehcacheService" registry="base_center" interface="com.esther.code.schema.api.IEhcacheService"
+    <dubbo:reference id="ehcacheService" registry="base_center" interface="com.esther.code.api.IEhcacheService"
                      group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
 </beans>

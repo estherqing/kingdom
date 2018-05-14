@@ -24,7 +24,7 @@ import java.util.List;
  */
 
 public class UserControllerTest {
-    private String get="http://localhost:8086/kingdom/user/get";
+    private String get="http://localhost:8086/kingdom/flow/submit2next";
 
     @Test
     public void getSignInfoList() throws Exception {
@@ -33,8 +33,9 @@ public class UserControllerTest {
         System.out.println("request=" + get);
         //post.addHeader("Cookie", "JSESSIONID=" + loginResult.getToken());
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("id", "1"));
-
+        params.add(new BasicNameValuePair("boId", "1"));
+        params.add(new BasicNameValuePair("nextNodeUserId", "2"));
+        params.add(new BasicNameValuePair("nextNodeUserName", "rose"));
         HttpEntity entity = new UrlEncodedFormEntity(params, Charset.defaultCharset());
         post.setEntity(entity);
         HttpResponse httpResponse = httpClient.execute(post);

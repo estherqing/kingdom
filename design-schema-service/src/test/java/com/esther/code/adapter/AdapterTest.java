@@ -1,10 +1,10 @@
 package com.esther.code.adapter;
 
-import com.esther.code.schema.api.adapter.Voltage220;
-import com.esther.code.schema.service.adapter.MobileClient;
-import com.esther.code.schema.service.adapter.clazz.VoltageAdapter4Class;
-import com.esther.code.schema.service.adapter.interfaces.VoltageAdapter4Interface;
-import com.esther.code.schema.service.adapter.object.VoltageAdapter4Object;
+import com.esther.code.api.schema.adapter.Voltage220;
+import com.esther.code.api.schema.service.adapter.MobileClient;
+import com.esther.code.api.schema.service.adapter.clazz.VoltageAdapter4Class;
+import com.esther.code.api.schema.service.adapter.interfaces.VoltageAdapter4Interface;
+import com.esther.code.api.schema.service.adapter.object.VoltageAdapter4Object;
 
 /**
  * @author esther

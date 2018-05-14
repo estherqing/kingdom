@@ -1,6 +1,6 @@
 package com.esther.code.proxy.dynamicProxy.cglib;
 
-import com.esther.code.schema.service.proxy.dynamicProxy.cglib.CGLIBBean;
+import com.esther.code.api.schema.service.proxy.dynamicProxy.cglib.CGLIBBean;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;

@@ -1,7 +1,7 @@
 package com.esther.code.proxy.dynamicProxy.cglib;
 
-import com.esther.code.schema.service.proxy.dynamicProxy.cglib.CGLIBLazyProxy;
-import com.esther.code.schema.service.proxy.dynamicProxy.cglib.Hello;
+import com.esther.code.api.schema.service.proxy.dynamicProxy.cglib.CGLIBLazyProxy;
+import com.esther.code.api.schema.service.proxy.dynamicProxy.cglib.Hello;
 import net.sf.cglib.proxy.Enhancer;
 
 /**

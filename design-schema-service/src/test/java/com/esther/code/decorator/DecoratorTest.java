@@ -1,9 +1,9 @@
 package com.esther.code.decorator;
 
-import com.esther.code.schema.api.decorator.IProgrammer;
-import com.esther.code.schema.service.decorator.DesignDecorator;
-import com.esther.code.schema.service.decorator.JavaProgrammer;
-import com.esther.code.schema.service.decorator.TestDecorator;
+import com.esther.code.api.schema.decorator.IProgrammer;
+import com.esther.code.api.schema.service.decorator.DesignDecorator;
+import com.esther.code.api.schema.service.decorator.JavaProgrammer;
+import com.esther.code.api.schema.service.decorator.TestDecorator;
 
 /**
  * @author esther

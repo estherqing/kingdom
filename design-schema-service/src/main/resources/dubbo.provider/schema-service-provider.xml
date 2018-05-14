@@ -7,7 +7,7 @@
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:service ref="testFlowProcessActionAdapterImpl"
+<!--    <dubbo:service ref="testFlowProcessActionAdapterImpl"
                    interface="com.esther.code.flow.adapter.TestFlowProcessActionAdapter"
                    group="${dubbo.esther.schema.group}" version="${dubbo.esther.schema.version}"/>
     <dubbo:service ref="defaultBOProcessInfoService"
@@ -19,5 +19,5 @@
     <dubbo:service ref="enumBaseFlowService" interface="com.esther.code.flow.flownode.IFlowService"
                    group="${dubbo.esther.schema.group}" version="${dubbo.esther.schema.version}"/>
     <dubbo:service ref="processFlowAction" interface="com.esther.code.flow.IBaseProcessAction"
-                   group="${dubbo.esther.schema.group}" version="${dubbo.esther.schema.version}"/>
+                   group="${dubbo.esther.schema.group}" version="${dubbo.esther.schema.version}"/>-->
 </beans>
