@@ -11,31 +11,27 @@
 
     <context:property-placeholder location="classpath*:/base-web.conf" ignore-unresolvable="true"/>
     <context:component-scan base-package="com.esther.code">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-  <!--  <context:exclude-filter type="regex" expression="com.cgw360.cls.service.flow.impl.*"/>
-    <context:exclude-filter type="regex" expression="com.cgw360.cls.service.mq.impl.*"/>
-    <context:exclude-filter type="regex" expression="com.cgw360.cls.base.interceptor.*"/>
-    <context:exclude-filter type="regex" expression="com.cgw360.cls.base.interceptor.value.*"/>
-    <context:exclude-filter type="regex" expression="com.cgw360.cls.base.flow.spi.*"/>
-    <context:exclude-filter type="regex" expression="com.cgw360.cls.base.flow.common.valve.*"/>
-</context:component-scan>-->
+
+    <!-- 当在web.xml 中 DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
+    <mvc:default-servlet-handler/>
 
     <!--开启aop-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
     <!--下面这个注释不要删除，备用-->
-<!--    <mvc:annotation-driven>
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <property name="supportedMediaTypes">
-                    <list>
-                        <value>application/json; charset=UTF-8</value>
-                    </list>
-                </property>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>-->
+    <!--    <mvc:annotation-driven>
+            <mvc:message-converters>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>application/json; charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </mvc:message-converters>
+        </mvc:annotation-driven>-->
 
 
     <!--<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
@@ -45,6 +41,12 @@
         <property name="contentType" value="text/html; charset=utf-8"/>
     </bean>-->
 
+    <!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/base/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
     <!-- <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" /> -->
 
     <!-- annotation默认的方法映射适配器,可不写，但当有其他组件定义时，一定要写。 -->
@@ -53,6 +55,7 @@
         <property name="webBindingInitializer">
             <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
                 <property name="conversionService">
+                    <!--最有用的场景就是，它用来将前端传过来的参数和后端的 controller 方法上的参数进行绑定的时候用。-->
                     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"></bean>
                 </property>
                 <property name="validator" ref="validator"/>
@@ -91,15 +94,15 @@
     <!--&lt;!&ndash;<bean class="com.cgw360.cls.base.web.AuthorizationInterceptor"/>&ndash;&gt;-->
     <!--</mvc:interceptors>-->
 
-  <!--  <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <mvc:exclude-mapping path="/view/**"/>
-            <mvc:exclude-mapping path="/user/login"/>
-            <mvc:exclude-mapping path="/user/push"/>
-            <bean class="com.cgw360.cls.base.web.AuthorizationInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>-->
+    <!--  <mvc:interceptors>
+          <mvc:interceptor>
+              <mvc:mapping path="/**"/>
+              <mvc:exclude-mapping path="/view/**"/>
+              <mvc:exclude-mapping path="/user/login"/>
+              <mvc:exclude-mapping path="/user/push"/>
+              <bean class="com.cgw360.cls.base.web.AuthorizationInterceptor"/>
+          </mvc:interceptor>
+      </mvc:interceptors>-->
 
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
         <property name="defaultLocale" value="zh_CN"/>
@@ -121,9 +124,6 @@
     </bean>
 
 
-    <!-- 当在web.xml 中 DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
-    <mvc:default-servlet-handler />
-
-    <!--webapp下的包重命名-->
-      <mvc:resources mapping="/view/**" location="/base/"/>
+    <!--webapp下的包重命名 mapping指向新名称 location指向原地址-->
+    <mvc:resources mapping="/base/**" location="/base/"/>
 </beans>

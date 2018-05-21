@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context>
+    <!--其中的maxIdleSwap是钝化的时间，1分钟；
+    directory是钝化和激活的目录，只写mysession的话，就默认在tomacat的work\Catalina\localhost下产生itcast文件夹，并把session放在其中
+    C:\Users\201708015\.IntelliJIdea2017.2\system\tomcat\Unnamed_kingdom\work\Catalina\localhost\kingdom\mysession -->
+    <Manager className="org.apache.catalina.session.PersistentManager" maxIdleSwap="1">
+        <Store className="org.apache.catalina.session.FileStore" directory="mysession"/>
+    </Manager>
+</Context>

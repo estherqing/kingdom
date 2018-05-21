@@ -6,16 +6,15 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
           http://www.springframework.org/schema/beans  
-          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+          http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/context  
-          http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+          http://www.springframework.org/schema/context/spring-context.xsd
           http://www.springframework.org/schema/mvc      
-          http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd  
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd
           http://www.springframework.org/schema/util   
-          http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          http://www.springframework.org/schema/util/spring-util.xsd
           http://www.springframework.org/schema/cache
-          http://www.springframework.org/schema/cache/spring-cache-3.2.xsd">
-
+          http://www.springframework.org/schema/cache/spring-cache.xsd">
     <context:property-placeholder location="classpath*:base-service.conf,classpath*:spring/redis.properties"
                                   ignore-unresolvable="true"/>
     <!-- 注解探测器 -->
@@ -25,7 +24,8 @@
     </context:component-scan>
 
     <!-- 注解声明 -->
-    <cache:annotation-driven cache-manager="ehRedisCacheManager"  key-generator="cacheKeyGenerator" mode="proxy" proxy-target-class="true"/>
+    <cache:annotation-driven cache-manager="ehRedisCacheManager" key-generator="cacheKeyGenerator" mode="proxy"
+                             proxy-target-class="true"/>
     <bean id="cacheKeyGenerator" class="com.esther.code.cache.CacheKeyGenerator"/>
 
     <!--数据源-->
@@ -47,4 +47,26 @@
 
     <!-- dubbo 服务  -->
     <import resource="classpath*:spring/dubbo-provider.xml"/>
+    <bean id="parent" name="name1, name2, name3" class="com.esther.code.entity.Parent"
+          scope="singleton" lazy-init="true" init-method="init" destroy-method="cleanup">
+
+        <!-- 可以用下面三种形式指定构造参数 -->
+     <!--   <constructor-arg type="int" value="1"/>
+        <constructor-arg name="name" value="parent"/>
+        <constructor-arg index="2" value="10000"/>-->
+        <property name="age" value="25"/>
+
+        <!-- property 的几种情况 -->
+        <!-- <property name="child">
+             <ref bean="child"/>
+         </property>-->
+        <!--<property name="child" ref="child"/>-->
+    </bean>
+    <bean id="child" class="com.esther.code.entity.Child">
+        <constructor-arg name="id" value="2"/>
+        <constructor-arg name="name" value="child"/>
+        <constructor-arg name="salary" value="5000"/>
+        <property name="age" value="18"/>
+    </bean>
+
 </beans>

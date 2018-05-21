@@ -27,8 +27,40 @@
     </listener>-->
 
 	<!-- 配置Servlet监听器，来加载spring容器 -->
-	<listener>
+	<!--<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>-->
+	
+	<listener>
+		<description>spring不允许循环依赖，不允许bean覆盖</description>
+		<listener-class>com.esther.code.web.context.SpringContextLoaderListener</listener-class>
+	</listener>
+
+	<listener>
+		<description>监听应用的启动和停止:ServletContextListener</description>
+		<listener-class>com.esther.code.web.context.MyApplicationContextListener</listener-class>
+	</listener>
+	<listener>
+		<description>监听应用ServletContext属性的变化:ServletContextAttributeListener</description>
+		<listener-class>com.esther.code.web.context.MyApplicationContextAttributeListener</listener-class>
+	</listener>
+
+	<listener>
+		<description>监听HttpSession的变化:HttpSessionListener</description>
+		<listener-class>com.esther.code.web.context.MyHttpSessionListener</listener-class>
+	</listener>
+	<listener>
+		<description>监听HttpSession属性的变化:HttpSessionAttributeListener</description>
+		<listener-class>com.esther.code.web.context.MyHttpSessionAttributeListener</listener-class>
+	</listener>
+
+	<listener>
+		<description>监听ServletRequest的变化:ServletRequestListener</description>
+		<listener-class>com.esther.code.web.context.MyServletRequestListener</listener-class>
+	</listener>
+	<listener>
+		<description>监听ServletRequest属性的变化:ServletRequestAttributeListener</description>
+		<listener-class>com.esther.code.web.context.MyServletRequestAttributeListener</listener-class>
 	</listener>
 
     <servlet>
@@ -37,6 +69,11 @@
 		<init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>WEB-INF/spring-servlet.xml</param-value>
+		</init-param>
+		<init-param>
+			<!--解决spring根容器和spring mvc子容器的同名id或者name问题-->
+			<param-name>contextInitializerClasses</param-name>
+			<param-value>com.esther.code.web.context.SpringApplicationContextInitializer</param-value>
 		</init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
