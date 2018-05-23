@@ -8,6 +8,52 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.2.6.RELEASE/spring-aop-4.2.6.RELEASE-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/gradle/jdiff" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-aop/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-aop/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-aspects/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-aspects/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-beans-groovy/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-beans/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-beans/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-context-support/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-context-support/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-context/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-context/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-core/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-core/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-expression/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-expression/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-instrument-tomcat/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-instrument/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-jdbc/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-jdbc/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-jms/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-jms/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-messaging/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-messaging/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-orm-hibernate4/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-orm-hibernate4/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-orm-hibernate5/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-orm/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-orm/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-oxm/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-oxm/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-test/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-test/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-tx/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-tx/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-web/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-web/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-webmvc-portlet/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-webmvc-portlet/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-webmvc-tiles2/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-webmvc-tiles2/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-webmvc/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-webmvc/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-websocket/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/spring-websocket/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../spring-framework-4.2.6.RELEASE/src/test/java" />
     </SOURCES>
   </library>
 </component>

@@ -13,15 +13,23 @@ import java.util.Map;
 
 public class ControllerTest {
     public static void main(String[] args) throws Exception {
-        testAllDictList();
+        testGetUser();
+        testFlow();
     }
 
-    private static void testAllDictList() throws Exception{
+    private static void testFlow() throws Exception{
         String url = "http://localhost:8086/kingdom/flow/submit2next";//"http://localhost:8086/kingdom/user/get?id=1";
        Map<String,String> params =new HashMap<>();
        params.put("boId","1");
        params.put("nextNodeUserId","2");
        params.put("nextNodeUserName","rose");
+        HttpClientUtil.sendPost(url, params);
+    }
+
+    private static void testGetUser() throws Exception{
+        String url = "http://localhost:8086/kingdom/user/get";//"http://localhost:8086/kingdom/user/get?id=1";
+        Map<String,String> params =new HashMap<>();
+        params.put("id","1");
         HttpClientUtil.sendPost(url, params);
     }
 

@@ -1,8 +1,8 @@
 package com.esther.code.factory;
 
-import com.esther.code.api.schema.factory.factoryMethod.IFoodFactory;
-import com.esther.code.api.schema.service.factory.factoryMethod.NoodleFactory;
-import com.esther.code.api.schema.service.factory.factoryMethod.RiceFactory;
+import com.esther.code.schema.api.factory.factoryMethod.IFoodFactory;
+import com.esther.code.schema.service.factory.factoryMethod.NoodleFactory;
+import com.esther.code.schema.service.factory.factoryMethod.RiceFactory;
 
 /**
  * @author esther

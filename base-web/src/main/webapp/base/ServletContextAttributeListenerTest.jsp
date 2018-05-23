@@ -1,5 +1,5 @@
-<%@ page import="com.esther.code.web.context.TestBindingBean" %>
-<%@ page import="com.esther.code.web.context.TestActivationBean" %>
+<%@ page import="com.esther.code.web.context.listener.TestBindingBean" %>
+<%@ page import="com.esther.code.web.context.listener.TestActivationBean" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML>
 <html>

@@ -1,10 +1,10 @@
 package com.esther.code.observer;
 
-import com.esther.code.api.schema.observer.DIYEvent;
-import com.esther.code.api.schema.service.observer.MyPubisher;
-import com.esther.code.api.schema.service.observer.ordinary.Alarm;
-import com.esther.code.api.schema.service.observer.ordinary.Display;
-import com.esther.code.api.schema.service.observer.ordinary.Heater;
+import com.esther.code.schema.api.observer.DIYEvent;
+import com.esther.code.schema.service.observer.MyPubisher;
+import com.esther.code.schema.service.observer.ordinary.Alarm;
+import com.esther.code.schema.service.observer.ordinary.Display;
+import com.esther.code.schema.service.observer.ordinary.Heater;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

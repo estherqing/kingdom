@@ -1,8 +1,8 @@
 package com.esther.code.factory;
 
-import com.esther.code.api.schema.factory.abstractFactory.IDiningRoomFactory;
-import com.esther.code.api.schema.service.factory.abstractFactory.DiningRoomFactoryA;
-import com.esther.code.api.schema.service.factory.abstractFactory.DiningRoomFactoryB;
+import com.esther.code.schema.api.factory.abstractFactory.IDiningRoomFactory;
+import com.esther.code.schema.service.factory.abstractFactory.DiningRoomFactoryA;
+import com.esther.code.schema.service.factory.abstractFactory.DiningRoomFactoryB;
 
 /**
  * @author esther

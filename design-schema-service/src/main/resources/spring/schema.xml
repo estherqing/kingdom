@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+          http://www.springframework.org/schema/util
+          http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          http://www.springframework.org/schema/cache
+          http://www.springframework.org/schema/cache/spring-cache-3.2.xsd">
+    <context:component-scan base-package="com.esther.code.schema.service"/>
+
+    <!--策略模式：xml配置，每增加一个实现类就要在map加一个键值对-->
+    <bean id="xmlContextStrategyFactory" class="com.esther.code.schema.service.strategy.XmlContextStrategyFactory">
+        <property name="contextStrategies">
+            <map>
+                <entry key="contreteStrategyA" value-ref="contreteStrategyA"/>
+                <entry key="contreteStrategyB" value-ref="contreteStrategyB"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--第二种写法-->
+    <util:map id="contextStrategyMap" key-type="java.lang.String"
+              value-type="com.esther.code.schema.api.strategy.IStrategy">
+        <entry key="contreteStrategyA" value-ref="contreteStrategyA"/>
+        <entry key="contreteStrategyB" value-ref="contreteStrategyB"/>
+    </util:map>
+    <bean id="xmlContextStrategyFactory2" class="com.esther.code.schema.service.strategy.XmlContextStrategyFactory">
+        <property name="contextStrategies" ref="contextStrategyMap"/>
+    </bean>
+
+</beans>

@@ -1,9 +1,9 @@
 package com.esther.code.proxy.dynamicProxy.jdk;
 
 import com.esther.code.proxy.ProxyType;
-import com.esther.code.api.schema.proxy.IHello;
-import com.esther.code.api.schema.service.proxy.Hello;
-import com.esther.code.api.schema.service.proxy.dynamicProxy.jdk.*;
+import com.esther.code.schema.api.proxy.IHello;
+import com.esther.code.schema.service.proxy.Hello;
+import com.esther.code.schema.service.proxy.dynamicProxy.jdk.*;
 
 /**
  * @author esther

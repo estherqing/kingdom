@@ -1,9 +1,9 @@
 package com.esther.code.proxy.staticProxy;
 
 import com.esther.code.proxy.ProxyType;
-import com.esther.code.api.schema.proxy.IHello;
-import com.esther.code.api.schema.service.proxy.Hello;
-import com.esther.code.api.schema.service.proxy.staticProxy.StaticProxy;
+import com.esther.code.schema.api.proxy.IHello;
+import com.esther.code.schema.service.proxy.Hello;
+import com.esther.code.schema.service.proxy.staticProxy.StaticProxy;
 
 /**
  * @author esther

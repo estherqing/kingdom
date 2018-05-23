@@ -1,10 +1,10 @@
 package com.esther.code.pipeline;
 
 
-import com.esther.code.api.schema.service.pipeline.BasicValve;
-import com.esther.code.api.schema.service.pipeline.SecondValve;
-import com.esther.code.api.schema.service.pipeline.StandardPipelineImpl;
-import com.esther.code.api.schema.service.pipeline.ThirdValve;
+import com.esther.code.schema.service.pipeline.BasicValve;
+import com.esther.code.schema.service.pipeline.SecondValve;
+import com.esther.code.schema.service.pipeline.StandardPipelineImpl;
+import com.esther.code.schema.service.pipeline.ThirdValve;
 
 /**
  * @author esther

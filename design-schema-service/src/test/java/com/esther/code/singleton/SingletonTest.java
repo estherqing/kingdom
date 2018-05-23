@@ -1,6 +1,6 @@
 package com.esther.code.singleton;
 
-import com.esther.code.api.schema.singleton.lazy.Singleton;
+import com.esther.code.schema.api.singleton.lazy.Singleton;
 import org.junit.Test;
 
 /**
