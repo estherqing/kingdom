@@ -8,6 +8,8 @@ package com.esther.code.schema.api.pipeline;
 
 public interface StandardValve {
     public StandardValve getNext();
+
     public void setNext(StandardValve valve);
+
     public void invoke(String handling);
 }

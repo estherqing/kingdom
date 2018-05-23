@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class StandardPipelineImpl implements StandardPipeline {
     protected StandardValve first = null;
     protected StandardValve basic = null;
+
     public void addValve(StandardValve valve) {
         if (first == null) {
             first = valve;
@@ -30,12 +31,15 @@ public class StandardPipelineImpl implements StandardPipeline {
             }
         }
     }
+
     public StandardValve getBasic() {
         return basic;
     }
+
     public StandardValve getFirst() {
         return first;
     }
+
     public void setBasic(StandardValve valve) {
         this.basic = valve;
     }
