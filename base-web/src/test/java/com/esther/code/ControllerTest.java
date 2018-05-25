@@ -18,7 +18,7 @@ public class ControllerTest {
     }
 
     private static void testFlow() throws Exception{
-        String url = "http://localhost:8086/kingdom/flow/submit2next";//"http://localhost:8086/kingdom/user/get?id=1";
+        String url = "http://localhost:8086/kingdom/flow/submit2next";
        Map<String,String> params =new HashMap<>();
        params.put("boId","1");
        params.put("nextNodeUserId","2");
@@ -27,7 +27,7 @@ public class ControllerTest {
     }
 
     private static void testGetUser() throws Exception{
-        String url = "http://localhost:8086/kingdom/user/get";//"http://localhost:8086/kingdom/user/get?id=1";
+        String url = "http://localhost:8086/kingdom/user/get";
         Map<String,String> params =new HashMap<>();
         params.put("id","1");
         HttpClientUtil.sendPost(url, params);

@@ -52,6 +52,11 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User selectByPrimaryKey(Integer id) {
+       /* try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
         return userMapper.selectByPrimaryKey(id);
     }
 

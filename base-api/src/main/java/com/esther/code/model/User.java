@@ -1,13 +1,15 @@
 package com.esther.code.model;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable{
+public class User implements Serializable {
     private static final long serialVersionUID = 5993286892322436568L;
 
     private Integer id;
-
+    @NotNull
+    @Size(min = 1, max = 20)
     private String userName;
 
     private String password;
@@ -17,16 +19,18 @@ public class User implements Serializable{
     private String address;
 
     private String sex;
-
+    @Min(1)
+    @Max(110)
     private Integer age;
-
+    @Future
     private Date createDate;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(Integer id,String userName){
-        this.id=id;
-        this.userName=userName;
+    public User(Integer id, String userName) {
+        this.id = id;
+        this.userName = userName;
     }
 
     public Integer getId() {

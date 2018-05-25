@@ -1,8 +1,13 @@
 package com.esther.code;
 
 import com.esther.code.entity.Parent;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
+import java.net.URL;
+import java.util.Enumeration;
 
 /**
  * @author esther
@@ -11,12 +16,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 
 public class BeanLoadTest {
-    public static void main(String[] args) {
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:/spring/applicationContext.xml");
-        //CacheKeyGenerator cacheKeyGenerator= (CacheKeyGenerator) applicationContext.getBean("cacheKeyGenerator");
+    public static void main(String[] args) throws Exception {
+        /*ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:/spring/applicationContext.xml");
         Parent parent= (Parent) applicationContext.getBean("parent");
-
         System.out.println(parent);
-        System.out.println("--------------------");
+        System.out.println("--------------------");*/
+
+        Enumeration<URL> urls = Thread.currentThread().getContextClassLoader().getResources("com/alibaba/dubbo/registry/internal/DefaultRegistryService.class");
+        while (urls.hasMoreElements()) {
+            URL url = urls.nextElement();
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>" + url.getFile());
+        }
     }
 }

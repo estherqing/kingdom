@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-
+    <!-- 声明需要暴露的服务接口 -->
     <dubbo:service ref="userService" interface="com.esther.code.api.IUserService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
     <dubbo:service ref="dictService" interface="com.esther.code.api.IDictService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
     <dubbo:service ref="ehcacheService" interface="com.esther.code.api.IEhcacheService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />

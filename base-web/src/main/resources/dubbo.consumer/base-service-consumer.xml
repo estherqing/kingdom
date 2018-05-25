@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
     <dubbo:reference id="userService" registry="base_center" interface="com.esther.code.api.IUserService"
                      group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
     <dubbo:reference id="dictService" registry="base_center" interface="com.esther.code.api.IDictService"

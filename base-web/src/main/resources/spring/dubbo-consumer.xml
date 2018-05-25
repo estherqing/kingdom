@@ -5,13 +5,15 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="mykingdom_all_serivce"/>
+    <!-- 使用zookeeper注册中心暴露发现服务地址 -->
+    <dubbo:registry id="base_center" register="true" protocol="dubbo" address="${dubbo.esther.address}" timeout="10000"/>
+    <dubbo:registry id="schema_center" register="true" protocol="dubbo" address="${dubbo.esther.schema.address}" timeout="10000"/>
 
-    <dubbo:application name="all_serivce"/>
-
-    <dubbo:registry id="base_center" register="false" protocol="dubbo" address="${dubbo.esther.address}" timeout="10000"/>
-    <dubbo:registry id="schema_center" register="false" protocol="dubbo" address="${dubbo.esther.schema.address}" timeout="10000"/>
-
-    <dubbo:consumer timeout="20000" retries="0"/>
+    <!-- check=false关闭所有服务的启动时检查: 服务启动时关闭对该服务提供者的接口是否正常的监测，也就是*Service是否可以正常调用不影响本应用的启动，当为true的时候如果该接口挂了，本应用就起不起来了 -->
+    <!-- retries配置重试次数，最好只用于读的重试，写操作可能会引起多次写入 下面三个任意一个配置就行 默认retries="0"-->
+    <dubbo:consumer timeout="2000" retries="0" check="false"/>
 
     <import resource="classpath:dubbo.consumer/*.xml"/>
 </beans>

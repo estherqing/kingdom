@@ -10,6 +10,7 @@
 		<param-name>webAppRootKey</param-name>
 		<param-value>base.web</param-value>
 	</context-param>-->
+	<!--基于Web容器加载spring-->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:spring/applicationContext.xml</param-value>
@@ -36,7 +37,7 @@
 		<listener-class>com.esther.code.web.context.SpringContextLoaderListener</listener-class>
 	</listener>-->
 
-	<listener>
+	<!--<listener>
 		<description>监听应用的启动和停止:ServletContextListener</description>
 		<listener-class>com.esther.code.web.context.listener.MyApplicationContextListener</listener-class>
 	</listener>
@@ -61,7 +62,7 @@
 	<listener>
 		<description>监听ServletRequest属性的变化:ServletRequestAttributeListener</description>
 		<listener-class>com.esther.code.web.context.listener.MyServletRequestAttributeListener</listener-class>
-	</listener>
+	</listener>-->
 
     <servlet>
         <servlet-name>springMVC</servlet-name>
