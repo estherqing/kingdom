@@ -295,7 +295,7 @@ public class HttpClientUtil {
         return result;
     }
 
-    public static void sendPost(String url, Map<String, String> paramsMap) throws IOException {
+    public static String sendPost(String url, Map<String, String> paramsMap) throws IOException {
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost post = new HttpPost(url);
         System.out.println("request=" + url);
@@ -318,6 +318,7 @@ public class HttpClientUtil {
         }
         String body = EntityUtils.toString(respEntity);
         System.out.println("body=" + body);
+        return body;
     }
 
 }

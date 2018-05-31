@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 结果缓存-->
+    <dubbo:reference id="cacheService" registry="base_center" interface="com.esther.code.api.dubbo.cache.CacheService"
+                     group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false" cache="true"/>
+    <!-- 分组聚合-->
+    <dubbo:reference id="mergeService" registry="base_center" interface="com.esther.code.api.dubbo.merger.MergeService"
+                     group="merge2,merge" merger="true" version="${dubbo.esther.version}" check="false"/>
+
+    <!-- 参数验证-->
+    <dubbo:reference interface="com.esther.code.api.dubbo.validation.ValidationService" id="validationService"
+                     group="${dubbo.esther.group}" version="${dubbo.esther.version}" validation="true"/>
+
+    <!-- 参数回调-->
+    <dubbo:reference id="callbackService" registry="base_center"
+                     interface="com.esther.code.api.dubbo.callback.CallbackService"
+                     group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
+
+
+</beans>

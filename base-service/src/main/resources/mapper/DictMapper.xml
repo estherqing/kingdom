@@ -75,6 +75,12 @@
     id, dict_value, dict_label, dict_type, dict_desc, dict_sort, create_date, update_date, 
     remark, del_flag
   </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from t_dict
+    where id = #{id,jdbcType=INTEGER}
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.esther.code.model.DictExample" >
     select
     <if test="distinct" >

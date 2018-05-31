@@ -10,7 +10,7 @@
     <appender name="Biz.Log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>/logs/kingdom/base-service.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/logs/kingdom/usercenter-bss-%d{yyyyMMdd}.log</fileNamePattern>
+            <fileNamePattern>/logs/kingdom/base-service-%d{yyyyMMdd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 声明需要暴露的服务接口 -->
+
+    <!-- 结果缓存-->
+    <bean id="cacheService" class="com.esther.code.service.impl.dubbo.cache.CacheServiceImpl"/>
+    <dubbo:service ref="cacheService" interface="com.esther.code.api.dubbo.cache.CacheService"
+                   group="${dubbo.esther.group}" version="${dubbo.esther.version}"/>
+
+    <!--分组聚合-->
+    <bean id="mergeService" class="com.esther.code.service.impl.dubbo.merger.MergeServiceImpl"/>
+    <dubbo:service group="merge" interface="com.esther.code.api.dubbo.merger.MergeService" ref="mergeService"
+                   version="${dubbo.esther.version}"/>
+    <bean id="mergeService2" class="com.esther.code.service.impl.dubbo.merger.MergeServiceImpl2"/>
+    <dubbo:service group="merge2" interface="com.esther.code.api.dubbo.merger.MergeService" ref="mergeService2"
+                   version="${dubbo.esther.version}"/>
+
+    <!-- 参数验证-->
+    <bean id="validationService" class="com.esther.code.service.impl.dubbo.validation.ValidationServiceImpl"/>
+    <dubbo:service interface="com.esther.code.api.dubbo.validation.ValidationService" ref="validationService"
+                   group="${dubbo.esther.group}" version="${dubbo.esther.version}" validation="true"/>
+
+    <!-- 参数回调-->
+    <bean id="callbackService" class="com.esther.code.service.impl.dubbo.callback.CallbackServiceImpl"/>
+    <dubbo:service interface="com.esther.code.api.dubbo.callback.CallbackService" ref="callbackService"
+                   connections="1" callbacks="1000" group="${dubbo.esther.group}" version="${dubbo.esther.version}">
+        <dubbo:method name="addListener">
+            <dubbo:argument index="1" callback="true"/>
+            <!--<dubbo:argument type="com.demo.CallbackListener" callback="true" />-->
+        </dubbo:method>
+    </dubbo:service>
+
+
+
+</beans>

@@ -8,9 +8,9 @@
     </appender>
 
     <appender name="Biz.Log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/logs/kingdom/usercenter-bss.log</file>
+        <file>/logs/kingdom/base-web.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/logs/kingdom/usercenter-bss-%d{yyyyMMdd}.log</fileNamePattern>
+            <fileNamePattern>/logs/kingdom/base-web-%d{yyyyMMdd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <!-- encoders are assigned the type
@@ -20,18 +20,6 @@
         </encoder>
     </appender>
 
-    <appender name="SQL.Log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/logs/kingdom/sql.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/logs/kingdom/sql-%d{yyyyMMddHH}.log</fileNamePattern>
-            <maxHistory>240</maxHistory>
-        </rollingPolicy>
-        <!-- encoders are assigned the type
-           ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
-        <encoder>
-            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %class.%method - %msg%n</pattern>
-        </encoder>
-    </appender>
 
     <appender name="Springframework.Log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>/logs/kingdom/springframework.log</file>
@@ -59,9 +47,6 @@
     </logger>
     <logger name="org.springframework.jdbc" level="INFO" additivity="false">
         <appender-ref ref="Springframework.Log"/>
-    </logger>
-    <logger name="com.esther.code.dao" level="DEBUG" additivity="false">
-        <appender-ref ref="STDOUT"/>
     </logger>
 
     <logger name="com.esther.code" level="DEBUG"/>

@@ -7,10 +7,22 @@
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="userService" registry="base_center" interface="com.esther.code.api.IUserService"
-                     group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
-    <dubbo:reference id="dictService" registry="base_center" interface="com.esther.code.api.IDictService"
+    <!-- 使用url直连提供者，不经过注册中心-->
+    <!--async="true"异步回调-->
+    <!-- 事件通知-->
+    <bean id="notify" class="com.esther.code.dubbo.eventnotify.NotifyImpl"/>
+    <dubbo:reference id="userService" registry="base_center" interface="com.esther.code.api.IUserService" async="true"
+                     group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false">
+        <dubbo:method name="selectByPrimaryKey" async="true" onreturn="notify.onreturn"
+                      onthrow="notify.onthrow"/>
+    </dubbo:reference>
+
+    <dubbo:reference id="dictService" registry="base_center" interface="com.esther.code.api.IDictService" async="true"
                      group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
     <dubbo:reference id="ehcacheService" registry="base_center" interface="com.esther.code.api.IEhcacheService"
                      group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
+
+    <dubbo:reference id="demoService" registry="base_center" interface="com.esther.code.api.IDemoService"
+                     group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false"/>
+                   <!-- url="dubbo://localhost:20785"/>-->
 </beans>

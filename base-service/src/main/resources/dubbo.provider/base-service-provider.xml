@@ -10,5 +10,5 @@
     <dubbo:service ref="userService" interface="com.esther.code.api.IUserService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
     <dubbo:service ref="dictService" interface="com.esther.code.api.IDictService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
     <dubbo:service ref="ehcacheService" interface="com.esther.code.api.IEhcacheService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
-
+    <dubbo:service ref="demoService" interface="com.esther.code.api.IDemoService" group="${dubbo.esther.group}" version="${dubbo.esther.version}" />
 </beans>

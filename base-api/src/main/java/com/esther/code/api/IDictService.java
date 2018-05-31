@@ -13,6 +13,8 @@ import java.util.List;
  */
 
 public interface IDictService {
+    Dict selectByPrimaryKey(Integer id);
+
     int countByExample(DictExample example);
 
     int deleteByExample(DictExample example);

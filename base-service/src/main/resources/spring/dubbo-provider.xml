@@ -9,10 +9,16 @@
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="kingdom_base_serivce" logger="slf4j"/>
     <!-- 使用zookeeper注册中心暴露服务地址 -->
-    <dubbo:registry address="${dubbo.esther.address}" protocol="zookeeper"/>
-    <!-- 用dubbo协议在20880端口暴露服务 这个端口可用于点对点调试-->
-    <dubbo:protocol name="dubbo" port="${dubbo.esther.port}" threads="200"/>
-    <dubbo:provider port="${dubbo.esther.port}" />
+    <dubbo:registry address="${dubbo.esther.address}" protocol="zookeeper" register="true" subscribe="true"/>
+    <!-- 用dubbo协议在20785端口暴露服务 这个端口可用于点对点调试-->
+    <!-- 记录每一次请求信息，可开启访问日志，并将访问日志输出到指定文件E://logs/kingdom/kingdom-base-service.log-->
+    <dubbo:protocol name="dubbo" port="${dubbo.esther.port}" threads="200" accesslog="E://logs/kingdom/kingdom-base-service.log"/>
+
+    <dubbo:provider port="${dubbo.esther.port}">
+        <dubbo:parameter key="dump.directory" value="/tmp"/>
+    </dubbo:provider>
+
     <dubbo:annotation package="com.esther.code"/>
-    <import resource="classpath*:dubbo.provider/*.xml" />
+
+    <import resource="classpath*:dubbo.provider/*.xml"/>
 </beans>

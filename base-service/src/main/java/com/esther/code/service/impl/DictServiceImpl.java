@@ -20,6 +20,11 @@ public class DictServiceImpl implements IDictService {
     private DictMapper dictMapper;
 
     @Override
+    public Dict selectByPrimaryKey(Integer id) {
+        return dictMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public int countByExample(DictExample example) {
         return dictMapper.countByExample(example);
     }
@@ -53,4 +58,6 @@ public class DictServiceImpl implements IDictService {
     public int updateByExample(Dict record, DictExample example) {
         return dictMapper.updateByExample(record,example);
     }
+
+
 }

@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DictMapper {
+    Dict selectByPrimaryKey(Integer id);
+
     int countByExample(DictExample example);
 
     int deleteByExample(DictExample example);
