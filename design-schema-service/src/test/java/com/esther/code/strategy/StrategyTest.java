@@ -1,6 +1,6 @@
 package com.esther.code.strategy;
 
-import com.esther.code.base.BaseService;
+import com.esther.code.tools.BaseService;
 import com.esther.code.schema.api.strategy.IStrategy;
 import com.esther.code.schema.service.strategy.ContextStrategyFactory;
 import com.esther.code.schema.service.strategy.XmlContextStrategyFactory;

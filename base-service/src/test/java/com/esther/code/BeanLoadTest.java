@@ -17,15 +17,15 @@ import java.util.Enumeration;
 
 public class BeanLoadTest {
     public static void main(String[] args) throws Exception {
-        /*ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:/spring/applicationContext.xml");
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:/spring/applicationContext.xml");
         Parent parent= (Parent) applicationContext.getBean("parent");
         System.out.println(parent);
-        System.out.println("--------------------");*/
+        System.out.println("--------------------");
 
-        Enumeration<URL> urls = Thread.currentThread().getContextClassLoader().getResources("com/alibaba/dubbo/registry/internal/DefaultRegistryService.class");
+      /*  Enumeration<URL> urls = Thread.currentThread().getContextClassLoader().getResources("com/alibaba/dubbo/registry/internal/DefaultRegistryService.class");
         while (urls.hasMoreElements()) {
             URL url = urls.nextElement();
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>" + url.getFile());
-        }
+        }*/
     }
 }

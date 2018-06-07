@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/jms
+       http://www.springframework.org/schema/jms/spring-jms.xsd">
+
+    <!-- 第三方MQ工厂: ConnectionFactory -->
+    <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <!-- ActiveMQ Address -->
+        <property name="brokerURL" value="${activemq.brokerURL}"/>
+        <property name="userName" value="${activemq.userName}"></property>
+        <property name="password" value="${activemq.password}"></property>
+    </bean>
+
+    <!--
+        ActiveMQ为我们提供了一个PooledConnectionFactory，通过往里面注入一个ActiveMQConnectionFactory
+        可以用来将Connection、Session和MessageProducer池化，这样可以大大的减少我们的资源消耗,要依赖于 activemq-pool包
+     -->
+    <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+        <property name="connectionFactory" ref="targetConnectionFactory"/>
+        <property name="maxConnections" value="${activemq.pool.maxConnections}"/>
+    </bean>
+
+    <!-- Spring用于管理真正的ConnectionFactory的ConnectionFactory -->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+        <!-- 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory -->
+        <property name="targetConnectionFactory" ref="pooledConnectionFactory"/>
+    </bean>
+
+    <!--这个是Destination:目的地-->
+    <bean id="msgQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>${activemq.queueName}</value>
+        </constructor-arg>
+    </bean>
+
+    <!-- Spring提供的JMS(Java Message Service)工具类，它可以进行消息发送、接收等 -->
+    <!-- 队列模板 -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestinationName" value="${activemq.queueName}"></property>
+        <!-- 区别它采用的模式为false是p2p为true是订阅 -->
+        <property name="pubSubDomain" value="false"/>
+        <property name="deliveryMode" value="2"/>
+    </bean>
+
+    <!-- 配置自定义监听：MessageListener -->
+    <bean id="msgQueueMessageListener" class="com.esther.code.listener.MsgQueueMessageListener"/>
+    <!-- 将连接工厂、目标对了、自定义监听注入jms模板 -->
+    <bean id="sessionAwareListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="msgQueue"/>
+        <property name="destinationName" value="${activemq.queueName}"/>
+        <property name="messageListener" ref="msgQueueMessageListener"/>
+    </bean>
+
+    <bean id="messageHandler" class="com.esther.code.tools.mq.activemq.spring.ActiveMQMessageHandler"/>
+
+    <!-- 消息监听器容器是一个特殊的bean，可以监控JMS目的地并等待消息的到达。一旦消息到达，他取出消息，然后把消息传给任意一个对此消息感兴趣的消息监听器。 -->
+    <!-- <jms:listener-container>:消息驱动器容器，connection-factory="connectionFactory"属性配置了连接工厂。容器中的<jms:listener>都使用这个连接工厂进行监听 -->
+    <jms:listener-container connection-factory="connectionFactory">
+        <!-- 可以有多个 -->
+        <!-- <jms:listener>:消息监听器，他标识了一个bean和一个可以处理消息的方法 -->
+        <jms:listener destination="${activemq.queueName}" ref="messageHandler" method="handle"/>
+        <jms:listener destination="${activemq.queueName}" ref="activeMQObjectHandler" method="handle"/>
+    </jms:listener-container>
+
+</beans>

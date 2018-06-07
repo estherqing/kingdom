@@ -1,22 +1,13 @@
 package com.esther.code.service.impl;
 
 import com.esther.code.api.IUserService;
+import com.esther.code.BaseJunit4Test;
 import com.esther.code.dao.UserMapper;
 import com.esther.code.model.User;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-/**
- * @author esther
- * 2018-04-18 17:00
- * $DESCRIPTION}
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "classpath:/spring/applicationContext.xml"})
-public class UserServiceTest  {
+public class UserServiceTest extends BaseJunit4Test {
     @Autowired
     private IUserService userService;
 

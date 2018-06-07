@@ -1,0 +1,30 @@
+package com.esther.code.others.pipeline;
+
+
+import com.esther.code.BaseJunit4Test;
+import com.esther.code.model.User;
+import com.esther.code.pipeline.ProcessFlowAction;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+ * @author esther
+ * 2018-04-28 9:46
+ * $DESCRIPTION}
+ */
+
+public class ComplextPipelineTest extends BaseJunit4Test {
+    @Autowired
+    private ProcessFlowAction processFlowAction;
+
+    @Test
+    public void testPipeline() throws Exception {
+        User user = new User();
+        user.setUserName("esther");
+        user.setPassword("123456");
+        user.setUserRealName("esther");
+        boolean isOk = true;
+        processFlowAction.submit(user, isOk);
+        System.out.println(user);
+    }
+}

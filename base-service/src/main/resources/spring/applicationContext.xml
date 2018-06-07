@@ -15,7 +15,7 @@
           http://www.springframework.org/schema/util/spring-util.xsd
           http://www.springframework.org/schema/cache
           http://www.springframework.org/schema/cache/spring-cache.xsd">
-    <context:property-placeholder location="classpath*:base-service.conf,classpath*:spring/redis.properties"
+    <context:property-placeholder location="classpath*:base-service.conf,classpath*:spring/redis.properties,classpath*:spring/activemq.properties"
                                   ignore-unresolvable="true"/>
     <!-- 注解探测器 -->
     <!--先不加载Controller是为了使事务生效 -->
@@ -38,15 +38,18 @@
     <!--两级缓存，一级:EhCache,二级为redis Cache-->
     <import resource="classpath*:/spring/spring-ehcache-redis.xml"/>
 
-
     <!--管道-->
     <import resource="classpath*:/spring/pipeline.xml"/>
 
     <!--流程-->
     <import resource="classpath*:/spring/flow-context.xml"/>
 
+    <!--ActiveMQ消息队列-->
+    <import resource="classpath*:/spring/spring-activemq.xml"/>
+
     <!-- dubbo 服务  -->
     <import resource="classpath*:spring/dubbo-provider.xml"/>
+
     <bean id="parent" name="name1, name2, name3" class="com.esther.code.entity.Parent"
           scope="singleton" lazy-init="true" init-method="init" destroy-method="cleanup">
 
