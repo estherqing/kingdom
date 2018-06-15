@@ -14,6 +14,10 @@
         <module>basic-test</module>
         <module>design-schema-api</module>
         <module>design-schema-service</module>
+        <module>flow-api</module>
+        <module>flow-service</module>
+        <module>simple-api</module>
+        <module>simple-service</module>
     </modules>
     <packaging>pom</packaging>
 

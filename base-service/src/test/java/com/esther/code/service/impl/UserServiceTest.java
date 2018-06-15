@@ -15,9 +15,14 @@ public class UserServiceTest extends BaseJunit4Test {
     private UserMapper userMapper;
 
     @Test
+    public void testMapper() {
+        User user = userMapper.selectByPrimaryKey(1);
+        System.out.println(user);
+    }
+
+    @Test
     public void getUser() {
-        User user=userMapper.selectByPrimaryKey(1);
-        User user2 = userService.selectByPrimaryKey(1);
+        User user = userService.selectByPrimaryKey(1);
         System.out.println(user);
     }
 }

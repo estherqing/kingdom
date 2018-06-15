@@ -17,12 +17,12 @@ import org.springframework.stereotype.Component;
 public class MethodAop {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Before("execution(* com.esther.code.schema.service.proxy..*(..))")
+    @Before("execution(* com.esther.code..*.*(..))")
     public void before() {
         logger.info("方法调用前！");
     }
 
-    @After("execution(* com.esther.code.schema.service.proxy..*(..))")
+    @After("execution(* com.esther.code..*.*(..))")
     public void after() {
         logger.info("方法调用后！");
     }

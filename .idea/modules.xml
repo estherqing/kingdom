@@ -8,7 +8,11 @@
       <module fileurl="file://$PROJECT_DIR$/basic-test/basic-test.iml" filepath="$PROJECT_DIR$/basic-test/basic-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/design-schema-api/design-schema-api.iml" filepath="$PROJECT_DIR$/design-schema-api/design-schema-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/design-schema-service/design-schema-service.iml" filepath="$PROJECT_DIR$/design-schema-service/design-schema-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flow-api/flow-api.iml" filepath="$PROJECT_DIR$/flow-api/flow-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flow-service/flow-service.iml" filepath="$PROJECT_DIR$/flow-service/flow-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/kingdom.iml" filepath="$PROJECT_DIR$/kingdom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simple-api/simple-api.iml" filepath="$PROJECT_DIR$/simple-api/simple-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simple-service/simple-service.iml" filepath="$PROJECT_DIR$/simple-service/simple-service.iml" />
     </modules>
   </component>
 </project>

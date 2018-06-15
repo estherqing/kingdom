@@ -30,12 +30,6 @@
     <dependencies>
         <dependency>
             <groupId>com.esther.code</groupId>
-            <artifactId>design-schema-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.esther.code</groupId>
             <artifactId>base-api</artifactId>
             <version>1.0-SNAPSHOT</version>
             <exclusions>
@@ -61,6 +55,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.esther.code</groupId>
+            <artifactId>design-schema-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.esther.code</groupId>
+            <artifactId>flow-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -81,7 +85,7 @@
         </dependency>
 
         <!-- mybatis -->
-        <dependency>
+     <!--   <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.2.7</version>
@@ -95,13 +99,14 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.34</version>
-        </dependency>
+        </dependency>-->
+
         <!--druid -->
-        <dependency>
+     <!--   <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
-        </dependency>
+        </dependency>-->
         <!-- java邮件 -->
         <dependency>
             <groupId>javax.mail</groupId>
@@ -252,6 +257,7 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+
 
     </dependencies>
 

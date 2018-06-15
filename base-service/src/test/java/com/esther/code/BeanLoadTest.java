@@ -1,7 +1,9 @@
 package com.esther.code;
 
+import com.esther.code.api.IUserService;
 import com.esther.code.entity.Parent;
 
+import com.esther.code.service.impl.UserServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,10 +19,15 @@ import java.util.Enumeration;
 
 public class BeanLoadTest {
     public static void main(String[] args) throws Exception {
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:/spring/applicationContext.xml");
-        Parent parent= (Parent) applicationContext.getBean("parent");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/applicationContextTest.xml");
+        Parent parent = (Parent) applicationContext.getBean("parent");
         System.out.println(parent);
         System.out.println("--------------------");
+
+        IUserService userService = (IUserService) applicationContext.getBean("userService");
+        System.out.println(userService.selectByPrimaryKey(1));
+
+
 
       /*  Enumeration<URL> urls = Thread.currentThread().getContextClassLoader().getResources("com/alibaba/dubbo/registry/internal/DefaultRegistryService.class");
         while (urls.hasMoreElements()) {

@@ -7,8 +7,8 @@
           <element id="module-output" name="base-web" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="design-schema-api-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="design-schema-api" />
+          <element id="archive" name="base-api-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="base-api" />
           </element>
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.2.6.RELEASE" />
@@ -23,17 +23,12 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: cglib:cglib:3.1" />
-          <element id="library" level="project" name="Maven: org.ow2.asm:asm:4.2" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.6.4" />
           <element id="library" level="project" name="Maven: org.slf4j:log4j-over-slf4j:1.7.13" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.11" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.1.2" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.1.2" />
-          <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
-          <element id="archive" name="base-api-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="base-api" />
-          </element>
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.7" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.3" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.34" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.18" />
           <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.3" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-redis:1.6.2.RELEASE" />
           <element id="library" level="project" name="Maven: redis.clients:jedis:2.8.0" />
@@ -42,19 +37,27 @@
           <element id="library" level="project" name="Maven: com.github.sgroschupf:zkclient:0.1" />
           <element id="library" level="project" name="Maven: org.apache.zookeeper:zookeeper:3.3.3" />
           <element id="library" level="project" name="Maven: jline:jline:0.9.94" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.4.1.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.0.Final" />
           <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.3.1" />
           <element id="library" level="project" name="Maven: javax.el:javax.el-api:2.2.4" />
           <element id="library" level="project" name="Maven: org.glassfish.web:javax.el:2.2.4" />
+          <element id="archive" name="design-schema-api-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="design-schema-api" />
+          </element>
+          <element id="library" level="project" name="Maven: cglib:cglib:3.1" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm:4.2" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.11" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.1.2" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.1.2" />
+          <element id="archive" name="flow-api-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="flow-api" />
+          </element>
           <element id="library" level="project" name="Maven: com.alibaba:dubbo:2.5.3" />
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.15.0-GA" />
           <element id="library" level="project" name="Maven: org.jboss.netty:netty:3.2.5.Final" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.1" />
-          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.7" />
-          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.3" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.34" />
-          <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.18" />
           <element id="library" level="project" name="Maven: javax.mail:mail:1.4.7" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1.1" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.5.1" />

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service ref="testFlowProcessActionAdapterImpl"
+                   interface="com.esther.code.flow.adapter.TestFlowProcessActionAdapter"
+                   group="${dubbo.esther.flow.group}" version="${dubbo.esther.flow.version}"/>
+    <dubbo:service ref="defaultBOProcessInfoService"
+                   interface="com.esther.code.api.IBusinessObjectProcessInfoService"
+                   group="${dubbo.esther.flow.group}" version="${dubbo.esther.flow.version}"/>
+    <dubbo:service ref="enumBaseFlowNodeService"
+                   interface="com.esther.code.flow.flownode.IFlowNodeService"
+                   group="${dubbo.esther.flow.group}" version="${dubbo.esther.flow.version}"/>
+    <dubbo:service ref="enumBaseFlowService" interface="com.esther.code.flow.flownode.IFlowService"
+                   group="${dubbo.esther.flow.group}" version="${dubbo.esther.flow.version}"/>
+    <dubbo:service ref="processFlowAction" interface="com.esther.code.flow.IBaseProcessAction"
+                   group="${dubbo.esther.flow.group}" version="${dubbo.esther.flow.version}"/>
+</beans>

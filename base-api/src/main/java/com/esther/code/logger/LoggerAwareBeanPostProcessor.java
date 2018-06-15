@@ -4,11 +4,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
-/**
- * Author: jiyanbin@zafh.com.cn
- * Date: 9:53
- * JDK: 1.7
- */
 @Component
 public class LoggerAwareBeanPostProcessor implements BeanPostProcessor {
 
@@ -28,11 +23,3 @@ public class LoggerAwareBeanPostProcessor implements BeanPostProcessor {
         return bean;
     }
 }
-
-/**
- * $Log: Create By jiyanbin At 9:53
- * **************************************************Modify history*************************************************
- * Date                Modifier               Cause
- *
- * *****************************************************************************************************************
- */

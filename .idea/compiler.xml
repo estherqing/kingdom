@@ -13,6 +13,10 @@
         <module name="basic-test" />
         <module name="design-schema-api" />
         <module name="design-schema-service" />
+        <module name="flow-api" />
+        <module name="flow-service" />
+        <module name="simple-api" />
+        <module name="simple-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -22,7 +26,11 @@
       <module name="basic-test" target="1.8" />
       <module name="design-schema-api" target="1.8" />
       <module name="design-schema-service" target="1.8" />
+      <module name="flow-api" target="1.8" />
+      <module name="flow-service" target="1.8" />
       <module name="kingdom" target="1.8" />
+      <module name="simple-api" target="1.8" />
+      <module name="simple-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

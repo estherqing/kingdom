@@ -12,6 +12,8 @@
                     timeout="10000"/>
     <dubbo:registry id="schema_center" register="true" protocol="zookeeper" address="${dubbo.esther.schema.address}"
                     timeout="10000"/>
+    <dubbo:registry id="flow_center" register="true" protocol="zookeeper" address="${dubbo.esther.flow.address}"
+                    timeout="10000"/>
 
     <!-- check=false关闭所有服务的启动时检查: 服务启动时关闭对该服务提供者的接口是否正常的监测，也就是*Service是否可以正常调用不影响本应用的启动，当为true的时候如果该接口挂了，本应用就起不起来了 -->
     <!-- retries配置重试次数，最好只用于读的重试，写操作可能会引起多次写入 下面三个任意一个配置就行 默认retries="0"-->

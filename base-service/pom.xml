@@ -136,17 +136,7 @@
             </exclusions>
         </dependency>
 
-        <!-- mybatis -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.2.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>1.2.3</version>
-        </dependency>
+        <!-- db -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -158,6 +148,18 @@
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
+        <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
         <!-- java邮件 -->
         <dependency>
             <groupId>javax.mail</groupId>
@@ -295,6 +297,7 @@
             <artifactId>aopalliance</artifactId>
             <version>1.0</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
