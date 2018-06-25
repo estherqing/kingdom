@@ -54,6 +54,13 @@ public class DubboTest {
     private NotifyImpl notify;
 
     @Test
+    public void test(){
+        System.out.println(userService);
+        User user=userService.selectByPrimaryKey(1);
+        System.out.println(user);
+    }
+
+    @Test
     public void testCache() throws Exception {
         // 测试缓存生效，多次调用返回同样的结果。(服务器端自增长返回值)
         String fix = null;

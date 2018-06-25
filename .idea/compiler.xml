@@ -17,6 +17,8 @@
         <module name="flow-service" />
         <module name="simple-api" />
         <module name="simple-service" />
+        <module name="spring-api" />
+        <module name="spring-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -31,6 +33,8 @@
       <module name="kingdom" target="1.8" />
       <module name="simple-api" target="1.8" />
       <module name="simple-service" target="1.8" />
+      <module name="spring-api" target="1.8" />
+      <module name="spring-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -18,6 +18,8 @@
         <module>flow-service</module>
         <module>simple-api</module>
         <module>simple-service</module>
+        <module>spring-api</module>
+        <module>spring-service</module>
     </modules>
     <packaging>pom</packaging>
 

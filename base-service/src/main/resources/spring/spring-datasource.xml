@@ -21,6 +21,7 @@
     <!--Druid关于Logback监控的配置文件  -->
     <bean id="logFilter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
         <property name="statementExecutableSqlLogEnable" value="true" />
+        <property name="resultSetLogEnabled" value="true"/>
     </bean>
     <!--SQL防火墙配置，  -->
     <bean id="wallFilter" class="com.alibaba.druid.wall.WallFilter">

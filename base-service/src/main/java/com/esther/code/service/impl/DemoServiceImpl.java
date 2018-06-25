@@ -11,9 +11,9 @@ import java.util.Date;
 
 @Service("demoService")
 public class DemoServiceImpl implements IDemoService {
-    @Autowired
+  /*  @Autowired
     private IUserService userService;
-
+*/
     @Override
     public String sayHello(String name) {
         System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] Hello " + name + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
@@ -34,7 +34,7 @@ public class DemoServiceImpl implements IDemoService {
         System.out.println("[" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "] isProviderSide=" + isProviderSide + ",clientIp=" + clientIP + ",application=" + application+",隐式参数index="+index);
 
         // 注意：每发起RPC调用，上下文状态会变化
-        userService.selectByPrimaryKey(1);
+//        userService.selectByPrimaryKey(1);
         //  此时本端变成消费端，这里会返回false
         isProviderSide = RpcContext.getContext().isProviderSide();
         System.out.println("调用userService之后，isProviderSide=" + isProviderSide);

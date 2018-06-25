@@ -11,10 +11,10 @@
     <!--async="true"异步回调-->
     <!-- 事件通知-->
     <bean id="notify" class="com.esther.code.dubbo.eventnotify.NotifyImpl"/>
-    <dubbo:reference id="userService" registry="base_center" interface="com.esther.code.api.IUserService" async="true"
+    <dubbo:reference id="userService" registry="base_center" interface="com.esther.code.api.IUserService"
                      group="${dubbo.esther.group}" version="${dubbo.esther.version}" check="false">
-        <dubbo:method name="selectByPrimaryKey" async="true" onreturn="notify.onreturn"
-                      onthrow="notify.onthrow"/>
+   <!--     <dubbo:method name="selectByPrimaryKey" async="true" onreturn="notify.onreturn"
+                      onthrow="notify.onthrow"/>-->
     </dubbo:reference>
 
     <dubbo:reference id="dictService" registry="base_center" interface="com.esther.code.api.IDictService" async="true"

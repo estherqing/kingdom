@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="kingdom_simple_serivce" logger="slf4j"/>
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry address="${dubbo.esther.simple.address}" protocol="zookeeper" register="true" subscribe="true"/>
+    <!-- 用dubbo协议在20785端口暴露服务 这个端口可用于点对点调试-->
+    <!-- 记录每一次请求信息，可开启访问日志，并将访问日志输出到指定文件E://logs/kingdom/kingdom-base-service.log-->
+    <dubbo:protocol name="dubbo" port="${dubbo.esther.simple.port}" threads="200" accesslog="E://logs/kingdom/request-log/kingdom-simple-service.log"/>
+
+    <dubbo:provider port="${dubbo.esther.simple.port}">
+        <dubbo:parameter key="dump.directory" value="/tmp"/>
+    </dubbo:provider>
+
+    <import resource="classpath*:dubbo.provider/*.xml"/>
+</beans>

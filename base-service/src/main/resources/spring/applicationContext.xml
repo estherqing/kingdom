@@ -30,7 +30,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     <!-- 开启aop -->
-    <aop:aspectj-autoproxy />
+    <aop:aspectj-autoproxy proxy-target-class="true" />
 
     <!-- Druid 关于SQL查询记录的监控配置 -->
     <bean id="statFilter" class="com.alibaba.druid.filter.stat.StatFilter">

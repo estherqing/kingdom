@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class MethodTestInterceptor {
 
-    @Pointcut("execution(* com.esther.code..*.*(..))")
+    @Pointcut("execution(* com.esther.code.service.impl..*.*(..))")
     public void pointCut(){}
 
 
@@ -27,7 +27,7 @@ public class MethodTestInterceptor {
 
     @Before("pointCut()")
     public void doBefore(){
-        System.out.println("AOP before advice.");
+        System.out.println("before 方法调用前.......................");
     }
 
     @AfterThrowing(pointcut = "pointCut()",throwing = "throwable")
@@ -46,7 +46,7 @@ public class MethodTestInterceptor {
     }
 
 
-    @Around("pointCut()")
+  /*  @Around("pointCut()")
     public void around(ProceedingJoinPoint pjp){
         System.out.println("AOP Aronud before...");
         try {
@@ -55,5 +55,5 @@ public class MethodTestInterceptor {
             e.printStackTrace();
         }
         System.out.println("AOP Aronud after...");
-    }
+    }*/
 }

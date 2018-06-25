@@ -18,7 +18,6 @@ public class ServiceTest extends BaseJunit4Test {
     @Test
     public void testService() {
         Role role = roleService.selectByPrimaryKey(1L);
-        System.out.println("----------------------------------");
         System.out.println(role);
     }
 }

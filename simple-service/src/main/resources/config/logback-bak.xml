@@ -1,5 +1,6 @@
 <configuration scan="true" scanPeriod="30 seconds">
     <jmxConfigurator/>
+    <property name="LOG_HOME" value="E:/logs/kingdom/simple-service"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoders are assigned the type
@@ -9,10 +10,10 @@
         </encoder>
     </appender>
 
-    <appender name="Biz.Log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${USER_CENTER_BSS_HOME}/logs/usercenter-bss.log</file>
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/simple-service.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${USER_CENTER_BSS_HOME}/logs/usercenter-bss-%d{yyyyMMdd}.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/simple-service-%d{yyyyMMdd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <!-- encoders are assigned the type
@@ -23,9 +24,9 @@
     </appender>
 
     <appender name="SQL.Log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${USER_CENTER_BSS_HOME}/logs/sql.log</file>
+        <file>${LOG_HOME}/sql.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${USER_CENTER_BSS_HOME}/logs/sql-%d{yyyyMMddHH}.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/sql-%d{yyyyMMddHH}.log</fileNamePattern>
             <maxHistory>240</maxHistory>
         </rollingPolicy>
         <!-- encoders are assigned the type
@@ -36,9 +37,9 @@
     </appender>
 
     <appender name="Springframework.Log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${USER_CENTER_BSS_HOME}/logs/springframework.log</file>
+        <file>${LOG_HOME}/springframework.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${USER_CENTER_BSS_HOME}/logs/springframework-%d{yyyyMMddHH}.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/springframework-%d{yyyyMMddHH}.log</fileNamePattern>
             <maxHistory>240</maxHistory>
         </rollingPolicy>
         <!-- encoders are assigned the type
@@ -48,27 +49,32 @@
         </encoder>
     </appender>
 
+
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="Biz.Log"/>
+        <appender-ref ref="INFO"/>
     </root>
 
-    <logger name="org.mybatis.spring" level="INFO" additivity="false">
-        <appender-ref ref="Springframework.Log"/>
-    </logger>
+ <!--   <logger name="org.mybatis.spring" level="INFO" additivity="false">
+        <appender-ref ref="mybatis-spring.Log"/>
+    </logger>-->
     <logger name="org.springframework" level="INFO" additivity="false">
         <appender-ref ref="Springframework.Log"/>
     </logger>
-    <logger name="org.springframework.jdbc" level="INFO" additivity="false">
-        <appender-ref ref="Springframework.Log"/>
-    </logger>
+   <!-- <logger name="org.springframework.jdbc" level="INFO" additivity="false">
+        <appender-ref ref="Springframework-jdbc.Log"/>
+    </logger>-->
     <logger name="com.esther.code.simple.dao" level="DEBUG" additivity="false">
         <appender-ref ref="SQL.Log"/>
     </logger>
 
     <logger name="com.esther.code" level="DEBUG"/>
     <logger name="com.alibaba" level="ERROR"/>
-    <logger name="org.apache.zookeeper" level="ERROR"/>
-    <logger name="com.alibaba.druid.pool" level="ERROR"/>
+    <logger name="org.apache.zookeeper" level="INFO">
+        <appender-ref ref="INFO"/>
+    </logger>
+    <logger name="com.alibaba.druid.pool" level="INFO">
+        <appender-ref ref="INFO"/>
+    </logger>
 
 </configuration>

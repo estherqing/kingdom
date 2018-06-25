@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class MethodTestInterceptor {
 
-    @Pointcut("execution(* com.esther.code..*.*(..))")
+    @Pointcut("execution(* com.esther.code.simple.service.impl..*.*(..))")
     public void pointCut(){}
 
 
-    @Before("execution(* com.esther.code.simple..*.*(..))")
+    @Before("execution(* com.esther.code.simple.service.impl..*.*(..))")
     public void before() {
         System.out.println("方法调用前！");
     }
@@ -46,7 +46,7 @@ public class MethodTestInterceptor {
     }
 
 
-    @Around("pointCut()")
+    /*@Around("pointCut()")
     public void around(ProceedingJoinPoint pjp){
         System.out.println("AOP Around before...");
         try {
@@ -55,5 +55,5 @@ public class MethodTestInterceptor {
             e.printStackTrace();
         }
         System.out.println("AOP Around after...");
-    }
+    }*/
 }
