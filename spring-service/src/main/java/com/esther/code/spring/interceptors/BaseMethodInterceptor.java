@@ -22,37 +22,40 @@ public class BaseMethodInterceptor {
     }
 
     @Pointcut("execution(* com.esther.code.spring.service.impl..*.*(..))")
-    public void pointCut(){}
-
-    @Before("pointCut()")
-    public void doBefore(){
-        System.out.println("before 方法调用前.......................");
+    public void pointCut() {
     }
 
-    @AfterThrowing(pointcut = "pointCut()",throwing = "throwable")
-    public void afterThrowing(Throwable throwable){
-        System.out.println("[AOP afterthrowing]:"+throwable);
+    @Before("pointCut()")
+    public void doBefore(JoinPoint joinPoint) {
+        System.out.println("[AOP before] 进入方法：" + joinPoint.getSignature().getName());
+    }
+
+    @AfterThrowing(pointcut = "pointCut()", throwing = "throwable")
+    public void afterThrowing(Throwable throwable) {
+        System.out.println("[AOP afterthrowing]:" + throwable);
     }
 
     @After("pointCut()")
-    public void doAfter(JoinPoint joinPoint){
-        System.out.println("AOP After Advice...");
+    public void doAfter(JoinPoint joinPoint) {
+        System.out.println("[AOP After Advice]");
     }
 
-    @AfterReturning(returning="returnVal",pointcut="pointCut()")
-    public void afterReturn(JoinPoint joinPoint,Object returnVal){
-        System.out.println("[AOP AfterReturning Advice]获取目标方法返回值:" + returnVal);
+    @AfterReturning(returning = "returnVal", pointcut = "pointCut()")
+    public void afterReturn(JoinPoint joinPoint, Object returnVal) {
+        System.out.println("[AOP AfterReturning Advice]获取目标方法:" + joinPoint.getSignature().getName() + ",返回值:" + returnVal);
     }
 
 
     @Around("pointCut()")
-    public void around(ProceedingJoinPoint pjp){
+    public Object around(ProceedingJoinPoint pjp) {
         System.out.println("[AOP Aronud before]...");
+        Object obj = null;
         try {
-            pjp.proceed();
+            obj = pjp.proceed();
         } catch (Throwable e) {
             e.printStackTrace();
         }
         System.out.println("[AOP Aronud after]...");
+        return obj;
     }
 }

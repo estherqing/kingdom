@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- Druid 关于SQL查询记录的监控配置 -->
     <bean id="statFilter" class="com.alibaba.druid.filter.stat.StatFilter">
@@ -92,8 +98,7 @@
             </props>
         </property>
     </bean>
-    <bean
-            class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
         <property name="beanNames">
             <value>*Service</value>
         </property>
@@ -109,5 +114,8 @@
         <property name="basePackage" value="com.esther.code.spring.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
+
+    <!--通过注解的双方是来实现声明式事务的控制  -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>

@@ -19,6 +19,7 @@
         <module name="simple-service" />
         <module name="spring-api" />
         <module name="spring-service" />
+        <module name="spring-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -35,6 +36,7 @@
       <module name="simple-service" target="1.8" />
       <module name="spring-api" target="1.8" />
       <module name="spring-service" target="1.8" />
+      <module name="spring-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

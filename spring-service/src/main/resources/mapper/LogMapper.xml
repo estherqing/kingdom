@@ -105,16 +105,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.esther.code.spring.model.Log" >
-    insert into t_log (id, description, method, 
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_log (description, method,
       type, request_ip, exception_code, 
       exception_detail, params, create_date
       )
-    values (#{id,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, 
+    values (#{description,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR},
       #{type,jdbcType=SMALLINT}, #{requestIp,jdbcType=VARCHAR}, #{exceptionCode,jdbcType=VARCHAR}, 
       #{exceptionDetail,jdbcType=VARCHAR}, #{params,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.esther.code.spring.model.Log" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into t_log
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

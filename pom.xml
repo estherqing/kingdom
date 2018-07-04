@@ -20,6 +20,7 @@
         <module>simple-service</module>
         <module>spring-api</module>
         <module>spring-service</module>
+        <module>spring-web</module>
     </modules>
     <packaging>pom</packaging>
 

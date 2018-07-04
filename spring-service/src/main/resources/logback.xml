@@ -57,13 +57,13 @@
         <appender-ref ref="INFO"/>
     </root>
 
-    <logger name="org.mybatis.spring" level="INFO" additivity="false">
+    <logger name="org.mybatis.spring" level="DEBUG" additivity="false">
         <appender-ref ref="Springframework.Log"/>
     </logger>
-    <logger name="org.springframework" level="INFO" additivity="false">
+    <logger name="org.springframework" level="DEBUG" additivity="false">
         <appender-ref ref="Springframework.Log"/>
     </logger>
-    <logger name="org.springframework.jdbc" level="INFO" additivity="false">
+    <logger name="org.springframework.jdbc" level="DEBUG" additivity="false">
         <appender-ref ref="Springframework.Log"/>
     </logger>
     <logger name="com.esther.code.simple.dao" level="DEBUG" additivity="false">

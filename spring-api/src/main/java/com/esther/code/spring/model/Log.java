@@ -2,9 +2,14 @@ package com.esther.code.spring.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Log {
+public class Log implements Serializable{
+    static final long serialVersionUID = 0L;
+
     private Integer id;
 
     private String description;

@@ -7,6 +7,8 @@ import org.springframework.aop.support.AopUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Date;
+
 /**
  * @author esther
  * 2018-06-20 15:06
@@ -35,4 +37,22 @@ public class AOPTest {
         ILogService logService = context.getBean("logService", ILogService.class);
         logService.sayHello("esther");
     }
+
+    @Test
+    public void testExposeProxy() throws NoSuchMethodException {
+        ILogService logService = context.getBean("logService", ILogService.class);
+       // logService.parent("rose");
+        System.out.println( logService.getClass().getMethod("parent",java.lang.String.class).getDeclaringClass());
+    }
+
+    @Test
+    public void testTransaction(){
+        ILogService logService = context.getBean("logService", ILogService.class);
+        Log log=new Log();
+        log.setMethod("test");
+        log.setDescription("测试事务所用");
+        log.setCreateDate(new Date());
+        logService.save(log);
+    }
+
 }

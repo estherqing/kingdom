@@ -9,6 +9,14 @@ import com.esther.code.spring.model.Log;
  */
 
 public interface ILogService {
+    void save(Log log);
+
     Log getById(Integer id);
+
     String sayHello(String name);
+
+    // 测试内部调用
+    String parent(String name);
+
+    String child(String name);
 }

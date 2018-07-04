@@ -103,6 +103,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.esther.code.model.User" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into t_user (id, user_name, password, 
       user_real_name, address, sex, 
       age, create_date)
@@ -111,6 +114,9 @@
       #{age,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.esther.code.model.User" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

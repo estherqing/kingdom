@@ -125,9 +125,10 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.esther.code.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        <!--<property name="processPropertyPlaceHolders" value="true"/>-->
     </bean>
 
     <!--通过注解的双方是来实现声明式事务的控制  -->
-    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager" mode="proxy"/>
 
 </beans>
