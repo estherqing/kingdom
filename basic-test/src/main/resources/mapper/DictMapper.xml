@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.esther.code.modules.mapper.DictMapper" > 
+  <resultMap id="BaseResultMap" type="com.esther.code.modules.vo.DictVo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="dict_value" property="dictValue" jdbcType="VARCHAR" />
+    <result column="dict_label" property="dictLabel" jdbcType="VARCHAR" />
+    <result column="dict_type" property="dictType" jdbcType="VARCHAR" />
+    <result column="dict_desc" property="dictDesc" jdbcType="VARCHAR" />
+    <result column="dict_sort" property="dictSort" jdbcType="SMALLINT" />
+  </resultMap>  
+  <sql id="Base_Column_List" >
+    id, dict_value, dict_label, dict_type, dict_desc, dict_sort
+  </sql>
+  <insert id="insert" parameterType="com.esther.code.modules.entity.Dict" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_dict(bank_id, bank_code, zone_code,
+    gate_class, is_valid, create_time,
+    modify_time, push_id)
+    values (#{bankId,jdbcType=BIGINT}, #{bankCode,jdbcType=VARCHAR}, #{zoneCode,jdbcType=VARCHAR},
+    #{gateClass,jdbcType=VARCHAR}, #{isValid,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP}, #{pushId,jdbcType=INTEGER})
+  </insert>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_dict
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!--获取所有的字典列表-->
+  <select id="getAllDictList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_dict
+    where del_flag=1
+  </select>
+  <!--根据字典类型获取列表-->
+  <select id="getDictListByDictType" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from t_dict
+    where del_flag=1
+    and dict_type=#{dictType,jdbcType=VARCHAR}
+      </select>
+ </mapper>

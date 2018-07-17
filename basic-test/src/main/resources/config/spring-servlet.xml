@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-3.2.xsd
+            http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+            http://www.springframework.org/schema/tx 
+            http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+            http://www.springframework.org/schema/mvc 
+            http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+
+	<!-- 启用spring mvc 注解 -->
+	<mvc:annotation-driven conversion-service="conversionService">
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/plain;charset=UTF-8</value>
+						<value>text/html;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<!-- <bean class="com.ll.model.StringToPersonConverter" /> -->
+			</list>
+		</property>
+	</bean>
+
+	<mvc:default-servlet-handler />
+
+	<!--增加spring对返回数据的 json化支持 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+
+		<!-- <bean class="com.esther.code.common.framework.filter.StopWatchHandlerInterceptor"></bean> 
+			<bean class="com.esther.code.common.framework.filter.AllInterceptor"></bean> -->
+		<mvc:interceptor>
+			<mvc:mapping path="/login.do" />
+			<!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+			<bean
+				class="com.esther.code.common.framework.filter.TimeInterceptor">
+				<property name="openingTime">
+					<value>9</value>
+				</property>
+				<property name="closingTime">
+					<value>17</value>
+				</property>
+				<property name="outsideOfficeHoursPage">
+					<value>http://localhost:8080/springTest/index.jsp</value>
+				</property>
+			</bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/login.do" />
+			<!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+			<bean
+				class="com.esther.code.common.framework.filter.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- 扫描业务组件,只扫描Controller组件，其他的交给spring容器管理，让spring不扫描带有@Service注解的类(留在root-context.xml中扫描@Service注解的类),防止事务失效 -->
+	<context:component-scan base-package="com.esther.code">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+	</context:component-scan>
+
+	<!-- 启用CGliB(code generation library),代理类为类，不实现接口; expose-proxy="true"暴露AOP到ThreadLocal，默认为false -->
+	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true" />
+	<bean id="hello" class="com.esther.code.modules.cglib.Hello"/>
+	<bean id="helloAspect" class="com.esther.code.modules.cglib.MethodAop"/>
+ 
+	<!-- 以下采用JDK代理 -->
+	<bean id="helloWorldImp1" class="com.esther.code.modules.aop.HelloWorldImp1" />  
+	<bean id="helloWorldImp2" class="com.esther.code.modules.aop.HelloWorldImp2" />
+	<bean id="timeHandler" class="com.esther.code.modules.aop.TimeHandler" />
+	<bean id="logHandler" class="com.esther.code.modules.aop.LogHandler" />
+	<bean id="daoLogAspect" class="com.esther.code.modules.aop.DaoLogAspect" />
+	
+	<!-- 代理类实现了接口 -->
+	<aop:config proxy-target-class="false"> 
+		<aop:aspect id="time" ref="timeHandler" order="1">
+			<!--第一个*指任意返回值，第二个*指以print开头的任意方法 -->
+			<aop:pointcut id="addAllMethod"
+				expression="execution(* com.esther.code.modules.aop.HelloWorld.print*(..))" />
+			<aop:before method="printTime" pointcut-ref="addAllMethod" />
+			<aop:after method="printTime" pointcut-ref="addAllMethod" />
+		</aop:aspect>
+
+		<aop:aspect id="log" ref="logHandler" order="2">
+			<aop:pointcut id="printLog"
+				expression="execution(* com.esther.code.modules.aop.HelloWorld.do*(..))" />
+			<aop:before method="LogBefore" pointcut-ref="printLog" />
+			<aop:after method="LogAfter" pointcut-ref="printLog" />
+		</aop:aspect>
+
+		<aop:aspect id="aspect" ref="daoLogAspect" order="3">
+			<!--第一个*指任意返回值，第二个*指springTest下面的任意包，第三个*指aop下面的任意的类，第四个*指任意方法 -->
+			<aop:pointcut id="logpointcut"
+				expression="execution(* com.esther.code.modules.aop.HelloWorld.*(..))" />
+			<aop:around method="traceMethod" pointcut-ref="logpointcut" />
+		</aop:aspect>
+	</aop:config>
+
+	<!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!-- 文件上传注解: max upload size in bytes ;   max size of file in memory (in bytes)  -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">	
+		<property name="maxUploadSize" value="209715200" />  
+		<property name="maxInMemorySize" value="209715200" /> 
+	</bean>
+</beans>
