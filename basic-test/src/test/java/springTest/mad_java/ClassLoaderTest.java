@@ -10,9 +10,9 @@ package springTest.mad_java;
 public class ClassLoaderTest {
     public static void main(String[] args) throws ClassNotFoundException {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        classLoader.loadClass("com.springTest.mad_java.Tester");// 类加载
+        classLoader.loadClass("springTest.mad_java.Tester");// 类加载
         System.out.println("加载类");
-        Class.forName("com.springTest.mad_java.Tester");// 类初始化
+        Class.forName("springTest.mad_java.Tester");// 类初始化
        /* 加载类
         静态初始化块。。。。
         */

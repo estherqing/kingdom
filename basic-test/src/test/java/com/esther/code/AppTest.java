@@ -17,4 +17,22 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    public static void main(String[] args) {
+//        try {
+            print();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            e.printStackTrace();
+//        }
+    }
+
+    public static void print()   {
+        try {
+            throw new Exception("error");
+        } catch (Exception e) {
+            System.out.println(1111111);
+            e.printStackTrace();
+        }
+    }
 }

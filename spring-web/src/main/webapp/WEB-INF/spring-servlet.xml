@@ -11,6 +11,8 @@
 
     <context:property-placeholder location="classpath*:/base-web.conf" ignore-unresolvable="true"/>
 
+    <!-- 当使用了<mvc:annotation-driven />的时候，它
+    会14动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean。 -->
     <mvc:annotation-driven/>
     <context:component-scan base-package="com.esther.code">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>

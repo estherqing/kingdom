@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <context:property-placeholder
+            location="classpath*:spring/resources.properties,classpath*:spring/spring-service.conf,classpath*:book.properties"
+            ignore-unresolvable="true"/>
+    <context:annotation-config/>
+    <!-- 注解探测器 -->
+    <context:component-scan base-package="com.esther.code.spring" annotation-config="true">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
+
+    <import resource="classpath*:/spring/spring-datasource.xml"/>
+
+    <!-- 属性编辑器propertyEditor示例-->
+    <!--①配置自动注册属性编辑器的CustomEditorConfigurer -->
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <!--②-1属性编辑器对应的属性类型-->
+                <!--②-2对应的属性编辑器Bean -->
+                <entry key="com.esther.code.factoryBean.Car" value="com.esther.code.propertyEditor.CustomCarEditor"/>
+                <entry key="java.util.Date" value="com.esther.code.propertyEditor.CustomDateEditor"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="boss" class="com.esther.code.propertyEditor.Boss">
+        <property name="name" value="John"/>
+        <!--③该属性将使用②处的属性编辑器完成属性填充操作-->
+        <property name="car" value="红旗CA72,20000.00,200"/>
+        <property name="date" value="2018-12-24"/>
+    </bean>
+
+    <!-- factoryBean示例-->
+    <bean id="car" class="com.esther.code.factoryBean.CarFactoryBean">
+        <property name="carInfo" value="宝马,200000,300"/>
+    </bean>
+
+    <!-- postProcessor示例-->
+    <bean id="book" class="com.esther.code.postProcessor.Book">
+        <property name="name" value="${book.name}"/>
+        <property name="author" value="${book.author}"/>
+    </bean>
+
+</beans>

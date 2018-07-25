@@ -9,7 +9,7 @@ import javax.servlet.ServletContext;
 /**
  * @author esther
  * 2018-05-17 15:30
- * $DESCRIPTION}
+ * 方案3
  */
 
 public class NoBeanOverridingContextLoader extends ContextLoader{
