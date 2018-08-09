@@ -21,6 +21,7 @@ public class ClassLoaderTest {
         MyClassLoader myClassLoader = new MyClassLoader("E:\\IdeaProjects\\kingdom\\basic-test\\target\\test-classes\\");
         Class<?> clas = myClassLoader.findClass("com.esther.code.java.Test");
         System.out.println(clas);
+        System.out.println(myClassLoader.getClass().getName());
 
         //输出ClassLoaderText的类加载器名称
         System.out.println("ClassLoaderText类的加载器的名称: "+ClassLoaderTest.class.getClassLoader().getClass().getName());
