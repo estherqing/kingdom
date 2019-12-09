@@ -14,7 +14,7 @@ import java.util.List;
 public class MyTest {
 
     public static void main(String[] args) {
-       // int i=1/0;
+        int ii=1/0;
         Thread.dumpStack();
 
         User user;
