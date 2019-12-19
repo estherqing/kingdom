@@ -71,13 +71,8 @@ public class MongodbController {
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ApiOperation(value = "update", notes = "修改")
-   // @ApiImplicitParam(name = "user", value = "用户对象", required = true,dataType = "User",paramType = "query")
     public ResultObject update(@RequestBody User user) throws Exception {
         Query query = Query.query(Criteria.where("userId").is(user.getUserId()));
-//        Update update = new Update();
-//        update.set("age", user.getAge());
-//        update.set("name", user.getName());
-//        update.set("email", user.getEmail());
 
         Document doc = new Document(); // org.bson.Document
         mongoTemplate.getConverter().write(user, doc);
