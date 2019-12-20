@@ -4,6 +4,7 @@ import com.esther.springboot.bean.UserSub;
 import com.esther.springboot.bean.UserSubByMail;
 import com.esther.springboot.bean.UserSubByPhone;
 import com.google.common.base.Preconditions;
+import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -15,18 +16,21 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
+/**
+ * 如果在子类上@Document(collection = "user_sub_mail")，那么保存ok，更新、查询不行。
+ */
 @Service
 public class UserSubService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public void addUserSub(UserSub userSub) {
+    public UserSub addUserSub(UserSub userSub) {
         Preconditions.checkNotNull(userSub);
         Preconditions.checkArgument(!StringUtils.isEmpty(userSub.getSubCode()));
-        mongoTemplate.save(userSub);
+       return mongoTemplate.save(userSub);
     }
 
-    public void updateUserSub(UserSub userSub) {
+    public UpdateResult updateUserSub(UserSub userSub) {
         Preconditions.checkNotNull(userSub);
         Preconditions.checkArgument(!StringUtils.isEmpty(userSub.getSubCode()));
         Query query = null;
@@ -39,7 +43,7 @@ public class UserSubService {
         mongoTemplate.getConverter().write(userSub, doc);
         Update update = Update.fromDocument(doc);
 
-        this.mongoTemplate.updateFirst(query, update, UserSub.class);
+        return this.mongoTemplate.updateFirst(query, update, UserSub.class);
     }
 
 

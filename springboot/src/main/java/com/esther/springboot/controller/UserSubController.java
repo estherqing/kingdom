@@ -4,6 +4,7 @@ import com.esther.springboot.bean.UserSub;
 import com.esther.springboot.bean.UserSubByMail;
 import com.esther.springboot.bean.UserSubByPhone;
 import com.esther.springboot.service.UserSubService;
+import com.mongodb.client.result.UpdateResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -43,8 +44,8 @@ public class UserSubController {
     @RequestMapping(value = "/insertPhone", method = {RequestMethod.POST, RequestMethod.GET})
     @ApiOperation(value = "insertPhone", notes = "新增")
     public ResultObject insert(@RequestBody UserSubByPhone userSub) throws Exception {
-        this.userSubService.addUserSub(userSub);
-        return new ResultObject(HttpServletResponse.SC_OK);
+        UserSub userSub2 = this.userSubService.addUserSub(userSub);
+        return new ResultObject(HttpServletResponse.SC_OK, userSub2);
     }
 
     @RequestMapping(value = "/insertMail", method = {RequestMethod.POST, RequestMethod.GET})
@@ -75,7 +76,16 @@ public class UserSubController {
      * 描述：修改
      *
      * @param
-     * @return ResultObject
+     * @return {
+     *   "code": 200,
+     *   "desc": null,
+     *   "data": {
+     *     "matchedCount": 1,
+     *     "modifiedCount": 1,
+     *     "upsertedId": null,
+     *     "modifiedCountAvailable": true
+     *   }
+     * }
      * @author maochengyuan
      * @created 2018/9/1 20:17
      */
@@ -83,8 +93,8 @@ public class UserSubController {
     @ApiOperation(value = "修改phone", notes = "修改phone")
     public ResultObject updatePhone(@RequestBody UserSubByPhone userSubByPhone) throws Exception {
         UserSub userSub = userSubByPhone;
-        this.userSubService.updateUserSub(userSub);
-        return new ResultObject(HttpServletResponse.SC_OK);
+        UpdateResult updateResult = this.userSubService.updateUserSub(userSub);
+        return new ResultObject(HttpServletResponse.SC_OK, updateResult);
     }
 
     @RequestMapping(value = "/updateMail", method = RequestMethod.POST)
@@ -113,7 +123,7 @@ public class UserSubController {
     @RequestMapping(value = "/findBySubPhoneAndCpCodeAndMailNo", method = {RequestMethod.GET})
     @ApiOperation(value = "findBySubPhoneAndCpCodeAndMailNo", notes = "查询")
     public ResultObject query(String subPhone, String cpCode, String mailNo) throws Exception {
-        List<UserSub> users = this.userSubService.findBySubPhoneAndCpCodeAndMailNo(subPhone,cpCode,mailNo);
+        List<UserSub> users = this.userSubService.findBySubPhoneAndCpCodeAndMailNo(subPhone, cpCode, mailNo);
         return new ResultObject(HttpServletResponse.SC_OK, users);
     }
 
