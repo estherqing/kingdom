@@ -8,6 +8,7 @@ import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -27,7 +28,7 @@ public class UserSubService {
     public UserSub addUserSub(UserSub userSub) {
         Preconditions.checkNotNull(userSub);
         Preconditions.checkArgument(!StringUtils.isEmpty(userSub.getSubCode()));
-       return mongoTemplate.save(userSub);
+        return mongoTemplate.save(userSub);
     }
 
     public UpdateResult updateUserSub(UserSub userSub) {
@@ -53,6 +54,20 @@ public class UserSubService {
         return mongoTemplate.findOne(query, UserSub.class);
     }
 
+    public UserSub findSpecificFields(String subPhone) {
+        Document queryObject = new Document();
+        queryObject.put("subPhone", subPhone);
+
+        Document fieldsObject = new Document();
+        fieldsObject.put("subPhone", true);
+        fieldsObject.put("subKey", true);
+        fieldsObject.put("subCode", true);
+        fieldsObject.put("imei", true);
+
+        Query query = new BasicQuery(queryObject, fieldsObject);
+        return mongoTemplate.findOne(query, UserSub.class);
+    }
+
     public List<UserSub> findAll() {
         return mongoTemplate.findAll(UserSub.class);
     }
@@ -60,6 +75,28 @@ public class UserSubService {
 
     public List<UserSub> findBySubPhoneAndCpCodeAndMailNo(String subPhone, String cpCode, String mailNo) {
         Query query = Query.query(Criteria.where("subPhone").is(subPhone).and("cpCode").is(cpCode).and("mailNo").is(mailNo));
-        return mongoTemplate.find(query, UserSub.class);
+        List<UserSub> list = mongoTemplate.find(query, UserSub.class);
+        return list;
     }
+
+    public UserSub findBySubCode(String subCode) {
+        Preconditions.checkArgument(!StringUtils.isEmpty(subCode));
+        Query query = Query.query(Criteria.where("subCode").is(subCode));
+        return mongoTemplate.findOne(query, UserSub.class);
+    }
+
+/*    public long count() {
+        Query query = new Query();
+        query.with(new Sort(Sort.Direction.ASC, "age").and(new Sort(Sort.Direction.DESC, "date")));
+        long count = mongoTemplate.count(query, UserSub.class);
+        return count;
+    }
+
+    public List<UserSub> findByPage(Integer page, Integer pageSize) {
+        Pageable pageable = new PageRequest(page, pageSize);
+        Query query = new Query();
+        query.with(pageable);
+        query.with(new Sort(Sort.Direction.ASC, "age"));
+        return mongoTemplate.find(query, UserSub.class);
+    }*/
 }

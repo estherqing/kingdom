@@ -1,0 +1,83 @@
+[
+  {
+    "cn_cp_code": "",
+    "cn_kd_name": "",
+    "fc_cp_code": "KD416",
+    "fc_kd_name": "物业公司",
+    "fc_abbr_name": "物业",
+    "create_time": "1971-01-01 00:00:00",
+    "update_time": "1971-01-01 00:00:00"
+  },
+  {
+    "cn_cp_code": "",
+    "cn_kd_name": "",
+    "fc_cp_code": "fengchengkuaidi2",
+    "fc_kd_name": "峰城快递",
+    "fc_abbr_name": "峰城",
+    "create_time": "1971-01-01 00:00:00",
+    "update_time": "1971-01-01 00:00:00"
+  },
+  {
+    "cn_cp_code": "",
+    "cn_kd_name": "",
+    "fc_cp_code": "KD417",
+    "fc_kd_name": "深圳报业快递",
+    "fc_abbr_name": "深圳报业",
+    "create_time": "1971-01-01 00:00:00",
+    "update_time": "1971-01-01 00:00:00"
+  },
+  {
+    "cn_cp_code": "",
+    "cn_kd_name": "",
+    "fc_cp_code": "KD422",
+    "fc_kd_name": "星程快递",
+    "fc_abbr_name": "星程",
+    "create_time": "1971-01-01 00:00:00",
+    "update_time": "1971-01-01 00:00:00"
+  },
+  {
+    "cn_cp_code": "",
+    "cn_kd_name": "",
+    "fc_cp_code": "KD424",
+    "fc_kd_name": "恒通快递",
+    "fc_abbr_name": "恒通",
+    "create_time": "1971-01-01 00:00:00",
+    "update_time": "1971-01-01 00:00:00"
+  },
+  {
+    "cn_cp_code": "",
+    "cn_kd_name": "",
+    "fc_cp_code": "KD537",
+    "fc_kd_name": "春丰快递",
+    "fc_abbr_name": "春丰",
+    "create_time": "1971-01-01 00:00:00",
+    "update_time": "1971-01-01 00:00:00"
+  },
+  {
+    "cn_cp_code": "",
+    "cn_kd_name": "",
+    "fc_cp_code": "KD540",
+    "fc_kd_name": "理想国快递",
+    "fc_abbr_name": "理想国",
+    "create_time": "1971-01-01 00:00:00",
+    "update_time": "1971-01-01 00:00:00"
+  },
+  {
+    "cn_cp_code": "",
+    "cn_kd_name": "",
+    "fc_cp_code": "KD559",
+    "fc_kd_name": "蓝坊快递",
+    "fc_abbr_name": "蓝坊",
+    "create_time": "1971-01-01 00:00:00",
+    "update_time": "1971-01-01 00:00:00"
+  },
+  {
+    "cn_cp_code": "",
+    "cn_kd_name": "",
+    "fc_cp_code": "KD560",
+    "fc_kd_name": "灵骏快递",
+    "fc_abbr_name": "灵骏",
+    "create_time": "1971-01-01 00:00:00",
+    "update_time": "1971-01-01 00:00:00"
+  }
+]

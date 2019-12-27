@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/flow-api/flow-api.iml" filepath="$PROJECT_DIR$/flow-api/flow-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/flow-service/flow-service.iml" filepath="$PROJECT_DIR$/flow-service/flow-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/kingdom.iml" filepath="$PROJECT_DIR$/kingdom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/python/python.iml" filepath="$PROJECT_DIR$/python/python.iml" />
       <module fileurl="file://$PROJECT_DIR$/simple-api/simple-api.iml" filepath="$PROJECT_DIR$/simple-api/simple-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/simple-service/simple-service.iml" filepath="$PROJECT_DIR$/simple-service/simple-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-api/spring-api.iml" filepath="$PROJECT_DIR$/spring-api/spring-api.iml" />

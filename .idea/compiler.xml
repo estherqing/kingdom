@@ -2,25 +2,26 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="baseapi" />
         <module name="simple-api" />
         <module name="simple-service" />
-        <module name="design-schema-api" />
-        <module name="flow-service" />
-        <module name="baseapi" />
-        <module name="base-web" />
-        <module name="spring-api" />
-        <module name="spring-web" />
-        <module name="spring-service" />
-        <module name="base-service" />
-        <module name="design-schema-service" />
-        <module name="springboot" />
-        <module name="basic-test" />
         <module name="flow-api" />
+        <module name="springboot" />
+        <module name="base-web" />
         <module name="base-api" />
+        <module name="design-schema-service" />
+        <module name="flow-service" />
+        <module name="basic-test" />
+        <module name="spring-web" />
+        <module name="spring-api" />
+        <module name="base-service" />
+        <module name="spring-service" />
+        <module name="design-schema-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">

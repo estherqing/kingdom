@@ -19,8 +19,8 @@ public class Demo {
     public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         TestVo testVo = new TestVo();
         Test test = new Test(1,"rose",22);
-//        BeanPropertyUtils.copyProperties(testVo,test);
-//        System.out.println(testVo);
+       BeanPropertyUtils.copyProperties(testVo,test);
+        System.out.println(testVo);
 
         BeanUtils.copyProperties(test,testVo);
         System.out.println(testVo);

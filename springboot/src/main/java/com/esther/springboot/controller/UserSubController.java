@@ -8,6 +8,7 @@ import com.mongodb.client.result.UpdateResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -20,6 +21,7 @@ import java.util.List;
 @Api(value = "usersub", produces = "usersub mongodb的CRUD测试")
 @RestController
 @RequestMapping("/usersub")
+@Slf4j
 public class UserSubController {
 
     @Autowired
@@ -43,8 +45,9 @@ public class UserSubController {
      */
     @RequestMapping(value = "/insertPhone", method = {RequestMethod.POST, RequestMethod.GET})
     @ApiOperation(value = "insertPhone", notes = "新增")
-    public ResultObject insert(@RequestBody UserSubByPhone userSub) throws Exception {
+    public ResultObject insert(@RequestBody UserSubByPhone userSub, String subPhone) throws Exception {
         UserSub userSub2 = this.userSubService.addUserSub(userSub);
+        log.info(subPhone);
         return new ResultObject(HttpServletResponse.SC_OK, userSub2);
     }
 
@@ -77,14 +80,14 @@ public class UserSubController {
      *
      * @param
      * @return {
-     *   "code": 200,
-     *   "desc": null,
-     *   "data": {
-     *     "matchedCount": 1,
-     *     "modifiedCount": 1,
-     *     "upsertedId": null,
-     *     "modifiedCountAvailable": true
-     *   }
+     * "code": 200,
+     * "desc": null,
+     * "data": {
+     * "matchedCount": 1,
+     * "modifiedCount": 1,
+     * "upsertedId": null,
+     * "modifiedCountAvailable": true
+     * }
      * }
      * @author maochengyuan
      * @created 2018/9/1 20:17
@@ -125,6 +128,20 @@ public class UserSubController {
     public ResultObject query(String subPhone, String cpCode, String mailNo) throws Exception {
         List<UserSub> users = this.userSubService.findBySubPhoneAndCpCodeAndMailNo(subPhone, cpCode, mailNo);
         return new ResultObject(HttpServletResponse.SC_OK, users);
+    }
+
+    @RequestMapping(value = "/findBySubPhone", method = {RequestMethod.GET})
+    @ApiOperation(value = "findBySubPhone", notes = "查询")
+    public ResultObject findBySubPhone(String subPhone) throws Exception {
+        UserSub userSub =this.userSubService.findSpecificFields(subPhone);
+        return new ResultObject(HttpServletResponse.SC_OK, userSub);
+    }
+
+    @RequestMapping(value = "/findBySubCode", method = {RequestMethod.GET})
+    @ApiOperation(value = "findBySubCode", notes = "查询")
+    public ResultObject findBySubCode(String subCode) throws Exception {
+        UserSub userSub =this.userSubService.findBySubCode(subCode);
+        return new ResultObject(HttpServletResponse.SC_OK, userSub);
     }
 
 }
