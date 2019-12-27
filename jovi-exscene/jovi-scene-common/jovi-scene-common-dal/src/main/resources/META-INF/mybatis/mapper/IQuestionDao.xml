@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vivo.jovi.scene.common.dal.dao.IQuestionDao">
+    <resultMap id="BaseResultMap" type="com.vivo.jovi.scene.common.dal.entity.QuestionEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId"/>
+        <result column="question_id" jdbcType="VARCHAR" property="questionId"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="is_required" jdbcType="INTEGER" property="isRequired"/>
+        <result column="answer" jdbcType="VARCHAR" property="answer"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="position" jdbcType="INTEGER" property="position"/>
+    </resultMap>
+
+    <resultMap id="QuestionDetailToClient" type="com.vivo.jovi.scene.common.dal.entity.QuestionEntity">
+        <result column="question_id" jdbcType="VARCHAR" property="questionId"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="is_required" jdbcType="INTEGER" property="isRequired"/>
+        <result column="answer" jdbcType="VARCHAR" property="answer"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="position" jdbcType="INTEGER" property="position"/>
+    </resultMap>
+
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+               type="com.vivo.jovi.scene.common.dal.entity.QuestionEntity">
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+    </resultMap>
+
+    <resultMap id="ResultQuestionDetailToExcel" type="com.vivo.jovi.scene.common.dal.entity.QuestionEntity">
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+        <result column="model" jdbcType="VARCHAR" property="model"/>
+        <result column="android_version" jdbcType="VARCHAR" property="androidVersion"/>
+        <result column="answer_time" jdbcType="TIMESTAMP" property="answerTime"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="phone_num" jdbcType="VARCHAR" property="phoneNum"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="answer" jdbcType="VARCHAR" property="userAnswer"/>
+        <result column="is_reward" jdbcType="INTEGER" property="isReward"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+    id, questionnaire_id, question_id, type, language, is_required, answer, remark, position
+  </sql>
+    <sql id="Blob_Column_List">
+    content
+  </sql>
+
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_question
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByQuestionnaireId" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_question
+        <where>
+            questionnaire_id = #{questionnaireId,jdbcType=INTEGER}
+            <if test="List != null and List.size > 0">
+                and `language` IN
+                <foreach item="List" index="index" collection="List"
+                         open="(" separator="," close=")">#{List}
+                </foreach>
+            </if>
+        </where>
+
+    </select>
+
+    <select id="selectQuestionByIdAndLanguage" resultMap="QuestionDetailToClient">
+        select content, type, language, is_required, answer, remark, position
+        from t_question
+        where question_id = #{questionId,jdbcType=VARCHAR}
+        and `language` = #{language, jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByIdAndLanguage" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_question
+        <where>
+            questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            <if test="language != null">
+                and `language` = #{language, jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="selectBySelective" resultMap="ResultMapWithBLOBs"
+            parameterType="com.vivo.jovi.scene.common.model.dto.QuestionDTO">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_question
+        <include refid="whereCondition"/>
+    </select>
+    <select id="selectByQuestionIdList" resultMap="ResultMapWithBLOBs">
+        SELECT
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        FROM t_question
+        <where>
+            <if test="language != null">
+                `language` = #{language, jdbcType=VARCHAR}
+            </if>
+            <if test="questionIdList != null and questionIdList.size > 0">
+                and `question_id` IN
+                <foreach item="item" index="index" collection="questionIdList"
+                         open="(" separator="," close=")">#{item}
+                </foreach>
+                order by field
+                <foreach item="item" index="index" collection="questionIdList"
+                         open="(question_id," separator="," close=")">#{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_question
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <delete id="deleteByQuestionnaireId" parameterType="string">
+         delete from t_question where questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteByQuestionId">
+        delete from t_question
+        <where>
+            <if test="questionIdList != null and questionIdList.size > 0">
+                and `question_id` IN
+                <foreach item="item" index="index" collection="questionIdList"
+                         open="(" separator="," close=")">#{item}
+                </foreach>
+            </if>
+            <if test="questionnaireId != null">
+                and questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </delete>
+
+    <insert id="insert" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionEntity">
+    insert into t_question (questionnaire_id, question_id,
+      type, language, is_required, 
+      answer, remark, content, position
+      )
+    values (#{id,jdbcType=BIGINT}, #{questionnaireId,jdbcType=VARCHAR}, #{questionId,jdbcType=VARCHAR},
+      #{type,jdbcType=INTEGER}, #{language,jdbcType=VARCHAR}, #{isRequired,jdbcType=INTEGER},
+      #{answer,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, #{position,jdbcType=INTEGER}
+      )
+      on duplicate key update
+      questionnaire_id = values(questionnaire_id), question_id = values(question_id), type = values(type),
+      language = values(language), is_required = values(is_required), answer = values(answer),
+       remark = values(remark), content = values(content), position = values(position)
+  </insert>
+    <insert id="insertSelective" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionEntity">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into t_question
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="questionnaireId != null">
+                questionnaire_id,
+            </if>
+            <if test="questionId != null">
+                question_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="language != null">
+                language,
+            </if>
+            <if test="isRequired != null">
+                is_required,
+            </if>
+            <if test="answer != null">
+                answer,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="position != null">
+                position,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="questionnaireId != null">
+                #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="questionId != null">
+                #{questionId,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="language != null">
+                #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="isRequired != null">
+                #{isRequired,jdbcType=INTEGER},
+            </if>
+            <if test="answer != null">
+                #{answer,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="position != null">
+                #{position,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+        on duplicate key update
+        questionnaire_id = values(questionnaire_id), question_id = values(question_id), type = values(type),
+        language = values(language), is_required = values(is_required), answer = values(answer),
+        remark = values(remark), content = values(content), position = values(position)
+    </insert>
+    <update id="updateBySelective" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionEntity">
+        update t_question
+        <set>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="questionnaireId != null">
+                questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="language != null">
+                language = #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="isRequired != null">
+                is_required = #{isRequired,jdbcType=INTEGER},
+            </if>
+            <if test="answer != null">
+                answer = #{answer,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="questionId != null">
+                and question_id = #{questionId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionEntity">
+    update t_question
+    set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+      question_id = #{questionId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      language = #{language,jdbcType=VARCHAR},
+      is_required = #{isRequired,jdbcType=INTEGER},
+      answer = #{answer,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionEntity">
+    update t_question
+    set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+      question_id = #{questionId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      language = #{language,jdbcType=VARCHAR},
+      is_required = #{isRequired,jdbcType=TINYINT},
+      answer = #{answer,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <sql id="whereCondition">
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="questionnaireId != null">
+                and questionnaire_id = #{questionnaireId}
+            </if>
+            <if test="questionId != null">
+                and question_id = #{questionId}
+            </if>
+            <if test="type != null ">
+                and type = #{type}
+            </if>
+            <if test="language != null">
+                and language = #{language}
+            </if>
+            <if test="isRequired != null">
+                and is_required = #{isRequired}
+            </if>
+            <if test="answer != null">
+                and answer = #{answer}
+            </if>
+            <if test="remark != null">
+                and remark = #{remark}
+            </if>
+        </trim>
+    </sql>
+
+    <select id="selectByQuestionDetail" resultMap="ResultQuestionDetailToExcel">
+        select
+        u.android_version,
+        u.model,
+        u.answer_time,
+        u.email,
+        u.`name`,
+        u.phone_num,
+        q.content,
+        a.answer,
+        qn.is_reward
+        FROM
+        t_question q
+        LEFT JOIN t_answer a ON q.questionnaire_id = a.questionnaire_id AND q.question_id = a.question_id
+        LEFT JOIN t_questionnaire_user u ON a.user_id = u.user_id
+        LEFT JOIN t_questionnaire qn ON q.questionnaire_id = qn.questionnaire_id
+        <where>
+            q.questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            and q.`language` = #{language, jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <select id="selectByQuestionnaireIdAndQuestionId"
+            parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionEntity"
+            resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_question
+        <where>
+            <if test="questionnaireId != null">
+                and questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            </if>
+            <if test="questionId != null">
+                and question_id = #{questionId,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by id asc
+    </select>
+</mapper>

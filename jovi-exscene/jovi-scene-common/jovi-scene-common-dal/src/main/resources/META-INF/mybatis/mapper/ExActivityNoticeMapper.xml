@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vivo.jovi.scene.common.dal.dao.IExActivityNoticeDao">
+    <resultMap id="BaseResultMap" type="com.vivo.jovi.scene.common.dal.entity.ExActivityNoticeEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="activity_id" jdbcType="VARCHAR" property="activityId"/>
+        <result column="activity_name" jdbcType="VARCHAR" property="activityName"/>
+        <result column="popup" jdbcType="VARCHAR" property="popup"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+    </resultMap>
+
+    <!--新增活动卡片通知-->
+    <insert id="insert" parameterType="com.vivo.jovi.scene.common.dal.entity.ExActivityCardEntity">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into t_ex_activity_notice
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="language != null">
+                language,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="activityName != null">
+                activity_name,
+            </if>
+            <if test="popup != null">
+                popup,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="activityId != null">
+                #{activityId},
+            </if>
+            <if test="language != null">
+                #{language},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="activityName != null">
+                #{activityName},
+            </if>
+            <if test="popup != null">
+                #{popup},
+            </if>
+        </trim>
+    </insert>
+
+
+    <!--删除活动卡片通知-->
+    <delete id="deleteByActivityId" parameterType="java.lang.String">
+        delete from t_ex_activity_notice
+        where activity_id = #{activityId}
+    </delete>
+
+    <!--通过活动卡片Id查询信息通知信息-->
+    <select id="selectByActivityId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from t_ex_activity_notice
+        where activity_id = #{activityId}
+    </select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs xmlns="http://www.vivo.com.cn/schema/vivo-redis"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.vivo.com.cn/schema/vivo-redis
+	http://www.vivo.com.cn/schema/vivo-redis/vivo-redis.xsd">
+
+    <redis-cluster name="redisCluster" clusterAddress="${redis.cluster.address}" timeout="${redis.timeout}" maxRedirections="${redis.max.redirections}">
+        <properties>
+            <property name="maxTotal" value="${redis.max.total}" />
+            <property name="maxIdle" value="${redis.max.idle}" />
+            <property name="minIdle" value="${redis.min.idle}" />
+        </properties>
+    </redis-cluster>
+
+</configs>

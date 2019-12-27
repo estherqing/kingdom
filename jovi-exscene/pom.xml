@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <dependencies>
+        <dependency>
+            <groupId>com.vivo.framework</groupId>
+            <artifactId>vivo-commons</artifactId>
+        </dependency>
+    </dependencies>
+    <parent>
+        <groupId>com.vivo.internet</groupId>
+        <artifactId>template-parent</artifactId>
+        <version>2.1.2.20190905-RELEASE</version>
+    </parent>
+
+    <groupId>com.vivo.jovi</groupId>
+    <artifactId>jovi-exscene</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>jovi-scene-common/jovi-scene-common-dal</module>
+        <module>jovi-scene-common/jovi-scene-common</module>
+        <module>jovi-scene-common/jovi-scene-common-service</module>
+        <module>jovi-exscene-backend/jovi-exscene-backend-web</module>
+        <module>jovi-exscene-backend/jovi-exscene-backend-service</module>
+        <module>jovi-exscene-backend/jovi-exscene-backend-dal</module>
+        <module>jovi-exscene-api/jovi-exscene-api-web</module>
+        <module>jovi-exscene-api/jovi-exscene-api-service</module>
+        <module>jovi-exscene-api/jovi-exscene-api-dal</module>
+        <module>jovi-exscene-api/jovi-exscene-api-common</module>
+
+    </modules>
+
+    <properties>
+        <jovi-exscene.version>1.0.0-SNAPSHOT</jovi-exscene.version>
+        <spring-data-commons.version>1.11.1.RELEASE</spring-data-commons.version>
+        <vivo-commons.version>2.3.2.20190423-RELEASE</vivo-commons.version>
+        <vivo-logsdk.version>1.0.5.20190906-RELEASE</vivo-logsdk.version>
+        <vivocfg-client.version>1.4.5.20190905-RELEASE</vivocfg-client.version>
+        <vivofs-client.version>1.2.5.20190910-RELEASE</vivofs-client.version>
+        <vivo-message-rabbitmq.version>9.0.2.20190802-RELEASE</vivo-message-rabbitmq.version>
+        <spring-test.version>4.1.6.RELEASE</spring-test.version>
+        <fasterxml.jackson.version>2.7.9</fasterxml.jackson.version>
+        <spring-kafka.version>1.1.5.RELEASE</spring-kafka.version>
+        <commons-validator.version>1.6</commons-validator.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <privilege-client.version>1.0.0.20190130-RELEASE</privilege-client.version>
+        <console-data.version>1.2.0-RELEASE</console-data.version>
+        <console-web.version>1.2.0-RELEASE</console-web.version>
+        <userlogin-common-facade.version>1.0.0.20180201-RELEASE</userlogin-common-facade.version>
+        <snscore-common-facade.version>1.4.4-20171225-RELEASE</snscore-common-facade.version>
+        <lombok.version>1.18.8</lombok.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--外销模块-->
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-exscene-backend-web</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-exscene-backend-service</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-exscene-backend-dal</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+
+            <!--外销模块 end-->
+
+            <!--外销api模块-->
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-exscene-api-common</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-exscene-api-dal</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-exscene-api-service</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-exscene-api-web</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+            <!--外销api模块 end-->
+
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-scene-common</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-scene-common-dal</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.jovi</groupId>
+                <artifactId>jovi-scene-common-service</artifactId>
+                <version>${jovi-exscene.version}</version>
+            </dependency>
+
+            <!-- 框架依赖 -->
+            <dependency>
+                <groupId>com.vivo.framework</groupId>
+                <artifactId>vivo-commons</artifactId>
+                <version>${vivo-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vivo.framework</groupId>
+                <artifactId>vivo-redis</artifactId>
+                <version>${vivo-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vivo.framework</groupId>
+                <artifactId>vivo-mybatis</artifactId>
+                <version>${vivo-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vivo.framework</groupId>
+                <artifactId>vivo-properties</artifactId>
+                <version>${vivo-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vivo.internet</groupId>
+                <artifactId>logsdk</artifactId>
+                <version>${vivo-logsdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vivo.internet</groupId>
+                <artifactId>vivocfg-client</artifactId>
+                <version>${vivocfg-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vivo.internet</groupId>
+                <artifactId>vivofs-client</artifactId>
+                <version>${vivofs-client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.internet</groupId>
+                <artifactId>privilege-client</artifactId>
+                <version>${privilege-client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.console</groupId>
+                <artifactId>console-data</artifactId>
+                <version>${console-data.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.console</groupId>
+                <artifactId>console-web</artifactId>
+                <version>${console-web.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.internet</groupId>
+                <artifactId>userlogin-common-facade</artifactId>
+                <version>${userlogin-common-facade.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.internet</groupId>
+                <artifactId>snscore-common-facade</artifactId>
+                <version>${snscore-common-facade.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vivo.internet</groupId>
+                <artifactId>vivo-message-rabbitmq</artifactId>
+                <version>${vivo-message-rabbitmq.version}</version>
+            </dependency>
+
+            <!--spring-->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-commons</artifactId>
+                <version>${spring-data-commons.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring-kafka.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring-test.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!--其他-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${fasterxml.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-validator</groupId>
+                <artifactId>commons-validator</artifactId>
+                <version>${commons-validator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>${project.artifactId}_${project.version}_${maven.build.timestamp}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources/config/${env}</directory>
+                <targetPath>${project.build.outputDirectory}/config</targetPath>
+            </resource>
+            <resource>
+                <!--directory: -->
+                <directory>src/main/resources</directory>
+                <targetPath>${project.build.outputDirectory}</targetPath>
+                <excludes>
+                    <exclude>config/**/*.*</exclude>
+                </excludes>
+                <!--filtering: placehold -->
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.3</version>
+                <configuration>                         <!--配置文件的路径-->
+                    <configurationFile>${basedir}/src/main/resources/mybatis-genertator-config.xml</configurationFile>
+                    <overwrite>true</overwrite>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

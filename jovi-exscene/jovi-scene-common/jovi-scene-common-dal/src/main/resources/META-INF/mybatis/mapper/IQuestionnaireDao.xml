@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vivo.jovi.scene.common.dal.dao.IQuestionnaireDao">
+    <resultMap id="BaseResultMap" type="com.vivo.jovi.scene.common.dal.entity.QuestionnaireEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId"/>
+        <result column="version_code" jdbcType="INTEGER" property="versionCode"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="pre_approval_status" jdbcType="INTEGER" property="preApprovalStatus"/>
+        <result column="create_user_id" jdbcType="VARCHAR" property="createUserId"/>
+        <result column="create_user_name" jdbcType="VARCHAR" property="createUserName"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_user_id" jdbcType="VARCHAR" property="modifyUserId"/>
+        <result column="modify_user_name" jdbcType="VARCHAR" property="modifyUserName"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="pulloff_reason" jdbcType="VARCHAR" property="pulloffReason"/>
+        <result column="disable_reason" jdbcType="VARCHAR" property="disableReason"/>
+        <result column="reject_reason" jdbcType="VARCHAR" property="rejectReason"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="approval_test_user_id" jdbcType="VARCHAR" property="approvalTestUserId"/>
+        <result column="approval_test_user_name" jdbcType="VARCHAR" property="approvalTestUserName"/>
+        <result column="approval_test_reason" jdbcType="VARCHAR" property="approvalTestReason"/>
+        <result column="approval_test_status" jdbcType="INTEGER" property="approvalTestStatus"/>
+        <result column="approval_operation_user_id" jdbcType="VARCHAR" property="approvalOperationUserId"/>
+        <result column="approval_operation_user_name" jdbcType="VARCHAR" property="approvalOperationUserName"/>
+        <result column="approval_operation_reason" jdbcType="VARCHAR" property="approvalOperationReason"/>
+        <result column="approval_operation_status" jdbcType="INTEGER" property="approvalOperationStatus"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="is_reward" jdbcType="INTEGER" property="isReward"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="translate_file_name" jdbcType="VARCHAR" property="translateFileName"/>
+        <result column="translate_file_url" jdbcType="VARCHAR" property="translateFileUrl"/>
+    </resultMap>
+
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+               type="com.vivo.jovi.scene.common.dal.entity.QuestionnaireEntity">
+        <result column="question_id_list" jdbcType="LONGVARCHAR" property="questionIdList"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, questionnaire_id, version_code ,status, pre_approval_status,create_user_id, create_user_name,
+    create_time, modify_user_id, modify_user_name, modify_time, pulloff_reason, disable_reason, reject_reason,
+    start_time, end_time, approval_test_user_id, approval_test_user_name, approval_test_reason,
+    approval_test_status, approval_operation_user_id, approval_operation_user_name, approval_operation_reason,
+    approval_operation_status, pre_approval_status, icon, is_reward, translate_file_name, translate_file_url
+  </sql>
+
+    <sql id="Blob_Column_List">
+    question_id_list
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_questionnaire
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByQuestionnaireId" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_questionnaire
+        where questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getQuestionnaireList" resultMap="ResultMapWithBLOBs"
+            parameterType="com.vivo.jovi.scene.common.model.dto.QuestionnaireDTO">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_questionnaire
+        <where>
+            <if test="questionnaireId != null">
+                and `questionnaire_id` = #{questionnaireId}
+            </if>
+            <if test="isReward != null">
+                and `is_reward` = #{isReward}
+            </if>
+            <if test="status != null">
+                and `status` = #{status}
+            </if>
+            <if test="statusList != null and statusList.size>0">
+                and `status` in
+                <foreach collection="statusList" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        <if test="field == null">
+            order by modify_time ${order},status asc
+        </if>
+        <if test="field != null">
+            order by
+            <choose>
+                <when test="field == 'modifyTime'">
+                    modify_time ${order}
+                </when>
+                <when test="field == 'status'">
+                    status ${order}
+                </when>
+                <when test="field == 'id'">
+                    id ${order}
+                </when>
+                <when test="field == 'isReward'">
+                    is_reward ${order}
+                </when>
+                <when test="field == 'modifyUserName'">
+                    convert(modify_user_name using gbk) ${order}
+                </when>
+                <when test="field == 'startTime'">
+                    start_time ${order}
+                </when>
+            </choose>
+        </if>
+        <if test="limit != null">
+            <if test="offset != null">
+                limit ${offset}, ${limit}
+            </if>
+            <if test="offset == null">
+                limit ${limit}
+            </if>
+        </if>
+    </select>
+
+    <select id="getQuestionnaire" resultMap="ResultMapWithBLOBs"
+            parameterType="com.vivo.jovi.scene.common.model.dto.QuestionnaireDTO">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_questionnaire
+        <include refid="whereCondition"/>
+    </select>
+
+    <select id="selectCountByCondition" resultType="java.lang.Integer"
+            parameterType="com.vivo.jovi.scene.common.model.dto.QuestionnaireDTO">
+        select count(1) from (select count(1) from t_questionnaire a inner join t_questionnaire_desc b on
+        a.questionnaire_id=b.questionnaire_id
+        <where>
+            <if test="status != null">
+                and `status` = #{status}
+            </if>
+            <if test="language != null">
+                and b.`language` = #{language}
+            </if>
+            <if test="statusList != null and statusList.size>0">
+                and a.`status` in
+                <foreach collection="statusList" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        group by b.questionnaire_id) t
+    </select>
+    <select id="getId" resultType="java.lang.Integer" parameterType="string">
+        SELECT auto_increment FROM	information_schema.`TABLES` WHERE TABLE_SCHEMA = #{tableSchema,jdbcType=VARCHAR} AND TABLE_NAME = 't_questionnaire';
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_questionnaire
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <delete id="deleteByQuestionnaireId">
+        delete from t_questionnaire
+        <where>
+            <if test="questionnaireId != null">
+                and questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=INTEGER}
+            </if>
+        </where>
+    </delete>
+
+    <insert id="insert" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireEntity">
+    insert into t_questionnaire (id, questionnaire_id, version_code,
+      status, create_user_id,
+      create_user_name, create_time, modify_user_id,
+      modify_user_name, modify_time, pulloff_reason,
+      disable_reason, reject_reason ,start_time, end_time,
+      approval_test_user_id, approval_test_user_name,
+      approval_test_reason, approval_test_status,
+      approval_operation_user_id, approval_operation_user_name,
+      approval_operation_reason, approval_operation_status, pre_approval_status,
+       icon, is_reward,question_id_list, translate_file_name, translate_file_url
+      )
+    values (#{id,jdbcType=BIGINT}, #{questionnaireId,jdbcType=VARCHAR}, #{versionCode,jdbcType=INTEGER},
+       #{status,jdbcType=INTEGER}, #{createUserId,jdbcType=VARCHAR},
+      #{createUserName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyUserId,jdbcType=VARCHAR},
+      #{modifyUserName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{pulloffReason,jdbcType=VARCHAR},
+      #{disableReason,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP},
+      #{approvalTestUserId,jdbcType=VARCHAR}, #{approvalTestUserName,jdbcType=VARCHAR},
+      #{approvalTestReason,jdbcType=VARCHAR}, #{approvalTestStatus,jdbcType=INTEGER},
+      #{approvalOperationUserId,jdbcType=VARCHAR}, #{approvalOperationUserName,jdbcType=VARCHAR},
+      #{approvalOperationReason,jdbcType=VARCHAR}, #{approvalOperationStatus,jdbcType=INTEGER}, #{preApprovalStatus,jdbcType=INTEGER},
+      #{icon,jdbcType=VARCHAR}, #{isReward,jdbcType=INTEGER},question_id_list = #{questionIdList,jdbcType=LONGVARCHAR},
+      #{translateFileName,jdbcType=VARCHAR}, #{translateFileUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireEntity">
+        insert into t_questionnaire
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="questionnaireId != null">
+                questionnaire_id,
+            </if>
+            <if test="versionCode != null">
+                version_code,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createUserId != null">
+                create_user_id,
+            </if>
+            <if test="createUserName != null">
+                create_user_name,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyUserId != null">
+                modify_user_id,
+            </if>
+            <if test="modifyUserName != null">
+                modify_user_name,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="pulloffReason != null">
+                pulloff_reason,
+            </if>
+            <if test="disableReason != null">
+                disable_reason,
+            </if>
+            <if test="rejectReason != null">
+                reject_reason,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="approvalTestUserId != null">
+                approval_test_user_id,
+            </if>
+            <if test="approvalTestUserName != null">
+                approval_test_user_name,
+            </if>
+            <if test="approvalTestReason != null">
+                approval_test_reason,
+            </if>
+            <if test="approvalTestStatus != null">
+                approval_test_status,
+            </if>
+            <if test="approvalOperationUserId != null">
+                approval_operation_user_id,
+            </if>
+            <if test="approvalOperationUserName != null">
+                approval_operation_user_name,
+            </if>
+            <if test="approvalOperationReason != null">
+                approval_operation_reason,
+            </if>
+            <if test="approvalOperationStatus != null">
+                approval_operation_status,
+            </if>
+            <if test="preApprovalStatus != null">
+                pre_approval_status,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="isReward != null">
+                is_reward,
+            </if>
+            <if test="questionIdList != null">
+                question_id_list,
+            </if>
+            <if test="translateFileName != null">
+                translate_file_name,
+            </if>
+            <if test="translateFileUrl != null">
+                translate_file_url,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="questionnaireId != null">
+                #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="versionCode != null">
+                #{versionCode,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserName != null">
+                #{createUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                now(),
+            </if>
+            <if test="modifyUserId != null">
+                #{modifyUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyUserName != null">
+                #{modifyUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                now(),
+            </if>
+            <if test="pulloffReason != null">
+                #{pulloffReason,jdbcType=VARCHAR},
+            </if>
+            <if test="disableReason != null">
+                #{disableReason,jdbcType=VARCHAR},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="approvalTestUserId != null">
+                #{approvalTestUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalTestUserName != null">
+                #{approvalTestUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalTestReason != null">
+                #{approvalTestReason,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalTestStatus != null">
+                #{approvalTestStatus,jdbcType=INTEGER},
+            </if>
+            <if test="approvalOperationUserId != null">
+                #{approvalOperationUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalOperationUserName != null">
+                #{approvalOperationUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalOperationReason != null">
+                #{approvalOperationReason,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalOperationStatus != null">
+                #{approvalOperationStatus,jdbcType=INTEGER},
+            </if>
+            <if test="preApprovalStatus != null">
+                #{preApprovalStatus,jdbcType=INTEGER},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="isReward != null">
+                #{isReward,jdbcType=INTEGER},
+            </if>
+            <if test="questionIdList != null">
+                #{questionIdList,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="translateFileName != null">
+                #{translateFileName,jdbcType=VARCHAR},
+            </if>
+            <if test="translateFileUrl != null">
+                #{translateFileUrl,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireEntity">
+        update t_questionnaire
+        <set>
+            <if test="questionnaireId != null">
+                questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="versionCode != null">
+                version_code = #{versionCode,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createUserId != null">
+                create_user_id = #{createUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserName != null">
+                create_user_name = #{createUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyUserId != null">
+                modify_user_id = #{modifyUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyUserName != null">
+                modify_user_name = #{modifyUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = now(),
+            </if>
+            <if test="pulloffReason != null">
+                pulloff_reason = #{pulloffReason,jdbcType=VARCHAR},
+            </if>
+            <if test="disableReason != null">
+                disable_reason = #{disableReason,jdbcType=VARCHAR},
+            </if>
+            <if test="rejectReason != null">
+                reject_reason = #{rejectReason,jdbcType=VARCHAR},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="approvalTestUserId != null">
+                approval_test_user_id = #{approvalTestUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalTestUserName != null">
+                approval_test_user_name = #{approvalTestUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalTestReason != null">
+                approval_test_reason = #{approvalTestReason,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalTestStatus != null">
+                approval_test_status = #{approvalTestStatus,jdbcType=INTEGER},
+            </if>
+            <if test="approvalOperationUserId != null">
+                approval_operation_user_id = #{approvalOperationUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalOperationUserName != null">
+                approval_operation_user_name = #{approvalOperationUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalOperationReason != null">
+                approval_operation_reason = #{approvalOperationReason,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalOperationStatus != null">
+                approval_operation_status = #{approvalOperationStatus,jdbcType=INTEGER},
+            </if>
+            <if test="preApprovalStatus != null">
+                pre_approval_status = #{preApprovalStatus,jdbcType=INTEGER},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="isReward != null">
+                is_reward = #{isReward,jdbcType=INTEGER},
+            </if>
+            <if test="questionIdList != null and questionIdList != '' ">
+                question_id_list = #{questionIdList,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="translateFileName != null">
+                translate_file_name = #{translateFileName, jdbcType=VARCHAR},
+            </if>
+            <if test="translateFileUrl != null">
+                translate_file_url = #{translateFileUrl, jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="questionnaireId != null">
+                and questionnaire_id = #{questionnaireId,jdbcType=LONGVARCHAR}
+            </if>
+        </where>
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireEntity">
+    update t_questionnaire
+    set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+      version_code = #{versionCode,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=VARCHAR},
+      modify_user_name = #{modifyUserName,jdbcType=VARCHAR},
+      modify_time = now(),
+      pulloff_reason = #{pulloffReason,jdbcType=VARCHAR},
+      disable_reason = #{disableReason,jdbcType=VARCHAR},
+      reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      approval_test_user_id = #{approvalTestUserId,jdbcType=VARCHAR},
+      approval_test_user_name = #{approvalTestUserName,jdbcType=VARCHAR},
+      approval_test_reason = #{approvalTestReason,jdbcType=VARCHAR},
+      approval_test_status = #{approvalTestStatus,jdbcType=INTEGER},
+      approval_operation_user_id = #{approvalOperationUserId,jdbcType=VARCHAR},
+      approval_operation_user_name = #{approvalOperationUserName,jdbcType=VARCHAR},
+      approval_operation_reason = #{approvalOperationReason,jdbcType=VARCHAR},
+      approval_operation_status = #{approvalOperationStatus,jdbcType=INTEGER},
+      pre_approval_status = #{preApprovalStatus,jdbcType=INTEGER},
+      icon = #{icon,jdbcType=VARCHAR},
+      is_reward = #{isReward,jdbcType=INTEGER},
+      question_id_list = #{questionIdList,jdbcType=LONGVARCHAR},
+      translate_file_name = #{translateFileName, jdbcType=VARCHAR},
+      translate_file_url = #{translateFileUrl, jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select * from t_questionnaire
+    </select>
+
+    <select id="selectIsReward" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select is_reward from t_questionnaire where `questionnaire_id` = #{questionnaireId}
+    </select>
+
+    <sql id="whereCondition">
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="questionnaireId != null">
+                and `questionnaire_id` = #{questionnaireId}
+            </if>
+
+            <if test="status != null">
+                and `status` = #{status}
+            </if>
+            <if test="statusList != null and statusList.size>0">
+                and `status` = #{status}
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="orderByFieldSql">
+        <if test="field == null">
+            order by modify_time ${order},status asc
+        </if>
+        <if test="field != null">
+            order by
+            <choose>
+                <when test="field == 'modifyTime'">
+                    modify_time ${order}
+                </when>
+                <when test="field == 'status'">
+                    status ${order}
+                </when>
+                <when test="field == 'id'">
+                    id ${order}
+                </when>
+                <when test="field == 'modifyUserName'">
+                    convert(modify_user_name using gbk) ${order}
+                </when>
+            </choose>
+        </if>
+    </sql>
+</mapper>

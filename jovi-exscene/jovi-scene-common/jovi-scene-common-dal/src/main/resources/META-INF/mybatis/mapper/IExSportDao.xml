@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vivo.jovi.scene.common.dal.dao.IExSportDao">
+    <resultMap id="CountryAndAbbrMap" type="com.vivo.jovi.scene.common.dal.entity.CountryAndAbbrEntity">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="abbreviation" jdbcType="CHAR" property="abbreviation"/>
+    </resultMap>
+
+    <resultMap id="SportAndTranslationMap" type="com.vivo.jovi.scene.common.dal.entity.SportAndTranslationEntity">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="sport_name" jdbcType="VARCHAR" property="sportName"/>
+        <result column="sport_translation" jdbcType="VARCHAR" property="sportTranslation"/>
+    </resultMap>
+
+    <resultMap id="BaseResultMap" type="com.vivo.jovi.scene.common.dal.entity.SportOperateRecordEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="league_id" jdbcType="BIGINT" property="leagueId"/>
+        <result column="league_name" jdbcType="VARCHAR" property="leagueName"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="operational_desc" jdbcType="VARCHAR" property="operationalDesc"/>
+        <result column="operating_time" jdbcType="VARCHAR" property="operatingTime"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <select id="countCountryNum" parameterType="string" resultType="int">
+        select count(*) from t_country_abbr where country = #{country,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getAbbrByCountry" parameterType="string" resultType="string">
+        select abbreviation from t_country_abbr where country = #{country,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getCountryByAbbr" parameterType="string" resultType="string">
+        select country from t_country_abbr where abbreviation = ${abbreviation,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getSportByTranslation" parameterType="string" resultType="string">
+        select sport_name from t_sport_translation where sport_translation = #{sportTranslation,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getTranslationBySport" parameterType="string" resultType="string">
+        select sport_translation from t_sport_translation where sport_name = #{sportName,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.vivo.jovi.scene.common.dal.entity.SportOperateRecordEntity">
+        insert into t_exscene_sport_operate_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="leagueId != null">
+                league_id,
+            </if>
+            <if test="leagueName != null">
+                league_name,
+            </if>
+            <if test="country != null">
+                country,
+            </if>
+            <if test="operationalDesc != null">
+                operational_desc,
+            </if>
+            operating_time,
+            <if test="operator != null">
+                operator,
+            </if>
+            create_time,
+            update_time,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="leagueId != null">
+                #{leagueId,jdbcType=BIGINT},
+            </if>
+            <if test="leagueName != null">
+                #{leagueName,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null">
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="operationalDesc != null">
+                #{operationalDesc,jdbcType=VARCHAR},
+            </if>
+            now(),
+            <if test="operator != null">
+                #{operator,jdbcType=VARCHAR},
+            </if>
+            now(),
+            now(),
+        </trim>
+    </insert>
+
+    <select id="getOperateRecord" resultMap="BaseResultMap">
+        select * from t_exscene_sport_operate_record where league_id =
+        #{leagueId,jdbcType=BIGINT} and league_name = #{leagueName,jdbcType=VARCHAR}
+        and country = #{country,jdbcType=VARCHAR}
+        order by update_time
+        <if test="limit != null">
+            <if test="offSet != null">
+                limit ${offSet}, ${limit}
+            </if>
+            <if test="offSet == null">
+                limit ${limit}
+            </if>
+        </if>
+    </select>
+</mapper>

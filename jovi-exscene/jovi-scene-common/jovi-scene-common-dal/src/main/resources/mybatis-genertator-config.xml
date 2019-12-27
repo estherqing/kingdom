@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!--Driver Class Path-->
+    <classPathEntry
+            location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>
+
+    <context id="context" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!--Database Configurations-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.101.83.110:3306/intellig_scene?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root" password="b8d91d"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--Model Configurations-->
+        <javaModelGenerator targetPackage="com.vivo.jovi.scene.common.dal.entity"
+                            targetProject="F:\vivoai_terminal_ssdp_intellig_scene\jovi-scene-common\jovi-scene-common-dal\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="false"/>
+        </javaModelGenerator>
+
+        <!--Mapper XML Configurations-->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="F:\vivoai_terminal_ssdp_intellig_scene\jovi-scene-common\jovi-scene-common-dal\src\main\resources\META-INF\mybatis">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!--Mapper Interface Configurations-->
+        <javaClientGenerator targetPackage="com.vivo.jovi.scene.common.dal.dao"
+                             targetProject="F:\vivoai_terminal_ssdp_intellig_scene\jovi-scene-common\jovi-scene-common-dal\src\main\java"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--Table Configurations-->
+        <table tableName="t_grey_imei" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
+        <table tableName="t_grey_imei_end" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
+    </context>
+</generatorConfiguration>

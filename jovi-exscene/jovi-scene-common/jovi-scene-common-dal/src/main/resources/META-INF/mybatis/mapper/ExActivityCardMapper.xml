@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vivo.jovi.scene.common.dal.dao.IExActivityCardDao">
+    <resultMap id="BaseResultMap" type="com.vivo.jovi.scene.common.dal.entity.ExActivityCardEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="activity_id" jdbcType="VARCHAR" property="activityId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="popup" jdbcType="VARCHAR" property="popup"/>
+        <result column="icon_url" jdbcType="VARCHAR" property="iconUrl"/>
+        <result column="banner_url" jdbcType="VARCHAR" property="bannerUrl"/>
+        <result column="card_position" jdbcType="INTEGER" property="cardPosition"/>
+        <result column="jump_type" jdbcType="INTEGER" property="jumpType"/>
+        <result column="jump_url" jdbcType="VARCHAR" property="jumpUrl"/>
+        <result column="weight" jdbcType="INTEGER" property="weight"/>
+        <result column="trigger_start_time" jdbcType="TIMESTAMP" property="triggerStartTime"/>
+        <result column="trigger_end_time" jdbcType="TIMESTAMP" property="triggerEndTime"/>
+        <result column="disapper_type" jdbcType="INTEGER" property="disapperType"/>
+        <result column="notice_title" jdbcType="VARCHAR" property="noticeTitle"/>
+        <result column="notice_content" jdbcType="VARCHAR" property="noticeContent"/>
+        <result column="notice_type" jdbcType="INTEGER" property="noticeType"/>
+        <result column="notice_start_time" jdbcType="VARCHAR" property="noticeStartTime"/>
+        <result column="notice_end_time" jdbcType="VARCHAR" property="noticeEndTime"/>
+        <result column="translate_language" jdbcType="VARCHAR" property="translateLanguage"/>
+        <result column="pulloff_reason" jdbcType="VARCHAR" property="pulloffReason"/>
+        <result column="disable_reason" jdbcType="VARCHAR" property="disableReason"/>
+        <result column="approval_test_user_id" jdbcType="VARCHAR" property="approvalTestUserId"/>
+        <result column="approval_test_user_name" jdbcType="VARCHAR" property="approvalTestUserName"/>
+        <result column="approval_test_reason" jdbcType="VARCHAR" property="approvalTestReason"/>
+        <result column="approval_test_status" jdbcType="INTEGER" property="approvalTestStatus"/>
+        <result column="approval_operation_user_id" jdbcType="VARCHAR" property="approvalOperationUserId"/>
+        <result column="approval_operation_user_name" jdbcType="VARCHAR" property="approvalOperationUserName"/>
+        <result column="approval_operation_reason" jdbcType="VARCHAR" property="approvalOperationReason"/>
+        <result column="approval_operation_status" jdbcType="INTEGER" property="approvalOperationStatus"/>
+        <result column="translate_file_name" jdbcType="VARCHAR" property="translateFileName"/>
+        <result column="translate_file_url" jdbcType="VARCHAR" property="translateFileUrl"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="create_user_id" jdbcType="VARCHAR" property="createUserId"/>
+        <result column="create_user_name" jdbcType="VARCHAR" property="createUserName"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_user_id" jdbcType="VARCHAR" property="modifyUserId"/>
+        <result column="modify_user_name" jdbcType="VARCHAR" property="modifyUserName"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+    </resultMap>
+
+    <!--新增活动卡片-->
+    <insert id="insertSelective" parameterType="com.vivo.jovi.scene.common.dal.entity.ExActivityCardEntity">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into t_ex_activity_card
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="popup != null">
+                popup,
+            </if>
+            <if test="iconUrl != null">
+                icon_url,
+            </if>
+            <if test="bannerUrl != null">
+                banner_url,
+            </if>
+            <if test="cardPosition != null">
+                card_position,
+            </if>
+            <if test="jumpType != null">
+                jump_type,
+            </if>
+            <if test="jumpUrl != null">
+                jump_url,
+            </if>
+            <if test="weight != null">
+                weight,
+            </if>
+            <if test="triggerStartTime != null">
+                trigger_start_time,
+            </if>
+            <if test="triggerEndTime != null">
+                trigger_end_time,
+            </if>
+            <if test="disapperType != null">
+                disapper_type,
+            </if>
+            <if test="noticeTitle != null">
+                notice_title,
+            </if>
+            <if test="noticeContent != null">
+                notice_content,
+            </if>
+            <if test="noticeType != null">
+                notice_type,
+            </if>
+            <if test="noticeStartTime != null">
+                notice_start_time,
+            </if>
+            <if test="noticeEndTime != null">
+                notice_end_time,
+            </if>
+            <if test="translateLanguage != null">
+                translate_language,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createUserId != null">
+                create_user_id,
+            </if>
+            <if test="createUserName != null">
+                create_user_name,
+            </if>
+            create_time,
+            <if test="modifyUserId != null">
+                modify_user_id,
+            </if>
+            <if test="modifyUserName != null">
+                modify_user_name,
+            </if>
+            modify_time
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="activityId != null">
+                #{activityId},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="popup != null">
+                #{popup},
+            </if>
+            <if test="iconUrl != null">
+                #{iconUrl},
+            </if>
+            <if test="bannerUrl != null">
+                #{bannerUrl},
+            </if>
+            <if test="cardPosition != null">
+                #{cardPosition},
+            </if>
+            <if test="jumpType != null">
+                #{jumpType},
+            </if>
+            <if test="jumpUrl != null">
+                #{jumpUrl},
+            </if>
+            <if test="weight != null">
+                #{weight},
+            </if>
+            <if test="triggerStartTime != null">
+                #{triggerStartTime},
+            </if>
+            <if test="triggerEndTime != null">
+                #{triggerEndTime},
+            </if>
+            <if test="disapperType != null">
+                #{disapperType},
+            </if>
+            <if test="noticeTitle != null">
+                #{noticeTitle},
+            </if>
+            <if test="noticeContent != null">
+                #{noticeContent},
+            </if>
+            <if test="noticeType != null">
+                #{noticeType},
+            </if>
+            <if test="noticeStartTime != null">
+                #{noticeStartTime},
+            </if>
+            <if test="noticeEndTime != null">
+                #{noticeEndTime},
+            </if>
+            <if test="translateLanguage != null">
+                #{translateLanguage},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId},
+            </if>
+            <if test="createUserName != null">
+                #{createUserName},
+            </if>
+            now(),
+            <if test="modifyUserId != null">
+                #{modifyUserId},
+            </if>
+            <if test="modifyUserName != null">
+                #{modifyUserName},
+            </if>
+            now()
+        </trim>
+    </insert>
+
+    <!--更新活动卡片信息-->
+    <update id="updateSelectiveByPrimaryKey" parameterType="com.vivo.jovi.scene.common.dal.entity.ExActivityCardEntity">
+        update t_ex_activity_card
+        <set>
+            <if test="activityId != null">
+                activity_id=#{activityId},
+            </if>
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="popup != null">
+                popup=#{popup},
+            </if>
+            <if test="iconUrl != null">
+                icon_url=#{iconUrl},
+            </if>
+            <if test="bannerUrl != null">
+                banner_url=#{bannerUrl},
+            </if>
+            <if test="cardPosition != null">
+                card_position=#{cardPosition},
+            </if>
+            <if test="jumpType != null">
+                jump_type=#{jumpType},
+            </if>
+            <if test="jumpUrl != null">
+                jump_url=#{jumpUrl},
+            </if>
+            <if test="weight != null">
+                weight=#{weight},
+            </if>
+            <if test="triggerStartTime != null">
+                trigger_start_time=#{triggerStartTime},
+            </if>
+            <if test="triggerEndTime != null">
+                trigger_end_time=#{triggerEndTime},
+            </if>
+            <if test="disapperType != null">
+                disapper_type=#{disapperType},
+            </if>
+            <if test="noticeTitle != null">
+                notice_title=#{noticeTitle},
+            </if>
+            <if test="noticeContent != null">
+                notice_content=#{noticeContent},
+            </if>
+            <if test="noticeType != null">
+                notice_type=#{noticeType},
+            </if>
+            <if test="noticeStartTime != null">
+                notice_start_time=#{noticeStartTime},
+            </if>
+            <if test="noticeEndTime != null">
+                notice_end_time=#{noticeEndTime},
+            </if>
+            <if test="translateLanguage != null">
+                translate_language=#{translateLanguage},
+            </if>
+
+            <if test="pulloffReason != null">
+                pulloff_reason=#{pulloffReason},
+            </if>
+            <if test="disableReason != null">
+                disable_reason=#{disableReason},
+            </if>
+            <if test="approvalTestUserId != null">
+                approval_test_user_id=#{approvalTestUserId},
+            </if>
+            <if test="approvalTestUserName != null">
+                approval_test_user_name=#{approvalTestUserName},
+            </if>
+            <if test="approvalTestReason != null">
+                approval_test_reason=#{approvalTestReason},
+            </if>
+            <if test="approvalTestStatus != null">
+                approval_test_status=#{approvalTestStatus},
+            </if>
+            <if test="approvalOperationUserId != null">
+                approval_operation_user_id=#{approvalOperationUserId},
+            </if>
+            <if test="approvalOperationUserName != null">
+                approval_operation_user_name=#{approvalOperationUserName},
+            </if>
+            <if test="approvalOperationReason != null">
+                approval_operation_reason=#{approvalOperationReason},
+            </if>
+            <if test="approvalOperationStatus != null">
+                approval_operation_status=#{approvalOperationStatus},
+            </if>
+            <if test="translateFileName != null">
+                translate_file_name=#{translateFileName},
+            </if>
+            <if test="translateFileUrl != null">
+                translate_file_url=#{translateFileUrl},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+            modify_user_id=#{modifyUserId},
+            modify_user_name=#{modifyUserName},
+            modify_time=now()
+        </set>
+        <where>
+            <if test="id != null">
+                and id= #{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <!--删除活动卡片-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_ex_activity_card
+        where id = #{id}
+    </delete>
+
+    <!--通过主键查询信息-->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select *
+        from t_ex_activity_card
+        where id = #{id}
+    </select>
+
+    <!--通过活动卡片Id查询信息-->
+    <select id="selectByActivityId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from t_ex_activity_card
+        where activity_id = #{activityId}
+    </select>
+
+    <!--分页查询活动卡片信息-->
+    <select id="count" parameterType="com.vivo.jovi.scene.common.dal.entity.ExActivityCardEntity"
+            resultType="java.lang.Integer">
+        select count(*)
+        from t_ex_activity_card
+        <where>
+            <if test="activityId != null">
+                and activity_id=#{activityId}
+            </if>
+            <if test="name != null">
+                and name like concat(#{name},'%')
+            </if>
+            <if test="iconUrl != null">
+                and icon_url=#{iconUrl}
+            </if>
+            <if test="bannerUrl != null">
+                and banner_url=#{bannerUrl}
+            </if>
+            <if test="cardPosition != null">
+                and card_position=#{cardPosition}
+            </if>
+            <if test="jumpType != null">
+                and jump_type=#{jumpType}
+            </if>
+            <if test="jumpUrl != null">
+                and jump_url=#{jumpUrl}
+            </if>
+            <if test="weight != null">
+                and weight=#{weight}
+            </if>
+            <if test="triggerStartTime != null">
+                and trigger_start_time=#{triggerStartTime}
+            </if>
+            <if test="triggerEndTime != null">
+                and trigger_end_time=#{triggerEndTime}
+            </if>
+            <if test="disapperType != null">
+                and disapper_type=#{disapperType}
+            </if>
+            <if test="noticeTitle != null">
+                and notice_title=#{noticeTitle}
+            </if>
+            <if test="noticeContent != null">
+                and notice_content=#{noticeContent}
+            </if>
+            <if test="noticeType != null">
+                and notice_type=#{noticeType}
+            </if>
+            <if test="noticeStartTime != null">
+                notice_start_time=#{noticeStartTime}
+            </if>
+            <if test="noticeEndTime != null">
+                and notice_end_time=#{noticeEndTime}
+            </if>
+            <if test="translateLanguage != null">
+                and translate_language=#{translateLanguage}
+            </if>
+            <if test="pulloffReason != null">
+                and pulloff_reason=#{pulloffReason}
+            </if>
+            <if test="disableReason != null">
+                and disable_reason=#{disableReason}
+            </if>
+            <if test="approvalTestUserId != null">
+                and approval_test_user_id=#{approvalTestUserId}
+            </if>
+            <if test="approvalTestUserName != null">
+                and approval_test_user_name=#{approvalTestUserName}
+            </if>
+            <if test="approvalTestReason != null">
+                and approval_test_reason=#{approvalTestReason}
+            </if>
+            <if test="approvalTestStatus != null">
+                and approval_test_status=#{approvalTestStatus}
+            </if>
+            <if test="approvalOperationUserId != null">
+                and approval_operation_user_id=#{approvalOperationUserId}
+            </if>
+            <if test="approvalOperationUserName != null">
+                and approval_operation_user_name=#{approvalOperationUserName}
+            </if>
+            <if test="approvalOperationReason != null">
+                and approval_operation_reason=#{approvalOperationReason}
+            </if>
+            <if test="approvalOperationStatus != null">
+                and approval_operation_status=#{approvalOperationStatus}
+            </if>
+            <if test="translateFileName != null">
+                and translate_file_name=#{translateFileName}
+            </if>
+            <if test="translateFileUrl != null">
+                and translate_file_url=#{translateFileUrl}
+            </if>
+            <if test="status != null">
+                and status=#{status}
+            </if>
+        </where>
+    </select>
+
+    <!--分页查询活动卡片信息-->
+    <select id="selectPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select *
+        from t_ex_activity_card
+        <where>
+            <if test="entity.activityId != null">
+                and activity_id=#{entity.activityId}
+            </if>
+            <if test="entity.name != null">
+                and name like concat(#{entity.name},'%')
+            </if>
+            <if test="entity.iconUrl != null">
+                and icon_url=#{entity.iconUrl}
+            </if>
+            <if test="entity.bannerUrl != null">
+                and banner_url=#{entity.bannerUrl}
+            </if>
+            <if test="entity.cardPosition != null">
+                and card_position=#{entity.cardPosition}
+            </if>
+            <if test="entity.jumpType != null">
+                and jump_type=#{entity.jumpType}
+            </if>
+            <if test="entity.jumpUrl != null">
+                and jump_url=#{entity.jumpUrl}
+            </if>
+            <if test="entity.weight != null">
+                and weight=#{entity.weight}
+            </if>
+            <if test="entity.triggerStartTime != null">
+                and trigger_start_time=#{entity.triggerStartTime}
+            </if>
+            <if test="entity.triggerEndTime != null">
+                and trigger_end_time=#{entity.triggerEndTime}
+            </if>
+            <if test="entity.disapperType != null">
+                and disapper_type=#{entity.disapperType}
+            </if>
+            <if test="entity.noticeTitle != null">
+                and notice_title=#{entity.noticeTitle}
+            </if>
+            <if test="entity.noticeContent != null">
+                and notice_content=#{entity.noticeContent}
+            </if>
+            <if test="entity.noticeType != null">
+                and notice_type=#{entity.noticeType}
+            </if>
+            <if test="entity.noticeStartTime != null">
+                notice_start_time=#{entity.noticeStartTime}
+            </if>
+            <if test="entity.noticeEndTime != null">
+                and notice_end_time=#{entity.noticeEndTime}
+            </if>
+            <if test="entity.translateLanguage != null">
+                and translate_language=#{entity.translateLanguage}
+            </if>
+            <if test="entity.pulloffReason != null">
+                and pulloff_reason=#{entity.pulloffReason}
+            </if>
+            <if test="entity.disableReason != null">
+                and disable_reason=#{entity.disableReason}
+            </if>
+            <if test="entity.approvalTestUserId != null">
+                and approval_test_user_id=#{entity.approvalTestUserId}
+            </if>
+            <if test="entity.approvalTestUserName != null">
+                and approval_test_user_name=#{entity.approvalTestUserName}
+            </if>
+            <if test="entity.approvalTestReason != null">
+                and approval_test_reason=#{entity.approvalTestReason}
+            </if>
+            <if test="entity.approvalTestStatus != null">
+                and approval_test_status=#{entity.approvalTestStatus}
+            </if>
+            <if test="entity.approvalOperationUserId != null">
+                and approval_operation_user_id=#{entity.approvalOperationUserId}
+            </if>
+            <if test="entity.approvalOperationUserName != null">
+                and approval_operation_user_name=#{entity.approvalOperationUserName}
+            </if>
+            <if test="entity.approvalOperationReason != null">
+                and approval_operation_reason=#{entity.approvalOperationReason}
+            </if>
+            <if test="entity.approvalOperationStatus != null">
+                and approval_operation_status=#{entity.approvalOperationStatus}
+            </if>
+            <if test="entity.translateFileName != null">
+                and translate_file_name=#{entity.translateFileName}
+            </if>
+            <if test="entity.translateFileUrl != null">
+                and translate_file_url=#{entity.translateFileUrl}
+            </if>
+            <if test="entity.status != null">
+                and status=#{entity.status}
+            </if>
+        </where>
+        <if test="orderField!=null">
+            ${orderField}
+        </if>
+        <if test="orderField==null">
+            order by modify_time desc
+        </if>
+        limit #{offset},#{limit}
+    </select>
+</mapper>

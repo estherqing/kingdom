@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vivo.jovi.scene.common.dal.dao.IQuestionnaireDescDao">
+    <resultMap id="BaseResultMap" type="com.vivo.jovi.scene.common.dal.entity.QuestionnaireDescEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="translate_language" jdbcType="VARCHAR" property="translateLanguage"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="cue_word" jdbcType="VARCHAR" property="cueWord"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+               type="com.vivo.jovi.scene.common.dal.entity.QuestionnaireDescEntity">
+        <result column="description" jdbcType="LONGVARCHAR" property="description"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, questionnaire_id, language, translate_language, title, cue_word
+  </sql>
+    <sql id="Blob_Column_List">
+    description
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_questionnaire_desc
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByQuestionnaireId" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_questionnaire_desc
+        <where>
+            questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            <if test="languageList != null and languageList.size > 0">
+                and `language` IN
+                <foreach item="item" index="index" collection="languageList"
+                         open="(" separator="," close=")">#{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByIdAndLanguage" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_questionnaire_desc
+        <where>
+            <if test="questionnaireId != null">
+                and questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            </if>
+            <if test="language != null">
+                and language = #{language,jdbcType=VARCHAR}
+            </if>
+            <if test="translateLanguage != null">
+                and find_in_set(#{translateLanguage,jdbcType=VARCHAR}, translate_language)
+            </if>
+        </where>
+    </select>
+
+    <select id="selectQNRDescByIdAndLanguage" resultMap="ResultMapWithBLOBs">
+        select language, title, description
+        from t_questionnaire_desc
+        <where>
+            questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            and `language` = #{language, jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <select id="selectBySelective" resultMap="ResultMapWithBLOBs"
+            parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireDescEntity">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from t_questionnaire_desc
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="questionnaireId != null">
+                and questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            </if>
+            <if test="language != null">
+                and language = #{language,jdbcType=VARCHAR}
+            </if>
+            <if test="translateLanguage != null">
+                and translate_language = #{translateLanguage,jdbcType=VARCHAR}
+            </if>
+            <if test="title != null and title != ''">
+                and title like CONCAT('%', #{title}, '%')
+            </if>
+            <if test="description != null">
+                and description = #{description,jdbcType=VARCHAR}
+            </if>
+            <if test="cueWord != null">
+                and cue_word = #{cueWord,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="selectLanguageBySelective" resultType="java.lang.String">
+      SELECT  GROUP_CONCAT(language) from t_questionnaire_desc where questionnaire_id=#{questionnaireId,jdbcType=VARCHAR}
+          GROUP BY questionnaire_id order by questionnaire_id ;
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_questionnaire_desc
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <delete id="deleteByQuestionnaireId" parameterType="string">
+         delete from t_questionnaire_desc where questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireDescEntity">
+    insert into t_questionnaire_desc (questionnaire_id, language,
+      title, description, cue_word)
+    values (#{questionnaireId,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR},
+      #{title,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}, #{cueWord,jdbcType=VARCHAR})
+      on duplicate key update
+      questionnaire_id = values(questionnaire_id), language = values(language),translate_language=values(translateLanguage) title = values(title),
+      description = values(description), cue_word = values(cue_word)
+  </insert>
+
+    <insert id="insertSelective" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireDescEntity">
+        insert into t_questionnaire_desc
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="questionnaireId != null">
+                questionnaire_id,
+            </if>
+            <if test="language != null">
+                language,
+            </if>
+            <if test="translateLanguage != null">
+                translate_language,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="cueWord != null">
+                cue_word,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="questionnaireId != null">
+                #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="language != null">
+                #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="translateLanguage != null">
+                #{translateLanguage,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="cueWord != null">
+                #{cueWord,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+        on duplicate key update
+        questionnaire_id = values(questionnaire_id), language = values(language),translate_language =
+        values(translate_language), title = values(title),
+        description = values(description), cue_word = values(cue_word)
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireDescEntity">
+        update t_questionnaire_desc
+        <set>
+            <if test="questionnaireId != null">
+                questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="language != null">
+                language = #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="translateLanguage != null">
+                translate_language = #{translateLanguage,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="cueWord != null">
+                cue_word = #{cueWord,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="questionnaireId != null">
+                and questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs"
+            parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireDescEntity">
+    update t_questionnaire_desc
+    set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      translate_language = #{translateLanguage,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      cue_word = #{cueWord,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireDescEntity">
+    update t_questionnaire_desc
+    set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      translate_language = #{translateLanguage,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      cue_word = #{cueWord,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

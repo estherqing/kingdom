@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 管理连接池 -->
+    <bean id="httpClientConnectionManager"
+          class="org.apache.http.impl.conn.PoolingHttpClientConnectionManager"
+          destroy-method="close">
+        <property name="maxTotal" value="${http.maxTotal}"/>
+        <property name="defaultMaxPerRoute" value="${http.defaultMaxPerRoute}"/>
+    </bean>
+
+    <!-- httpClient工厂-->
+    <bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder">
+        <property name="connectionManager" ref="httpClientConnectionManager"/>
+    </bean>
+
+    <!-- httpClient对象-->
+    <bean id="httpClient" factory-bean="httpClientBuilder" factory-method="build" scope="prototype">
+    </bean>
+
+    <!-- 请求配置工厂-->
+    <bean id="requestConfigBuilder" class="org.apache.http.client.config.RequestConfig.Builder">
+        <property name="connectTimeout" value="${http.connectTimeout}"/>
+        <property name="connectionRequestTimeout" value="${http.connectionRequestTimeout}"/>
+        <property name="socketTimeout" value="${http.socketTimeout}"/>
+    </bean>
+
+    <!-- 请求配置的对象 -->
+    <bean id="requestConfig" factory-bean="requestConfigBuilder" factory-method="build">
+    </bean>
+
+
+</beans>

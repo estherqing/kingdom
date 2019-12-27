@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vivo.jovi.scene.common.dal.dao.IPublishDao">
+    <resultMap id="BaseResultMap" type="com.vivo.jovi.scene.common.dal.entity.PublishEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="strategy_id" jdbcType="VARCHAR" property="strategyId"/>
+        <result column="biz_id" jdbcType="VARCHAR" property="bizId"/>
+        <result column="biz_name" jdbcType="VARCHAR" property="bizName"/>
+        <result column="biz_status" jdbcType="INTEGER" property="bizStatus"/>
+        <result column="biz_end_time" jdbcType="TIMESTAMP" property="bizEndTime"/>
+        <result column="biz_version_code" jdbcType="INTEGER" property="bizVersionCode"/>
+        <result column="biz_categorie_name" jdbcType="VARCHAR" property="bizCategorieName"/>
+        <result column="biz_sub_categorie_name" jdbcType="VARCHAR" property="bizSubCategorieName"/>
+        <result column="classification" jdbcType="VARCHAR" property="classification"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="grey_type" jdbcType="VARCHAR" property="greyType"/>
+        <result column="imei_grey_type" jdbcType="INTEGER" property="imeiGreyType"/>
+        <result column="imei_define_type" jdbcType="VARCHAR" property="imeiGefineType"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="failure_reason" jdbcType="VARCHAR" property="failureReason"/>
+        <result column="imei_end_nums" jdbcType="VARCHAR" property="imeiEndNums"/>
+        <result column="imei_manual" jdbcType="VARCHAR" property="imeiManual"/>
+        <result column="group_name" jdbcType="VARCHAR" property="groupName"/>
+        <result column="phone_model_type" jdbcType="INTEGER" property="phoneModelType"/>
+        <result column="phone_model_list" jdbcType="VARCHAR" property="phoneModelList"/>
+        <result column="android_version_type" jdbcType="INTEGER" property="androidVersionType"/>
+        <result column="android_version_list" jdbcType="VARCHAR" property="androidVersionList"/>
+        <result column="tags" jdbcType="VARCHAR" property="tags"/>
+        <result column="modify_user_name" jdbcType="VARCHAR" property="modifyUserName"/>
+        <result column="approval_test_user_id" jdbcType="VARCHAR" property="approvalTestUserId"/>
+        <result column="approval_test_user_name" jdbcType="VARCHAR" property="approvalTestUserName"/>
+        <result column="approval_test_reason" jdbcType="VARCHAR" property="approvalTestReason"/>
+        <result column="approval_test_status" jdbcType="INTEGER" property="approvalTestStatus"/>
+        <result column="approval_operation_user_id" jdbcType="VARCHAR" property="approvalOperationUserId"/>
+        <result column="approval_operation_user_name" jdbcType="VARCHAR" property="approvalOperationUserName"/>
+        <result column="approval_operation_reason" jdbcType="VARCHAR" property="approvalOperationReason"/>
+        <result column="approval_operation_status" jdbcType="INTEGER" property="approvalOperationStatus"/>
+        <result column="client_version" jdbcType="INTEGER" property="clientVersion"/>
+        <result column="expected_release" jdbcType="BIGINT" property="expectedRelease"/>
+        <result column="actual_release" jdbcType="BIGINT" property="actualRelease"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <resultMap id="StringResultMap" type="string">
+        <result column="modify_user_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getModifyUserName" resultMap="StringResultMap">
+        select modify_user_name from t_publish_strategy
+        group by modify_user_name
+    </select>
+
+    <select id="findPublish" resultMap="BaseResultMap">
+        select
+        id, strategy_id, biz_id, biz_name, biz_status, biz_categorie_name, biz_sub_categorie_name, biz_version_code, classification, status, failure_reason, type, update_time, modify_user_name, expected_release, actual_release
+        from t_publish_strategy
+        where
+        date_format(biz_end_time, '%Y-%m-%d') >= date_format(CURRENT_DATE, '%Y-%m-%d')
+        <if test="status != null">
+            and status = #{status, jdbcType=INTEGER}
+        </if>
+        <if test="notInStatus != null">
+            and status != #{notInStatus, jdbcType=INTEGER}
+        </if>
+        <if test="name != null and name != ''">
+            and biz_name like CONCAT('%',#{name},'%')
+        </if>
+        <if test="classification != null and classification != ''">
+            and classification = #{classification, jdbcType=VARCHAR}
+            and
+            <choose>
+                <when test="classification == 'cards'">
+                    biz_status = 7
+                </when>
+                <when test="classification == 'tips'">
+                    biz_status = 4
+                </when>
+                <when test="classification == 'background'">
+                    biz_status = 4
+                </when>
+            </choose>
+        </if>
+        <if test="classification == null or classification == ''">
+            and ((classification = 'cards' and biz_status = 7) or (classification = 'tips' and biz_status = 4) or (classification = 'background' and biz_status = 4))
+        </if>
+        <if test="modifyUserName != null and modifyUserName != ''">
+            and modify_user_name like CONCAT('%',#{modifyUserName},'%')
+        </if>
+        <if test="field != null and order != null" >
+            order by
+            <choose>
+                <when test="field == 'classification'">
+                    classification ${order}
+                </when>
+                <when test="field == 'updateTime'">
+                    update_time ${order}
+                </when>
+                <when test="field == 'status'">
+                    status ${order}
+                </when>
+                <when test="field == 'id'">
+                    id ${order}
+                </when>
+                <when test="field == 'bizVersionCode'">
+                    biz_version_code ${order}
+                </when>
+                <when test="field == 'bizCategorieName'">
+                    convert(biz_categorie_name using gbk) ${order}
+                </when>
+                <when test="field == 'modifyUserName'">
+                    convert(modify_user_name using gbk) ${order}
+                </when>
+            </choose>
+        </if>
+        <if test="limit != null">
+            <if test="offset != null">
+                limit ${offset}, ${limit}
+            </if>
+            <if test="offset == null">
+                limit ${limit}
+            </if>
+        </if>
+    </select>
+
+    <select id="countPublish" resultType="java.lang.Long">
+        select count(*) from t_publish_strategy
+        where
+        date_format(biz_end_time, '%Y-%m-%d') >= date_format(CURRENT_DATE, '%Y-%m-%d')
+        <if test="status != null">
+            and status = #{status, jdbcType=INTEGER}
+        </if>
+        <if test="name != null and name != ''">
+            and biz_name like CONCAT('%',#{name},'%')
+        </if>
+        <if test="classification != null and classification != ''">
+            and classification = #{classification, jdbcType=VARCHAR}
+            and
+            <choose>
+                <when test="classification == 'cards'">
+                    biz_status = 7
+                </when>
+                <when test="classification == 'tips'">
+                    biz_status = 4
+                </when>
+                <when test="classification == 'background'">
+                    biz_status = 4
+                </when>
+            </choose>
+        </if>
+        <if test="classification == null or classification == ''">
+            and ((classification = 'cards' and biz_status = 7) or (classification = 'tips' and biz_status = 4) or (classification = 'background' and biz_status = 4))
+        </if>
+        <if test="modifyUserName != null and modifyUserName != ''">
+            and modify_user_name like CONCAT('%',#{modifyUserName},'%')
+        </if>
+    </select>
+
+    <update id="updateStatus">
+        update
+        t_publish_strategy
+        <set>
+            <if test="modifyUserName != null">
+                modify_user_name = #{modifyUserName, jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status, jdbcType=INTEGER},
+            </if>
+            <if test="failureReason != null">
+                failure_reason = #{failureReason, jdbcType=VARCHAR},
+            </if>
+        </set>
+        where
+        strategy_id = #{strategyId, jdbcType=VARCHAR}
+    </update>
+
+    <select id="approvalStatus" resultMap="BaseResultMap">
+        select
+        strategy_id, `type`, biz_status, classification, approval_test_user_id, approval_test_user_name, approval_test_reason, approval_test_status,
+        approval_operation_user_id, approval_operation_user_name, approval_operation_reason, approval_operation_status
+        from t_publish_strategy
+        where strategy_id = #{strategyId, jdbcType=VARCHAR}
+    </select>
+
+    <update id="approvalByOperation">
+        update
+        t_publish_strategy
+        set
+        approval_operation_user_id = #{approvalOperationUserId, jdbcType=VARCHAR},
+        approval_operation_user_name = #{approvalOperationUserName, jdbcType=VARCHAR},
+        approval_operation_status = #{approvalOperationStatus, jdbcType=INTEGER},
+        approval_operation_reason = #{approvalOperationReason, jdbcType=VARCHAR}
+        where
+        strategy_id = #{strategyId, jdbcType=VARCHAR} and approval_operation_status = 0
+    </update>
+
+    <update id="approvalByTest">
+        update
+        t_publish_strategy
+        set
+        approval_test_user_id = #{approvalTestUserId, jdbcType=VARCHAR},
+        approval_test_user_name = #{approvalTestUserName, jdbcType=VARCHAR},
+        approval_test_status = #{approvalTestStatus, jdbcType=INTEGER},
+        approval_test_reason = #{approvalTestReason, jdbcType=VARCHAR}
+        where
+        strategy_id = #{strategyId, jdbcType=VARCHAR} and approval_test_status = 0
+    </update>
+
+    <update id="updateStatusByApproval">
+        update
+        t_publish_strategy
+        set
+        status = #{status, jdbcType=INTEGER}
+        where
+        strategy_id = #{strategyId, jdbcType=VARCHAR}
+    </update>
+
+    <insert id="insert" parameterType="com.vivo.jovi.scene.common.dal.entity.PublishEntity">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into t_publish_strategy(biz_id, biz_name, biz_status, biz_end_time, biz_version_code, classification, modify_user_name,
+        type, grey_type, imei_grey_type, imei_define_type, status, imei_end_nums, group_name, tags, client_version,
+        phone_model_type, phone_model_list, android_version_type, android_version_list, expected_release)
+        values (#{bizId, jdbcType=VARCHAR}, #{bizName, jdbcType=VARCHAR}, #{bizStatus, jdbcType=INTEGER}, #{bizEndTime, jdbcType=TIMESTAMP},
+                #{bizVersionCode, jdbcType=INTEGER}, #{classification, jdbcType=VARCHAR}, #{modifyUserName, jdbcType=VARCHAR},
+        #{type, jdbcType=INTEGER}, #{greyType, jdbcType=VARCHAR}, #{imeiGreyType, jdbcType=INTEGER}, #{imeiDefineType, jdbcType=VARCHAR},
+        #{status, jdbcType=INTEGER}, #{imeiEndNums, jdbcType=VARCHAR},#{groupName, jdbcType=VARCHAR},#{tags, jdbcType=VARCHAR},
+        #{clientVersion, jdbcType=VARCHAR},#{phoneModelType, jdbcType=INTEGER},#{phoneModelList, jdbcType=VARCHAR},#{androidVersionType, jdbcType=INTEGER},
+        #{androidVersionList, jdbcType=VARCHAR},#{expectedRelease, jdbcType=BIGINT}
+        )
+    </insert>
+
+    <update id="updateSelective" parameterType="com.vivo.jovi.scene.common.dal.entity.PublishEntity">
+        update t_publish_strategy
+        <set>
+            <if test="bizName != null and  bizName != ''">
+                biz_name = #{bizName, jdbcType=VARCHAR},
+            </if>
+             <if test="status != null">
+                 status = #{status, jdbcType=INTEGER},
+            </if>
+            <if test="bizStatus != null">
+                biz_status = #{bizStatus, jdbcType=INTEGER},
+            </if>
+            <if test="bizEndTime != null">
+                biz_end_time = #{bizEndTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="bizVersionCode != null">
+                biz_version_code = #{bizVersionCode, jdbcType=INTEGER},
+            </if>
+            <if test="classification != null">
+                classification = #{classification, jdbcType=VARCHAR},
+            </if>
+            <if test="modifyUserName != null">
+                modify_user_name = #{modifyUserName, jdbcType=VARCHAR},
+            </if>
+            update_time = now()
+        </set>
+        <where>
+            <if test="bizId != null">
+                biz_id = #{bizId, jdbcType=VARCHAR}
+            </if>
+            <if test="bizVersionCode != null">
+            <choose>
+                <when test="classification == 'tips'">
+                    and biz_version_code = #{bizVersionCode, jdbcType=INTEGER}-1
+                </when>
+                <when test="classification == 'background'">
+                    and biz_version_code = #{bizVersionCode, jdbcType=INTEGER}-1
+                </when>
+                <otherwise>
+                    and biz_version_code = #{bizVersionCode, jdbcType=INTEGER}
+                </otherwise>
+            </choose>
+            </if>
+            <if test="status != null">
+               and (status=4 or status=5)
+            </if>
+        </where>
+    </update>
+
+    <update id="updateCardsSelective" parameterType="com.vivo.jovi.scene.common.dal.entity.PublishEntity">
+        update t_publish_strategy
+        <set>
+            <if test="bizName != null and  bizName != ''">
+                biz_name = #{bizName, jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status, jdbcType=INTEGER},
+            </if>
+            <if test="bizStatus != null">
+                biz_status = #{bizStatus, jdbcType=INTEGER},
+            </if>
+            <if test="bizEndTime != null">
+                biz_end_time = #{bizEndTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="bizVersionCode != null">
+                biz_version_code = #{bizVersionCode, jdbcType=INTEGER},
+            </if>
+            <if test="classification != null">
+                classification = #{classification, jdbcType=VARCHAR},
+            </if>
+            <if test="modifyUserName != null">
+                modify_user_name = #{modifyUserName, jdbcType=VARCHAR},
+            </if>
+            update_time = now()
+        </set>
+        <where>
+            <if test="bizId != null">
+                biz_id = #{bizId, jdbcType=VARCHAR}
+            </if>
+            <if test="bizVersionCode != null">
+                <choose>
+                    <when test="classification == 'tips'">
+                        and biz_version_code = #{bizVersionCode, jdbcType=INTEGER}-1
+                    </when>
+                    <when test="classification == 'background'">
+                        and biz_version_code = #{bizVersionCode, jdbcType=INTEGER}-1
+                    </when>
+                    <otherwise>
+                        and biz_version_code = #{bizVersionCode, jdbcType=INTEGER}
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+    </update>
+
+    <update id="updateBizStatus">
+        update t_publish_strategy
+        <set>
+            <if test="bizStatus != null">
+                biz_status = #{bizStatus, jdbcType=INTEGER},
+            </if>
+            <if test="modifyUserName != null">
+                modify_user_name = #{modifyUserName, jdbcType=VARCHAR}
+            </if>
+        </set>
+        where biz_id = #{bizId, jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateStrategy">
+        update t_publish_strategy set strategy_id = #{strategyId, jdbcType=VARCHAR} where id = #{id, jdbcType=BIGINT}
+    </update>
+
+    <select id="getPublishByClassification" resultMap="BaseResultMap">
+        select * from t_publish_strategy
+        where (status = 4 or status = 5 or status =6 or status=7 )
+        and (biz_status = 4 or biz_status=6)
+        and date_format(biz_end_time, '%Y-%m-%d') >= date_format(CURRENT_DATE, '%Y-%m-%d')
+        and classification = #{classification, jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByStrategyId" resultMap="BaseResultMap">
+        select * from t_publish_strategy
+        where strategy_id = #{strategyId, jdbcType=VARCHAR}
+    </select>
+
+    <update id="updatePublishStrategy">
+        update
+        t_publish_strategy
+        set
+        type = #{type, jdbcType=INTEGER},
+        grey_type = #{greyType, jdbcType=VARCHAR},
+        imei_grey_type = #{imeiGreyType, jdbcType=INTEGER},
+        imei_define_type = #{imeiDefineType, jdbcType=VARCHAR},
+        status = #{status, jdbcType=INTEGER},
+        imei_end_nums = #{imeiEndNums, jdbcType=VARCHAR},
+        group_name = #{groupName, jdbcType=VARCHAR},
+        tags = #{tags, jdbcType=VARCHAR},
+        modify_user_name = #{modifyUserName, jdbcType=VARCHAR},
+        client_version = #{clientVersion, jdbcType=VARCHAR},
+        phone_model_type = #{phoneModelType, jdbcType=INTEGER},
+        phone_model_list = #{phoneModelList, jdbcType=VARCHAR},
+        android_version_type = #{androidVersionType, jdbcType=INTEGER},
+        android_version_list = #{androidVersionList, jdbcType=VARCHAR},
+        expected_release = #{expectedRelease, jdbcType=BIGINT},
+        approval_operation_user_id = null,
+        approval_operation_user_name = null,
+        approval_operation_status = 0,
+        approval_operation_reason = null,
+        approval_test_user_id = null,
+        approval_test_user_name = null,
+        approval_test_status = 0,
+        approval_test_reason = null
+        where
+        strategy_id = #{strategyId, jdbcType=VARCHAR}
+    </update>
+
+    <select id="getPublishByBizId" resultMap="BaseResultMap">
+        select * from t_publish_strategy
+        where biz_id = #{bizId, jdbcType=VARCHAR}
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select * from t_publish_strategy
+        where
+        (classification = 'tips' and (biz_status = 4 or biz_status=6) and date_format(biz_end_time, '%Y-%m-%d') >= date_format(CURRENT_DATE, '%Y-%m-%d'))
+        OR
+        (classification = 'cards' and (biz_status=7 or biz_status=9))
+        OR
+        (classification = 'background' and (biz_status = 4 or biz_status=6) and date_format(biz_end_time, '%Y-%m-%d') >= date_format(CURRENT_DATE, '%Y-%m-%d'))
+
+    </select>
+
+    <update id="clearOperationMsg">
+        update t_publish_strategy
+        set
+            approval_test_user_id = null, approval_test_user_name = null, approval_test_reason = null, approval_test_status = 0,
+            approval_operation_user_id = null, approval_operation_user_name = null, approval_operation_reason = null, approval_operation_status = 0
+        where strategy_id = #{strategyId, jdbcType=VARCHAR}
+    </update>
+
+    <select id="getPublish" resultMap="BaseResultMap">
+        select * from t_publish_strategy
+        where biz_id = #{bizId, jdbcType=VARCHAR} order by biz_version_code desc
+    </select>
+
+    <select id="findAllPublish" resultMap="BaseResultMap">
+        select * from t_publish_strategy
+        where
+        biz_end_time > current_date
+    </select>
+
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update t_publish_strategy
+            <set>
+                actual_release=#{item.actualRelease, jdbcType=BIGINT}
+            </set>
+            where biz_id = #{item.bizId, jdbcType=VARCHAR} and biz_version_code = #{item.bizVersionCode, jdbcType=INTEGER}
+        </foreach>
+    </update>
+
+    <select id="selectByBizIdAndVersion" resultMap="BaseResultMap">
+        select * from t_publish_strategy where biz_id = #{bizId, jdbcType=VARCHAR} and biz_version_code = #{bizVersionCode, jdbcType=INTEGER}
+    </select>
+
+    <update id="updateBizStatusByVersionCode">
+        update t_publish_strategy
+        <set>
+            <if test="bizStatus != null">
+                biz_status = #{bizStatus, jdbcType=INTEGER},
+            </if>
+            <if test="modifyUserName != null">
+                modify_user_name = #{modifyUserName, jdbcType=VARCHAR},
+            </if>
+            update_time=now()
+        </set>
+        where biz_id = #{bizId, jdbcType=VARCHAR} and biz_version_code = #{bizVersionCode, jdbcType=INTEGER}
+    </update>
+
+</mapper>

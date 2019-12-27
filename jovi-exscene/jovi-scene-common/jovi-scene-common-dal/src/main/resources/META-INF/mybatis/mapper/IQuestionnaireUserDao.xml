@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vivo.jovi.scene.common.dal.dao.IQuestionnaireUserDao">
+  <resultMap id="BaseResultMap" type="com.vivo.jovi.scene.common.dal.entity.QuestionnaireUserEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="android_version" jdbcType="VARCHAR" property="androidVersion" />
+    <result column="answer_time" jdbcType="TIMESTAMP" property="answerTime" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="profession" jdbcType="VARCHAR" property="profession" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  <resultMap id="queryForListMap" extends="BaseResultMap" type="com.vivo.jovi.scene.common.dal.entity.QuestionnaireUserEntity">
+      <collection property="answers" javaType="java.util.List" ofType="com.vivo.jovi.scene.common.dal.entity.AnswerEntity">
+          <id column="id" jdbcType="BIGINT" property="id" />
+          <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId" />
+          <result column="question_id" jdbcType="VARCHAR" property="questionId" />
+          <result column="type" jdbcType="INTEGER" property="type" />
+          <result column="language" jdbcType="INTEGER" property="language" />
+          <result column="answer" jdbcType="VARCHAR" property="answer" />
+          <result column="user_id" jdbcType="BIGINT" property="userId" />
+      </collection>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, questionnaire_id, model, android_version, answer_time, sex, age,
+    profession, name, phone_num, email, user_id
+  </sql>
+
+  <sql id="User_Column_List">
+    model, android_version, answer_time, sex, age,
+    profession, name, phone_num, email
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_questionnaire_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByQuestionnaireIdAndUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_questionnaire_user
+    where questionnaire_id = #{questionnaireId,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_questionnaire_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireUserEntity">
+    insert into t_questionnaire_user (id, questionnaire_id,
+      model, android_version, answer_time,
+      sex, age, profession,
+      name, phone_num, email, user_id)
+    values (#{id,jdbcType=BIGINT}, #{questionnaireId,jdbcType=VARCHAR},
+      #{model,jdbcType=VARCHAR}, #{androidVersion,jdbcType=VARCHAR}, #{answerTime,jdbcType=TIMESTAMP},
+      #{sex,jdbcType=INTEGER}, #{age,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR},
+      #{name,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireUserEntity">
+    insert into t_questionnaire_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="questionnaireId != null">
+        questionnaire_id,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="androidVersion != null">
+        android_version,
+      </if>
+      <if test="answerTime != null">
+        answer_time,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="profession != null">
+        profession,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="phoneNum != null">
+        phone_num,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="userId != null">
+        user_id
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="questionnaireId != null">
+        #{questionnaireId,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="androidVersion != null">
+        #{androidVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="answerTime != null">
+        #{answerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null">
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null">
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireUserEntity">
+    update t_questionnaire_user
+    <set>
+      <if test="questionnaireId != null">
+        questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="androidVersion != null">
+        android_version = #{androidVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="answerTime != null">
+        answer_time = #{answerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null">
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null">
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vivo.jovi.scene.common.dal.entity.QuestionnaireUserEntity">
+    update t_questionnaire_user
+    set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      android_version = #{androidVersion,jdbcType=VARCHAR},
+      answer_time = #{answerTime,jdbcType=TIMESTAMP},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      phone_num = #{phoneNum,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByQuestionnaireId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_questionnaire_user
+    where questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectDetailByQuestionnaireId" parameterType="com.vivo.jovi.scene.common.model.bo.QuestionnaireBO" resultMap="BaseResultMap">
+    <bind name="start_num" value="start-1"></bind>
+    <bind name="end_num" value="end-start+1"></bind>
+    select
+    <include refid="User_Column_List" />
+    from t_questionnaire_user
+    where questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+    <choose>
+      <when test="start != null and end != null">
+        limit #{start_num}, #{end_num}
+      </when>
+      <otherwise>
+        limit 0, 500
+      </otherwise>
+    </choose>
+  </select>
+
+  <select id="selectUserIdsByQuestionnaireId" parameterType="string" resultType="string">
+    select user_id
+    from t_questionnaire_user
+    where questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="statisticalAnswer" resultMap="BaseResultMap">
+      SELECT
+	    *
+      FROM
+          t_questionnaire_user
+      <where>
+        questionnaire_id = #{questionnaireId, jdbcType=VARCHAR}
+        <if test="sex != null">
+            and sex = #{sex, jdbcType=INTEGER}
+        </if>
+        <if test="age != null and age != ''">
+          and age = #{age, jdbcType=VARCHAR}
+        </if>
+        <if test="profession != null and profession != ''">
+          and profession = #{profession, jdbcType=VARCHAR}
+        </if>
+        <if test="model != null and model != ''">
+          and model = #{model, jdbcType=VARCHAR}
+        </if>
+      </where>
+  </select>
+
+  <select id="count" resultType="java.lang.Long">
+    select count(*) from t_questionnaire_user where questionnaire_id = #{questionnaireId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectCueWord" resultType="string">
+    select
+    <if test="language == 'zh_CN'">
+      zh_CN
+    </if>
+    <if test="language == 'en_US'">
+      en_US
+    </if>
+    <if test="language == 'hi_IN'">
+      hi_IN
+    </if>
+    from t_ex_cueword
+    where code = #{code,jdbcType=INTEGER}
+  </select>
+</mapper>
