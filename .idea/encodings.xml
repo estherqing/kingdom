@@ -3,18 +3,48 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/base-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/base-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-service/profiles" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/base-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-web/profiles" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-web/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/basic-test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic-test/profiles" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic-test/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic-test/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/design-schema-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/design-schema-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/design-schema-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/design-schema-service/profiles" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/design-schema-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/design-schema-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/flow-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flow-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/flow-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flow-service/profiles" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flow-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flow-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/simple-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/simple-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/simple-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/simple-service/profiles" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/simple-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/simple-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-service/profiles" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-web/profiles" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-web/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot/src/main/java" charset="UTF-8" />
   </component>
 </project>

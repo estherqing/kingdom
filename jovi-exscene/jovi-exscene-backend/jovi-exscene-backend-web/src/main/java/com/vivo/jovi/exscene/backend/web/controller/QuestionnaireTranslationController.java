@@ -1,17 +1,13 @@
 package com.vivo.jovi.exscene.backend.web.controller;
 
 import com.vivo.framework.spring.webmvc.CommonVORetcodeEnum;
-import com.vivo.internet.privilege.client.SSOUser;
 import com.vivo.jovi.exscene.backend.service.IPublishService;
 import com.vivo.jovi.exscene.backend.service.IQuestionnaireTranslationService;
-import com.vivo.jovi.exscene.backend.web.filter.ThreadLocalSSOUser;
 import com.vivo.jovi.scene.common.CommonVO;
 import com.vivo.jovi.scene.common.constant.QuestionnaireStatusEnum;
 import com.vivo.jovi.scene.common.dal.dao.IQuestionnaireDao;
 import com.vivo.jovi.scene.common.dal.entity.QuestionnaireEntity;
 import com.vivo.jovi.scene.common.domain.basic.QuestionnaireTranslationBO;
-import com.vivo.jovi.scene.common.util.DateUtil;
-import com.vivo.jovi.scene.common.util.ExcelUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
@@ -24,13 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.beans.IntrospectionException;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Date;
 import java.util.Map;
 
 /**

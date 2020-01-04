@@ -1,9 +1,6 @@
 package com.esther.code;
 
-import com.esther.code.model.User;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.esther.code.util.DateUtils;
 
 /**
  * @author esther
@@ -14,7 +11,7 @@ import java.util.List;
 public class MyTest {
 
     public static void main(String[] args) {
-        int ii=1/0;
+        /*int ii=1/0;
         Thread.dumpStack();
 
         User user;
@@ -33,6 +30,9 @@ public class MyTest {
                     break;
                     default:
             }
-        });
+        });*/
+
+        System.out.println(DateUtils.timeStamp2Date(String.valueOf(1574956800000L), "yyyyMMddHH"));
+        System.out.println(DateUtils.timeStamp2Date(String.valueOf(1574676465L), "yyyyMMddHH"));
     }
 }
