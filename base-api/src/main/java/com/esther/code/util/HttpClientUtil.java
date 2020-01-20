@@ -298,7 +298,7 @@ public class HttpClientUtil {
     public static String sendPost(String url, Map<String, String> paramsMap) throws IOException {
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost post = new HttpPost(url);
-        System.out.println("request=" + url);
+        System.out.println("request=" + url+",params:"+paramsMap.toString());
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         if (paramsMap != null) {
             for (Map.Entry<String, String> entry : paramsMap.entrySet()) {
@@ -307,6 +307,8 @@ public class HttpClientUtil {
         }
         HttpEntity entity = new UrlEncodedFormEntity(params, Charset.defaultCharset());
         post.setEntity(entity);
+        post.addHeader(HTTP.CONTENT_TYPE, APPLICATION_JSON);
+        System.out.println(entity.getContentType());
         HttpResponse httpResponse = httpClient.execute(post);
         HttpEntity respEntity = httpResponse.getEntity();
         int code = httpResponse.getStatusLine().getStatusCode();
@@ -320,5 +322,6 @@ public class HttpClientUtil {
         System.out.println("body=" + body);
         return body;
     }
+
 
 }

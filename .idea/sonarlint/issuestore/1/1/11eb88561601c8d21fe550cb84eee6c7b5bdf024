@@ -1,0 +1,17 @@
+
+Rsquid:S3752b"/Consider narrowing this list of methods to one.(Î€Åªþÿÿÿÿ8Ð‚Æ½ñ-
+csquid:S4684K"@Replace this persistent entity with a simple POJO or DTO object.(‡Ñçôýÿÿÿÿ8ÁÝÞ·ñ-
+¤%squid:RedundantThrowsDeclarationCheck:"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ìÙ‘ 8ÁÝÞ·ñ-
+©%squid:RedundantThrowsDeclarationCheck*"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(¨Ñ«³ýÿÿÿÿ8ÁÝÞ·ñ-
+©%squid:RedundantThrowsDeclarationCheckd"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(£¨¢™þÿÿÿÿ8ÁÝÞ·ñ-
+^squid:S00112:"FDefine and throw a dedicated exception instead of using a generic one.(ìÙ‘ 
+csquid:S00112d"FDefine and throw a dedicated exception instead of using a generic one.(£¨¢™þÿÿÿÿ
+gsquid:S44887"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(…½‹68çÿê¸ñ-
+isquid:CommentedOutCodeLineM"<This block of commented-out lines of code should be removed.(ÀñÕê8ë“·ñ-
+gsquid:S4488H"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ï˜¦8üŽê¸ñ-
+csquid:S00112K"FDefine and throw a dedicated exception instead of using a generic one.(‡Ñçôýÿÿÿÿ
+csquid:S00112*"FDefine and throw a dedicated exception instead of using a generic one.(¨Ñ«³ýÿÿÿÿ
+wsquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(æ¬›Œùÿÿÿÿ
+Msquid:S3752'"/Consider narrowing this list of methods to one.(÷ÌüÑ8ÀšÇ½ñ-
+csquid:S4684*"@Replace this persistent entity with a simple POJO or DTO object.(¨Ñ«³ýÿÿÿÿ8ÁÝÞ·ñ-
+©%squid:RedundantThrowsDeclarationCheckK"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(‡Ñçôýÿÿÿÿ8ÁÝÞ·ñ-

@@ -1,0 +1,6 @@
+
+?squid:S1148L"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+Fsquid:S20939"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+fsquid:S3027Z"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(Ýÿþüýÿÿÿÿ
+]squid:S3027_"FPut single-quotes around '-' to use the faster "indexOf(char)" method.(ýÞ®Ì
+asquid:S3027_"JPut single-quotes around '-' to use the faster "lastIndexOf(char)" method.(ýÞ®Ì

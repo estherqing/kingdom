@@ -1,0 +1,27 @@
+
+Fsquid:S3752."/Consider narrowing this list of methods to one.(œÜƒ
+_squid:S4488w"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(–É—Š
+%squid:RedundantThrowsDeclarationChecki"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Îë»
+csquid:S00112a"FDefine and throw a dedicated exception instead of using a generic one.(ÆÑÄıÿÿÿÿ
+¢%squid:RedundantThrowsDeclarationChecky"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(£¨¢™şÿÿÿÿ
+csquid:S001120"FDefine and throw a dedicated exception instead of using a generic one.(êãÆ¡úÿÿÿÿ
+fsquid:S4488g"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(íÌ¯œøÿÿÿÿ
+¢%squid:RedundantThrowsDeclarationCheck8"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ù‚Öüÿÿÿÿ
+dsquid:S00112‡"FDefine and throw a dedicated exception instead of using a generic one.(ıÙƒ¶ÿÿÿÿÿ
+_squid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(ë­™
+`squid:S4488E"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(…½‹6
+£%squid:RedundantThrowsDeclarationCheck€"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(›ÊÔ³ûÿÿÿÿ
+%squid:RedundantThrowsDeclarationCheck"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ë­™
+£%squid:RedundantThrowsDeclarationCheck‡"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ıÙƒ¶ÿÿÿÿÿ
+csquid:S00112y"FDefine and throw a dedicated exception instead of using a generic one.(£¨¢™şÿÿÿÿ
+csquid:S001128"FDefine and throw a dedicated exception instead of using a generic one.(ù‚Öüÿÿÿÿ
+dsquid:S4488~"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(³ˆÊÿÿÿÿÿ
+dsquid:S00112€"FDefine and throw a dedicated exception instead of using a generic one.(›ÊÔ³ûÿÿÿÿ
+esquid:S4488Œ"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÕÈ‘¦ıÿÿÿÿ
+Ksquid:S37526"/Consider narrowing this list of methods to one.(˜æç³ÿÿÿÿÿ
+asquid:S4488_"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ğ“é“
+^squid:S00112H"FDefine and throw a dedicated exception instead of using a generic one.(ìÙ‘ 
+_squid:S4488…"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ş ÎS
+¢%squid:RedundantThrowsDeclarationChecka"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ÆÑÄıÿÿÿÿ
+^squid:S00112i"FDefine and throw a dedicated exception instead of using a generic one.(Îë»
+%squid:RedundantThrowsDeclarationCheckH"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ìÙ‘ 

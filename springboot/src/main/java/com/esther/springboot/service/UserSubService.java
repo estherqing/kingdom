@@ -18,6 +18,7 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 
 /**
+ * 数据存储在mongodb中
  * 如果在子类上@Document(collection = "user_sub_mail")，那么保存ok，更新、查询不行。
  */
 @Service

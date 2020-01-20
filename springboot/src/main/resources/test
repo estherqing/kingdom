@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Flight>
+    <FlightNote>成功</FlightNote>
+    <FlightNullCode>0</FlightNullCode>
+    <FlightDate>2020-01-27</FlightDate>
+    <Mark>1</Mark>
+    <FlightInfo>
+        <FlightCompany>山东航空</FlightCompany>
+        <FlightNo>SC8825</FlightNo>
+        <FlightDepcode>URC</FlightDepcode>
+        <DepCityTimeZone>GMT+08:00</DepCityTimeZone>
+        <DepCountryCode>CN</DepCountryCode>
+        <DepAirport>地窝堡</DepAirport>
+        <DepLongitude>87.4753167</DepLongitude>
+        <DepLatitude>43.9073322</DepLatitude>
+        <FlightDep>乌鲁木齐</FlightDep>
+        <FlightArrcode>TAO</FlightArrcode>
+        <ArrCityTimeZone>GMT+08:00</ArrCityTimeZone>
+        <ArrCountryCode>CN</ArrCountryCode>
+        <ArrAirport>流亭</ArrAirport>
+        <FlightArr>青岛</FlightArr>
+        <ArrLongitude>120.3745161</ArrLongitude>
+        <ArrLatitude>36.2660183</ArrLatitude>
+        <ChkClosedTime>2020-01-27 06:15:00</ChkClosedTime>
+        <FlightDeptimePlan>2020-01-27 07:00:00</FlightDeptimePlan>
+        <FlightArrtimePlan>2020-01-27 11:45:00</FlightArrtimePlan>
+        <FlightDeptimeReady>2020-01-27 07:00:00</FlightDeptimeReady>
+        <FlightArrtimeReady>2020-01-27 11:45:00</FlightArrtimeReady>
+        <FlightDeptime></FlightDeptime>
+        <FlightArrtime></FlightArrtime>
+        <FlyTime>285</FlyTime>
+        <FlightState>计划</FlightState>
+        <FlightSubState></FlightSubState>
+        <FlightTerminal>T1</FlightTerminal>
+        <FlightHTerminal>T2</FlightHTerminal>
+        <FlightModel>B737-800</FlightModel>
+        <PlaneSize>中</PlaneSize>
+        <FlightAge></FlightAge>
+        <gate></gate>
+        <exit></exit>
+        <baggage></baggage>
+        <probability>63</probability>
+        <statecode>JH</statecode>
+        <stop>0</stop>
+        <stopCode></stopCode>
+        <chkdesk></chkdesk>
+        <meal>1</meal>
+        <distance>2906</distance>
+        <AirportQueue></AirportQueue>
+        <toGateTime></toGateTime>
+        <shuttle></shuttle>
+        <remoteStand></remoteStand>
+        <previous></previous>
+        <prevDate></prevDate>
+        <prevDepCode></prevDepCode>
+        <prevArrCode></prevArrCode>
+        <prevDepTimePlan></prevDepTimePlan>
+        <prevArrTimePlan></prevArrTimePlan>
+        <prevDepTimeReady></prevDepTimeReady>
+        <prevArrTimeReady></prevArrTimeReady>
+        <prevDepTime></prevDepTime>
+        <prevArrTime></prevArrTime>
+        <prevstate></prevstate>
+    </FlightInfo>
+    <FlightInfo>
+        <FlightCompany>山东航空</FlightCompany>
+        <FlightNo>SC8825</FlightNo>
+        <FlightDepcode>URC</FlightDepcode>
+        <DepCityTimeZone>GMT+08:00</DepCityTimeZone>
+        <DepCountryCode>CN</DepCountryCode>
+        <DepAirport>地窝堡</DepAirport>
+        <DepLongitude>87.4753167</DepLongitude>
+        <DepLatitude>43.9073322</DepLatitude>
+        <FlightDep>乌鲁木齐</FlightDep>
+        <FlightArrcode>KIX</FlightArrcode>
+        <ArrCityTimeZone>GMT+09:00</ArrCityTimeZone>
+        <ArrCountryCode>JP</ArrCountryCode>
+        <ArrAirport>关西</ArrAirport>
+        <FlightArr>大阪</FlightArr>
+        <ArrLongitude>135.243977</ArrLongitude>
+        <ArrLatitude>34.43533</ArrLatitude>
+        <ChkClosedTime>2020-01-27 06:15:00</ChkClosedTime>
+        <FlightDeptimePlan>2020-01-27 07:00:00</FlightDeptimePlan>
+        <FlightArrtimePlan>2020-01-27 16:20:00</FlightArrtimePlan>
+        <FlightDeptimeReady>2020-01-27 07:00:00</FlightDeptimeReady>
+        <FlightArrtimeReady>2020-01-27 16:20:00</FlightArrtimeReady>
+        <FlightDeptime></FlightDeptime>
+        <FlightArrtime></FlightArrtime>
+        <FlyTime>500</FlyTime>
+        <FlightState>计划</FlightState>
+        <FlightSubState></FlightSubState>
+        <FlightTerminal>T1</FlightTerminal>
+        <FlightHTerminal>T3</FlightHTerminal>
+        <FlightModel>B737-800</FlightModel>
+        <PlaneSize>中</PlaneSize>
+        <FlightAge></FlightAge>
+        <gate></gate>
+        <exit></exit>
+        <baggage></baggage>
+        <probability>86</probability>
+        <statecode>JH</statecode>
+        <stop>1</stop>
+        <stopCode>TAO</stopCode>
+        <chkdesk></chkdesk>
+        <meal>1</meal>
+        <distance>4193</distance>
+        <AirportQueue></AirportQueue>
+        <toGateTime></toGateTime>
+        <shuttle></shuttle>
+        <remoteStand></remoteStand>
+        <previous></previous>
+        <prevDate></prevDate>
+        <prevDepCode></prevDepCode>
+        <prevArrCode></prevArrCode>
+        <prevDepTimePlan></prevDepTimePlan>
+        <prevArrTimePlan></prevArrTimePlan>
+        <prevDepTimeReady></prevDepTimeReady>
+        <prevArrTimeReady></prevArrTimeReady>
+        <prevDepTime></prevDepTime>
+        <prevArrTime></prevArrTime>
+        <prevstate></prevstate>
+    </FlightInfo>
+    <FlightInfo>
+        <FlightCompany>山东航空</FlightCompany>
+        <FlightNo>SC8825</FlightNo>
+        <FlightDepcode>TAO</FlightDepcode>
+        <DepCityTimeZone>GMT+08:00</DepCityTimeZone>
+        <DepCountryCode>CN</DepCountryCode>
+        <DepAirport>流亭</DepAirport>
+        <DepLongitude>120.3745161</DepLongitude>
+        <DepLatitude>36.2660183</DepLatitude>
+        <FlightDep>青岛</FlightDep>
+        <FlightArrcode>KIX</FlightArrcode>
+        <ArrCityTimeZone>GMT+09:00</ArrCityTimeZone>
+        <ArrCountryCode>JP</ArrCountryCode>
+        <ArrAirport>关西</ArrAirport>
+        <FlightArr>大阪</FlightArr>
+        <ArrLongitude>135.243977</ArrLongitude>
+        <ArrLatitude>34.43533</ArrLatitude>
+        <ChkClosedTime>2020-01-27 12:25:00</ChkClosedTime>
+        <FlightDeptimePlan>2020-01-27 13:10:00</FlightDeptimePlan>
+        <FlightArrtimePlan>2020-01-27 16:20:00</FlightArrtimePlan>
+        <FlightDeptimeReady>2020-01-27 13:10:00</FlightDeptimeReady>
+        <FlightArrtimeReady>2020-01-27 16:20:00</FlightArrtimeReady>
+        <FlightDeptime></FlightDeptime>
+        <FlightArrtime></FlightArrtime>
+        <FlyTime>130</FlyTime>
+        <FlightState>计划</FlightState>
+        <FlightSubState></FlightSubState>
+        <FlightTerminal>T1</FlightTerminal>
+        <FlightHTerminal>T2</FlightHTerminal>
+        <FlightModel>B737-800</FlightModel>
+        <PlaneSize>中</PlaneSize>
+        <FlightAge></FlightAge>
+        <gate></gate>
+        <exit></exit>
+        <baggage></baggage>
+        <probability>50</probability>
+        <statecode>JH</statecode>
+        <stop>0</stop>
+        <stopCode></stopCode>
+        <chkdesk></chkdesk>
+        <meal>1</meal>
+        <distance>1363</distance>
+        <AirportQueue></AirportQueue>
+        <toGateTime></toGateTime>
+        <shuttle></shuttle>
+        <remoteStand></remoteStand>
+        <previous></previous>
+        <prevDate></prevDate>
+        <prevDepCode></prevDepCode>
+        <prevArrCode></prevArrCode>
+        <prevDepTimePlan></prevDepTimePlan>
+        <prevArrTimePlan></prevArrTimePlan>
+        <prevDepTimeReady></prevDepTimeReady>
+        <prevArrTimeReady></prevArrTimeReady>
+        <prevDepTime></prevDepTime>
+        <prevArrTime></prevArrTime>
+        <prevstate></prevstate>
+    </FlightInfo>
+    <Weathers></Weathers>
+</Flight>

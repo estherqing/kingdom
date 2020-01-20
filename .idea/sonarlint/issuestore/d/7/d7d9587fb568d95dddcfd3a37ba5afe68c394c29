@@ -1,0 +1,7 @@
+
+Csquid:S1168İ"+Return an empty collection instead of null.(¥¹ï
+Csquid:S1168Ğ"+Return an empty collection instead of null.(¥¹ï
+™squid:S1186æ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Çµí‘
+nsquid:S1192Œ"VUse already-defined constant 'DATE_TIME_FORMAT' instead of duplicating its value here.(¾øõå
+nsquid:S1192K"WDefine a constant instead of duplicating this literal "æ—¥æœŸè½¬æ¢å‡ºé”™ï¼š " 7 times.(œ¤ÚŸ
+ysquid:S1488¯"\Immediately return this expression instead of assigning it to the temporary variable "days".(Åçà¶øÿÿÿÿ
