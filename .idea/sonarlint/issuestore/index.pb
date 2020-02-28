@@ -105,3 +105,9 @@ R
 +.idea/artifacts/spring_web_war_exploded.xml,6\0\602409aa341e078982c6ca5300d6409734fae37d
 Œ
 ùjovi-exscene/jovi-exscene-backend/jovi-exscene-backend-web/src/main/java/com/vivo/jovi/exscene/backend/web/controller/QuestionnaireTranslationController.java,a\d\ad957c471c1cd526cb158c07b10b3ceebaa79767
+t
+Dspringboot/src/test/java/com/esther/springboot/RestTemplateTest.java,f\4\f474ca5e1f5c97e5f439af0a3d377e49e2233a9f
+{
+Kspringboot/src/main/java/com/esther/springboot/config/HttpClientConfig.java,b\8\b8e84f4adc9d3e932744c77b282b81764b44782d
+m
+=springboot/src/test/java/com/esther/springboot/BasicTest.java,d\7\d72db07d8e578d80134d7995633b97c32da40b25

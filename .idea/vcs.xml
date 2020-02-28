@@ -2,7 +2,21 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/jovi-exscene" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/jovi-intellig-city" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/jovi-intellig-metadata" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/jovi-intellig-trip" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/jovi-scene-renju" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/scence-intellig-exercise" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scence-intellig-fiveg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scene-intellig" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scene-intellig-basic" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scene-intellig-console" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scene-intellig-coupon" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scene-intellig-express" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scene-intellig-game" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scene-intellig-poi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scene-intellig-sports" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scene-intellig-trip" vcs="Git" />
   </component>
 </project>
