@@ -1,0 +1,49 @@
+0、设置虚拟域名
+C:\Windows\System32\drivers\etc 选中hosts编辑
+10.101.101.113 test.exsceneintellig.vmic.xyz
+172.27.41.41 test.vmic.xyz
+172.27.41.41 test.vivo.xyz
+
+打开tomcat下的conf/server.xml文件，添加节点 
+
+1、启动swagger：
+D:\ProgramFiles\swagger-editor-master>http-server -p 8080
+D:\ProgramFiles\works>node index.js
+ 
+2、启动mongodb：
+在MongoDB里面的bin文件夹中打开Git Bash Here 输入命令 
+mongod --dbpath D:/MongoDB/data/db
+
+ 2.1 连接本地mongodb
+启动成功后可以随意在任何一个地方打开Git Bash Here，或者直接开启一个cmd。
+输入命令mongo查看版本；show dbs 查看数据库
+mongo -u user -p password
+
+2.2连接远程服务器mongodb
+mongo 42.114.29.206:27017/log  -u user -p password
+
+线上测试库 mongo mongodb.1572836621339.svc.cluster.local:27017/log
+
+
+
+
+
+
+3 安装服务 必须要在有管理员权限的命令行里面执行
+mongod --config "E:\Development Tools\MongoDB\mongod.config" --serviceName "MongoDB" --install
+
+ 完成服务的安装
+
+也可已删除
+
+mongod --remove serviceName "MongoDB"
+
+输入 services.msc 查看有没有 MongoDB的服务
+
+点击启动
+
+或者 直接输入  net start MongoDB(必须是有管理员权限的)
+
+停止服务 net stop MongoDB
+
+

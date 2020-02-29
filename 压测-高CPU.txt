@@ -1,0 +1,29 @@
+根据top命令，发现PID为28555的Java进程占用CPU高达200%，出现故障。
+
+通过ps aux | grep PID命令，可以进一步确定是tomcat进程出现了问题。但是，怎么定位到具体线程或者代码呢？
+
+首先显示线程列表:
+
+ps -mp pid -o THREAD,tid,time
+ 
+
+
+
+
+
+clear
+jps
+pidstat -p pid
+
+
+
+退出：Ctrl+C 或者指令quit
+
+
+安装tcpdump命令：yum install tcpdump
+
+
+
+
+vim
+按ESC键跳到命令模式，然后:wq（保存并退出），:q!(不保存并强制退出），i进入vim模式
