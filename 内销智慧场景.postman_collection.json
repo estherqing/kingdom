@@ -1,0 +1,2653 @@
+{
+	"info": {
+		"_postman_id": "9af643a1-fd0d-4182-80c0-87da3625e86b",
+		"name": "内销智慧场景",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "trip-ctrip",
+			"item": [
+				{
+					"name": "{{trip}}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "trip-train",
+			"item": [
+				{
+					"name": "receive order",
+					"item": [
+						{
+							"name": "预约中",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Sign",
+										"value": "11e1e18f659e7ef5b3548c5c44788ee2",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"signTimestamp\": 1544599367864,\r\n\t\"userId\": \"sss\",\r\n\t\"order\": {\r\n\t\t\"orderId\": \"aabbccdd43968\",\r\n\t\t\"trainNum\": \"G139\",\r\n\t\t\"departStation\": \"北京南\",\r\n\t\t\"destStation\": \"上海虹桥\",\r\n\t\t\"orderStatusCode\": 10,\r\n\t\t\"orderStatusDesc\": \"预约中\",\r\n\t\t\"updatedTs\": \"2018-12-12 15:22:47\",\r\n\t\t\"currentHelpPackageCount\": 0,\r\n\t\t\"currentHelpPackageLevel\": \"抢票中\",\r\n\t\t\"nextHelpPackageLevel\": \"快速抢\",\r\n\t\t\"exceptHelpCount\": 20,\r\n\t\t\"friendHelpTimes\": 0,\r\n\t\t\"trainStartTime\": \"2019年02月01日 13:45:00\",\r\n\t\t\"tickets\": [],\r\n\t\t\"changeTickets\": [],\r\n\t\t\"departDate\": \"2019年02月01日\",\r\n\t\t\"departDateExt\": \"\",\r\n\t\t\"seatType\": \"二等座\",\r\n\t\t\"seatTypeExt\": \"\",\r\n\t\t\"trainNumExt\": \"\",\r\n\t\t\"cpType\":0,\r\n\t\t\"contactPhone\": \"150Xzm21234\"\r\n\t}\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{trip}}/receiveOrder",
+									"host": [
+										"{{trip}}"
+									],
+									"path": [
+										"receiveOrder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "抢票中",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Sign",
+										"type": "text",
+										"value": "11e1e18f659e7ef5b3548c5c44788ee2"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"signTimestamp\": 1544599341112,\r\n\t\"userId\": \"k0oEP6Pi94H5Bx/KH80Imw==\",\r\n\t\"order\": {\r\n\t\t\"orderId\": \"aabbccdd4396\",\r\n\t\t\"trainNum\": \"G5\",\r\n\t\t\"departStation\": \"北京南\",\r\n\t\t\"destStation\": \"上海\",\r\n\t\t\"orderStatusCode\": 12,\r\n\t\t\"orderStatusDesc\": \"加速抢\",\r\n\t\t\"updatedTs\": \"2018-12-12 15:22:21\",\r\n\t\t\"currentHelpPackageCount\": 30,\r\n\t\t\"currentHelpPackageLevel\": \"高速抢\",\r\n\t\t\"nextHelpPackageLevel\": \"极速抢\",\r\n\t\t\"exceptHelpCount\": 10,\r\n\t\t\"friendHelpTimes\": 0,\r\n\t\t\"trainStartTime\": \"2018年12月26日 07:00:00\",\r\n\t\t\"tickets\": [],\r\n\t\t\"changeTickets\": [],\r\n\t\t\"departDate\": \"2018年12月26日\",\r\n\t\t\"departDateExt\": \"2018年12月27日\",\r\n\t\t\"seatType\": \"二等座\",\r\n\t\t\"seatTypeExt\": \"一等座\",\r\n\t\t\"trainNumExt\": \"G105\",\r\n\t\t\"contactPhone\": \"150Xzm21234\"\r\n\t}\r\n}"
+								},
+								"url": {
+									"raw": "{{trip}}/receiveOrder",
+									"host": [
+										"{{trip}}"
+									],
+									"path": [
+										"receiveOrder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "出票成功 账户",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Sign",
+										"type": "text",
+										"value": "ignore4396"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"signTimestamp\": 1544599342929,\n    \"userId\": \"ot8tC8EQ/3yJPZbps+T7sQ==\",\n    \"order\": {\n        \"orderId\": \"4\",\n        \"trainNum\": \"G42\",\n        \"departStation\": \"北京南\",\n        \"destStation\": \"上海虹桥\",\n        \"orderStatusCode\": 3,\n        \"orderStatusDesc\": \"出票成功\",\n        \"updatedTs\": \"2018-12-12 15:22:55\",\n        \"currentHelpPackageCount\": 4,\n        \"currentHelpPackageLevel\": \"\",\n        \"nextHelpPackageLevel\": \"\",\n        \"exceptHelpCount\": 0,\n        \"friendHelpTimes\": 0,\n        \"trainStartTime\": \"2018年12月26日 09:15:00\",\n        \"startSaleTime\": 1545724509,\n        \"rescheduleGrab\": 0,\n        \"tickets\": [\n            {\n                \"ticketNo\": \"E123\",\n                \"name\": \"张三\",\n                \"seatNo\": \"01车厢1号\",\n                \"seatType\": \"二等座\",\n                \"trainStartTime\": \"2018年12月26日 09:15:00\",\n                \"dptStation\": \"北京南\",\n                \"arrStation\": \"上海虹桥\",\n                \"id\": 1,\n                \"ticketStatus\": 1,\n                \"trainNo\": \"414qwe\"\n            }\n        ],\n        \"changeTickets\": [],\n        \"departDate\": \"2018年12月26日\",\n        \"departDateExt\": \"\",\n        \"seatType\": \"二等座\",\n        \"seatTypeExt\": \"商务座,一等座\",\n        \"trainNumExt\": \"\",\n        \"contactPhone\": \"150Xzm21234\",\n        \"useUserName\": true\n    }\n}"
+								},
+								"url": {
+									"raw": "{{trip}}/receiveOrder",
+									"host": [
+										"{{trip}}"
+									],
+									"path": [
+										"receiveOrder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "出票成功 号码",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Sign",
+										"type": "text",
+										"value": "ignore4396"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"signTimestamp\": 1544599342929,\n    \"userId\": \"ot8tC8EQ/3yJPZbps+T7sQ==\",\n    \"order\": {\n        \"orderId\": \"4\",\n        \"trainNum\": \"G42\",\n        \"departStation\": \"北京南\",\n        \"destStation\": \"上海虹桥\",\n        \"orderStatusCode\": 3,\n        \"orderStatusDesc\": \"出票成功\",\n        \"updatedTs\": \"2018-12-12 15:22:55\",\n        \"currentHelpPackageCount\": 4,\n        \"currentHelpPackageLevel\": \"\",\n        \"nextHelpPackageLevel\": \"\",\n        \"exceptHelpCount\": 0,\n        \"friendHelpTimes\": 0,\n        \"trainStartTime\": \"2018年12月26日 09:15:00\",\n        \"startSaleTime\": 1545724509,\n        \"rescheduleGrab\": 0,\n        \"tickets\": [\n            {\n                \"ticketNo\": \"E123\",\n                \"name\": \"张三\",\n                \"seatNo\": \"01车厢1号\",\n                \"seatType\": \"二等座\",\n                \"trainStartTime\": \"2018年12月26日 09:15:00\",\n                \"dptStation\": \"北京南\",\n                \"arrStation\": \"上海虹桥\",\n                \"id\": 1,\n                \"ticketStatus\": 1,\n                \"trainNo\": \"414qwe\"\n            }\n        ],\n        \"changeTickets\": [],\n        \"departDate\": \"2018年12月26日\",\n        \"departDateExt\": \"\",\n        \"seatType\": \"二等座\",\n        \"seatTypeExt\": \"商务座,一等座\",\n        \"trainNumExt\": \"\",\n        \"contactPhone\": \"150Xzm21234\",\n        \"useContactPhone\": true\n    }\n}"
+								},
+								"url": {
+									"raw": "{{trip}}/receiveOrder",
+									"host": [
+										"{{trip}}"
+									],
+									"path": [
+										"receiveOrder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "改签抢",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Sign",
+										"type": "text",
+										"value": "e9e2a7b7bd30b36602fa09774205a200"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"signTimestamp\": 1544599372400,\r\n\t\"userId\": \"SoHMjfnduqxYJLeA1EXqZg==\",\r\n\t\"order\": {\r\n\t\t\"orderId\": \"987654321\",\r\n\t\t\"trainNum\": \"G129\",\r\n\t\t\"departStation\": \"北京南\",\r\n\t\t\"destStation\": \"上海虹桥\",\r\n\t\t\"orderStatusCode\": 13,\r\n\t\t\"orderStatusDesc\": \"改签抢\",\r\n\t\t\"updatedTs\": \"2018-12-12 15:22:55\",\r\n\t\t\"currentHelpPackageCount\": 0,\r\n\t\t\"currentHelpPackageLevel\": \"\",\r\n\t\t\"nextHelpPackageLevel\": \"\",\r\n\t\t\"exceptHelpCount\": 0,\r\n\t\t\"friendHelpTimes\": 0,\r\n\t\t\"trainStartTime\": \"2018年12月20日 12:10:00\",\r\n\t\t\"tickets\": [{\r\n\t\t\t\"ticketNo\": \"E123\",\r\n\t\t\t\"name\": \"张三\",\r\n\t\t\t\"seatNo\": \"01车厢1号\",\r\n\t\t\t\"seatType\": \"二等座\",\r\n\t\t\t\"trainStartTime\": \"2018年12月26日 09:15:00\",\r\n\t\t\t\"dptStation\": \"北京南\",\r\n\t\t\t\"arrStation\": \"上海虹桥\",\r\n\t\t\t\"id\": 1,\r\n\t\t\t\"ticketStatus\": 11\r\n\t\t}],\r\n\t\t\"changeTickets\": [],\r\n\t\t\"departDate\": \"2018年12月20日\",\r\n\t\t\"departDateExt\": \"\",\r\n\t\t\"seatType\": \"二等座\",\r\n\t\t\"seatTypeExt\": \"\",\r\n\t\t\"trainNumExt\": \"\",\r\n\t\t\"contactPhone\": \"150Xzm21234\"\r\n\t}\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{trip}}/receiveOrder",
+									"host": [
+										"{{trip}}"
+									],
+									"path": [
+										"receiveOrder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "改签成功",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Sign",
+										"type": "text",
+										"value": "a7c0cfadc6cb30f2b7522234ab84e158"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"signTimestamp\": 1544599369878,\r\n\t\"userId\": \"k0oEP6Pi94H5Bx/KH80Imw==\",\r\n\t\"order\": {\r\n\t\t\"orderId\": \"aabbccdd4396\",\r\n\t\t\"trainNum\": \"G1\",\r\n\t\t\"departStation\": \"北京南\",\r\n\t\t\"destStation\": \"上海虹桥\",\r\n\t\t\"orderStatusCode\": 3,\r\n\t\t\"orderStatusDesc\": \"出票成功\",\r\n\t\t\"updatedTs\": \"2018-12-12 15:24:49\",\r\n\t\t\"currentHelpPackageCount\": 0,\r\n\t\t\"currentHelpPackageLevel\": \"\",\r\n\t\t\"nextHelpPackageLevel\": \"\",\r\n\t\t\"exceptHelpCount\": 0,\r\n\t\t\"friendHelpTimes\": 0,\r\n\t\t\"trainStartTime\": \"2018年12月30日 08:05:00\",\r\n\t\t\"tickets\": [{\r\n\t\t\t\"ticketNo\": \"E333666888\",\r\n\t\t\t\"name\": \"张三\",\r\n\t\t\t\"seatNo\": \"01车厢1号\",\r\n\t\t\t\"seatType\": \"一等座\",\r\n\t\t\t\"trainStartTime\": \"2018年12月29日 09:00:00\",\r\n\t\t\t\"dptStation\": \"北京南\",\r\n\t\t\t\"arrStation\": \"上海虹桥\",\r\n\t\t\t\"id\": 1,\r\n\t\t\t\"ticketStatus\": 4\r\n\t\t}],\r\n\t\t\"changeTickets\": [{\r\n\t\t\t\"ticketNo\": \"E333444556\",\r\n\t\t\t\"name\": \"张三\",\r\n\t\t\t\"seatNo\": \"01车厢01号\",\r\n\t\t\t\"seatType\": \"一等座\",\r\n\t\t\t\"trainStartTime\": \"2018年12月30日 08:05:00\",\r\n\t\t\t\"dptStation\": \"北京南\",\r\n\t\t\t\"arrStation\": \"上海虹桥\",\r\n\t\t\t\"id\": 2,\r\n\t\t\t\"originalId\": 1,\r\n\t\t\t\"ticketStatus\": 1\r\n\t\t}],\r\n\t\t\"departDate\": \"2018年12月29日\",\r\n\t\t\"departDateExt\": \"\",\r\n\t\t\"seatType\": \"一等座\",\r\n\t\t\"seatTypeExt\": \"\",\r\n\t\t\"trainNumExt\": \"\",\r\n\t\t\"contactPhone\": \"150Xzm21234\"\r\n\t}\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{trip}}/receiveOrder",
+									"host": [
+										"{{trip}}"
+									],
+									"path": [
+										"receiveOrder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "自定义",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Sign",
+										"type": "text",
+										"value": "80798c96b555d54009a8a3d5a1dfe454"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"signTimestamp\": 1548038906640,\n\t\"userId\": \"zzPc+VGI51OXzKew4Q6Guw==\",\n\t\"order\": {\n\t\t\"orderId\": \"1234\",\n\t\t\"source\": \"vivo_jovi\",\n\t\t\"trainNum\": \"G129\",\n\t\t\"departStation\": \"北京南\",\n\t\t\"destStation\": \"上海\",\n\t\t\"orderStatusCode\": 12,\n\t\t\"orderStatusDesc\": \"加速抢\",\n\t\t\"updatedTs\": \"2019-01-21 10:48:26\",\n\t\t\"currentHelpPackageCount\": 75,\n\t\t\"currentHelpPackageLevel\": \"光速抢\",\n\t\t\"nextHelpPackageLevel\": \"VIP抢\",\n\t\t\"exceptHelpCount\": 5,\n\t\t\"friendHelpTimes\": 0,\n\t\t\"trainStartTime\": \"2019年01月20日 12:10:00\",\n\t\t\"trainEndTime\": \"2019年01月20日 18:07:00\",\n\t\t\"departDate\": \"2019年01月20日\",\n\t\t\"departDateExt\": \"2019年01月21日\",\n\t\t\"seatType\": \"二等座\",\n\t\t\"seatTypeExt\": \"一等座\",\n\t\t\"trainNumExt\": \"G135\",\n\t\t\"contactPhone\": \"1509hpv5072\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{trip}}/receiveOrder",
+									"host": [
+										"{{trip}}"
+									],
+									"path": [
+										"receiveOrder"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "test",
+					"item": [
+						{
+							"name": "test",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{trip}}/test",
+									"host": [
+										"{{trip}}"
+									],
+									"path": [
+										"test"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{trip}}/train/order/cache/delete?imei=444&cpType=1&secret=ignore4396",
+									"host": [
+										"{{trip}}"
+									],
+									"path": [
+										"train",
+										"order",
+										"cache",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "imei",
+											"value": "444"
+										},
+										{
+											"key": "cpType",
+											"value": "1"
+										},
+										{
+											"key": "secret",
+											"value": "ignore4396"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "get token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{trip}}/getToken?imei=444",
+							"host": [
+								"{{trip}}"
+							],
+							"path": [
+								"getToken"
+							],
+							"query": [
+								{
+									"key": "imei",
+									"value": "444"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decryp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://assistant-trip.vivo.com.cn/decrpyt?token=",
+							"protocol": "https",
+							"host": [
+								"assistant-trip",
+								"vivo",
+								"com",
+								"cn"
+							],
+							"path": [
+								"decrpyt"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get token Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{trip}}/getTasks?imei=444",
+							"host": [
+								"{{trip}}"
+							],
+							"path": [
+								"getTasks"
+							],
+							"query": [
+								{
+									"key": "imei",
+									"value": "444"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "exercise",
+			"item": [
+				{
+					"name": "test",
+					"item": [
+						{
+							"name": "test",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/exception",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"exception"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refresh cache",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/refreshCache",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"refreshCache"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exception",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{}}",
+									"host": [
+										"{{}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createTable",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/createUserInfos",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"createUserInfos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "test aop",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "week report",
+					"item": [
+						{
+							"name": "create week report",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/createUserInfos",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"createUserInfos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "has record",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/hasRecord?openId=a1b1ed8952ce4a8b&token=ignore&date=2019-05-26&imei=864295049974158&emmcid=01ce003300320030006200660038003200300065006100300063&model=V1816A&pd=PD1816&sysver=PD1816_A_1.12.15&appver=40004",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"hasRecord"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "a1b1ed8952ce4a8b"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "date",
+											"value": "2019-05-26"
+										},
+										{
+											"key": "imei",
+											"value": "864295049974158"
+										},
+										{
+											"key": "emmcid",
+											"value": "01ce003300320030006200660038003200300065006100300063"
+										},
+										{
+											"key": "model",
+											"value": "V1816A"
+										},
+										{
+											"key": "pd",
+											"value": "PD1816"
+										},
+										{
+											"key": "sysver",
+											"value": "PD1816_A_1.12.15"
+										},
+										{
+											"key": "appver",
+											"value": "40004"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "week report",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/getWeekReport?openId=481e9ed25d25a38f&token=ignore&date=2018-12-02",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getWeekReport"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "481e9ed25d25a38f"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "date",
+											"value": "2018-12-02"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "jogging",
+					"item": [
+						{
+							"name": "add jogging Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tokenParam\": {\r\n    \"openId\": \"1a71a00e2d68b334\",\r\n    \"token\": \"ignore\"\r\n  },\r\n  \"data\": {\r\n    \"averageSpeed\": 111.0,\r\n    \"costTime\": 36001,\r\n    \"distance\": 10000000.0,\r\n    \"districtCode\": \"440304\",\r\n    \"endTime\": \"2018-11-30 20:35:00\",\r\n    \"openId\": \"1a71a00e2d68b334\",\r\n    \"startTime\": \"2018-11-30 20:35:00\",\r\n    \"maxSpeed\": 5.5,\r\n    \"minSpeed\": 1.1,\r\n    \"calorie\": 111,\r\n    \"trackInfos\": [{\r\n      \"calorie\": 123456,\r\n      \"total_distance\": 4.4,\r\n      \"last_distance\": 1.1,\r\n      \"latitude\": 2.2,\r\n      \"longitude\": 1.1,\r\n      \"speed\": 3.3,\r\n      \"time\": 1542007463744,\r\n      \"status\": 1,\r\n      \"costTime\":50\r\n    }]\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{exercise}}/addJogging",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"addJogging"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get jogging",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/getJogging?eid=J_94931961bf90181a_1542867848827&token=ignore&openId=94931961bf90181a",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"getJogging"
+									],
+									"query": [
+										{
+											"key": "eid",
+											"value": "J_94931961bf90181a_1542867848827"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "openId",
+											"value": "94931961bf90181a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "del jogging",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/deleteJogging?eid=J_1a71a00e2d68b334_1544166793613&token=ignore&openId=1a71a00e2d68b334",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"deleteJogging"
+									],
+									"query": [
+										{
+											"key": "eid",
+											"value": "J_1a71a00e2d68b334_1544166793613"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "openId",
+											"value": "1a71a00e2d68b334"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "increment jogging",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/incrementJogging?openId=94931961bf90181a&inc=-412412.54000000004",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"incrementJogging"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "94931961bf90181a"
+										},
+										{
+											"key": "inc",
+											"value": "-412412.54000000004"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "cycling",
+					"item": [
+						{
+							"name": "add cycling",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tokenParam\": {\r\n    \"openId\": \"1a71a00e2d68b334\",\r\n    \"token\": \"ignore\"\r\n  },\r\n  \"data\": {\r\n    \"averageSpeed\": 111.0,\r\n    \"costTime\": 36001,\r\n    \"distance\": 22222.0,\r\n    \"districtCode\": \"abc1\",\r\n    \"endTime\": \"2018-11-21 20:35:00\",\r\n    \"openId\": \"1a71a00e2d68b334\",\r\n    \"startTime\": \"2018-11-21 20:35:00\",\r\n    \"maxSpeed\": 5.5,\r\n    \"minSpeed\": 1.1,\r\n    \"calorie\": 111,\r\n    \"trackInfos\": [{\r\n      \"calorie\": 123456,\r\n      \"total_distance\": 4.4,\r\n      \"last_distance\": 1.1,\r\n      \"latitude\": 2.2,\r\n      \"longitude\": 1.1,\r\n      \"speed\": 3.3,\r\n      \"time\": 1542007463744,\r\n      \"status\": 1,\r\n      \"costTime\":50\r\n    }]\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{exercise}}/addCycling",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"addCycling"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get cycling",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/getJogging?eid=J_94931961bf90181a_1542867848827&token=ignore&openId=94931961bf90181a",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"getJogging"
+									],
+									"query": [
+										{
+											"key": "eid",
+											"value": "J_94931961bf90181a_1542867848827"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "openId",
+											"value": "94931961bf90181a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "del cycling",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/deleteJogging?eid=J_1a71a00e2d68b334_1544166793613&token=ignore&openId=1a71a00e2d68b334",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"deleteJogging"
+									],
+									"query": [
+										{
+											"key": "eid",
+											"value": "J_1a71a00e2d68b334_1544166793613"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "openId",
+											"value": "1a71a00e2d68b334"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "increment cycling",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/incrementCycling?openId=94931961bf90181a&inc=-120000",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"incrementCycling"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "94931961bf90181a"
+										},
+										{
+											"key": "inc",
+											"value": "-120000"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "like",
+					"item": [
+						{
+							"name": "like",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/like?openId=1234&targetId=94931961bf90181a&date=2018-11-22",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"like"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "1234"
+										},
+										{
+											"key": "targetId",
+											"value": "94931961bf90181a"
+										},
+										{
+											"key": "date",
+											"value": "2018-11-22"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dislike",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/like?openId=1234&targetId=94931961bf90181a&date=2018-11-22",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"like"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "1234"
+										},
+										{
+											"key": "targetId",
+											"value": "94931961bf90181a"
+										},
+										{
+											"key": "date",
+											"value": "2018-11-22"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getLikeUnread",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getLikeUser",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/getLikeUser?openId=test190409&token=tokeninnerignore&date=2019-04-09&pageSize=5&currPage=1",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getLikeUser"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "test190409"
+										},
+										{
+											"key": "token",
+											"value": "tokeninnerignore"
+										},
+										{
+											"key": "date",
+											"value": "2019-04-09"
+										},
+										{
+											"key": "pageSize",
+											"value": "5"
+										},
+										{
+											"key": "currPage",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUserLiked",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/getUserLiked?openId=test190409&token=tokeninnerignore&date=2019-04-09&pageSize=5&currPage=1",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getUserLiked"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "test190409"
+										},
+										{
+											"key": "token",
+											"value": "tokeninnerignore"
+										},
+										{
+											"key": "date",
+											"value": "2019-04-09"
+										},
+										{
+											"key": "pageSize",
+											"value": "5"
+										},
+										{
+											"key": "currPage",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "create user info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/createUserInfos",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"createUserInfos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update user info",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "openId",
+										"value": "a1b1ed8952ce4a8b",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "ignore",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\": {\r\n        \"openId\": \"a1b1ed8952ce4a8b\",\r\n        \"gender\": 1,\r\n        \"noticeSwitch\":0,\r\n        \"nickname\": \"修改后的名字\",\r\n        \"tinyAvatar\":\"https://shequwsdl.vivo.com.cn/ 3d72e20a331c93a.jpg\",\r\n        \"webpAvatar\":\"https://shequwsdl.vivo.com.cn/ 133ab138f668b8df71f.webp\",\r\n        \"smallAvatar\":\"https://shequwsdl.vivo.com.cn/ 950042985821f.jpg\",\r\n        \"biggerAvatar\":\"https://shequwsdl.vivo.com.cn/ 6248eb2a10d1f27fc9e.jpg\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{name}}/updateUserInfo",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"updateUserInfo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update acct info Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "openid",
+										"value": "f0f2370ae78beba1",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "ignore",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\" : {\r\n               \"biggerAvatar\": \"http://vivofs-bj-pre.vivo.com.cn/useravatar/20200122152514/2a7bc768f44b40d1839d4a2bdc90527911.jpg\",\r\n        \"openId\": \"f0f2370ae78beba1\"\r\n    },\r\n    \"openId\": \"f0f2370ae78beba1\",\r\n    \"token\": \"ed0a3121ffed2954de8521bcad7831f5.1582878501491\",\r\n    \"tokenParam\" : {\r\n        \"openId\" : \"f0f2370ae78beba1\",\r\n        \"token\" : \"ed0a3121ffed2954de8521bcad7831f5.1582878501491\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{pre_url}}/updateAcctInfo",
+									"host": [
+										"{{pre_url}}"
+									],
+									"path": [
+										"updateAcctInfo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get user info",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "openid",
+										"value": "ffaa0a43f6f2bcae",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "ignore",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{name}}/getUserInfo?openId=ffaa0a43f6f2bcae",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"getUserInfo"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "ffaa0a43f6f2bcae",
+											"description": "11e337bfe728d9ed(生产),cdf07a8b61e4c0df"
+										},
+										{
+											"key": "token",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update setting",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/updateSetting",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"updateSetting"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "更新用户基本信息",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{name}}/getAcctInfo?openId=57dfcc0fc92f32f6&token=YjJiYjllMDkxNTY3YWI3ZDRlYjguMzQyMzYwODk3LjE1NzMxODM1NTI0NTY&imei=863078049996293&emmcid=01ce003200380030006400380037006300630063003900300064&model=vivo NEX Dual Display&pd=PD1821&sysver=PD1821_A_5.7.7&appver=51301",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{pre_url}}/getAcctInfo?openId=f0f2370ae78beba1&token=ignore",
+									"host": [
+										"{{pre_url}}"
+									],
+									"path": [
+										"getAcctInfo"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "f0f2370ae78beba1"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "imei",
+											"value": "863078049996293",
+											"disabled": true
+										},
+										{
+											"key": "emmcid",
+											"value": "01ce003200380030006400380037006300630063003900300064",
+											"disabled": true
+										},
+										{
+											"key": "model",
+											"value": "vivo NEX Dual Display",
+											"disabled": true
+										},
+										{
+											"key": "pd",
+											"value": "PD1821",
+											"disabled": true
+										},
+										{
+											"key": "sysver",
+											"value": "PD1821_A_5.7.7",
+											"disabled": true
+										},
+										{
+											"key": "appver",
+											"value": "51301",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/delete?openId=75c2eff218b35155&token=ignore",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"delete"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "75c2eff218b35155"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "share",
+					"item": [
+						{
+							"name": "get share url",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/getExerciseShareUrl?eid=J_cdf07a8b61e4c0df_1543137335742&openId=cdf07a8b61e4c0df&token=ignore",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getExerciseShareUrl"
+									],
+									"query": [
+										{
+											"key": "eid",
+											"value": "J_cdf07a8b61e4c0df_1543137335742"
+										},
+										{
+											"key": "openId",
+											"value": "cdf07a8b61e4c0df"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get share info",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "encodedEid",
+											"value": "eV8qeASsE+o1omr7gAphjwvIoOups1YrybHfelisA6e8pl3lRYqczi0ZBLWRDTu+",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{exercise}}/getExerciseShareInfo",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getExerciseShareInfo"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get share info",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "encodedEid",
+													"value": "9FIx9Bm8zy5Qxq/BvHRofLifxtWL4K9/C36CWtxzTd3hqtWLwy7kfncPgM16mLpm",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{exercise}}/getExerciseShareInfo",
+											"host": [
+												"{{exercise}}"
+											],
+											"path": [
+												"getExerciseShareInfo"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Thu, 29 Nov 2018 07:57:54 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "nginx"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html;charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Language",
+											"value": "en-US"
+										},
+										{
+											"key": "v_server",
+											"value": "10.20.67.3:8080"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "X-Via",
+											"value": "1.1 angdxin150:1 (Cdn Cache Server V2.0)"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "\n\n\n\n\n\n\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\"\n          content=\"width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0\"/>\n        <meta name=\"screen-orientation\" content=\"portrait\">\n        <meta name=\"x5-orientation\" content=\"portrait\">\n        <meta http-equiv=\"x-ua-compatible\" content=\"IE=edge,chrome=1\">\n        <meta name=\"renderer\" content=\"webkit|ie-comp|ie-stand\">\n        <link rel=\"shortcut icon\" href=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/img/common/favicon_7c51b3b.ico\" type=\"image/x-icon\"/>\n        <title>vivo智能手机官方网站-AI非凡摄影X23</title>\n        <meta name=\"keywords\" content='vivo，vivo官网,vivo智能手机,vivo手机大全,vivo新款手机，vivo X21，vivo X20，vivo X9s,vivo Xplay6,vivo Y67，vivo售后，vivo X9sPlus，vivo X20，vivo X20 Plus，NEX，vivo NEX，vivo X23，vivoX23'/>\n        <meta name=\"description\" content='vivo是一个专注于智能手机领域的国际化品牌，vivo智能手机官方网站提供旗下手机资讯，售前咨询，在线购买，售后服务。vivo智能手机当季明星机型有NEX，vivo X21，vivo X20，，vivo X23等，在vivo官网购买手机可以享受12期免息付款。'/>\n        <meta name=\"360-site-verification\" content='d4d54c8ebaa1390ccdf044548a917777'/>\n        <!--[if lt IE 9]>\n        <script>\n        window.location.href = '/update_browser';\n    </script>\n        <![endif]-->\n        <script>\n        var v_supportReuestAnimationFrame = window.requestAnimationFrame;\n    </script>\n        <script src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/js/plugins/html5shiv/html5shiv.min_23e126e.js\"></script>\n        <script src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/js/common/common_5cbce19.js\"></script>\n        <link href=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/css/common_7d33fbf.css\" rel=\"stylesheet\">\n        <link href=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/css/common-font_e1ca27d.css\" rel=\"stylesheet\">\n        <link href=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/css/common/index_1b74223.css\" rel=\"stylesheet\">\n        <link href=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/css/index.css\" rel=\"stylesheet\" type=\"text/css\" />\n    </head>\n    <body class=\" \">\n        <script>\n    commonFun.setEmFun({setEm: {dom: document, UIWidth: 1000, unitMatrix: 100}});\n    officialWebFun.onresize();\n    officialWebFun.backTop();\n</script>\n        <header >\n            <style>\n    .nav-t-user-login img {\n        display: none;\n    }\n.windows #vivo-foot-wrap #gb-vivo-foot .gb-foot-copyright .other .vivo-f-toast.lang-list li .lang-img-box {\n    top: -6px;\n    border: none;\n}\n.windows #vivo-foot-wrap #gb-vivo-foot .gb-foot-copyright .other .vivo-f-toast.lang-list li.global-lang .lang-img-box {\n    top: -3px;\n}\n\na.gb-vivo-h-logo2 {\n    position: absolute;\n    width: 110px;\n    height: 110px;\n    float: left;\n    top: 0;\n    margin-top: 0;\n    background-color: #0087cd;\n    text-align: center; \n    background-size:0%;\n}\n\na.gb-vivo-h-logo2 svg.vivo-brand-logo-large {\n    display: inline-block;\n}\n\n@media (max-width: 767px) {\n    a.gb-vivo-h-logo2 {\n        width: 74px;\n        height: 20px;\n        margin-top: 18px;\n        margin-left: -37px;\n        background: none;\n        float: none;\n    }\n    a.gb-vivo-h-logo2 svg.vivo-brand-logo-large{\n        display: none;\n    }\n    a.gb-vivo-h-logo2 svg.vivo-brand-logo-small {\n        display: block;\n        -webkit-transition: all 0.4s ease-out;\n        transition: all 0.4s ease-out;\n        fill: #008ddc;\n    }\n}\n\ngb-vivo-head a.gb-vivo-h-logo2::after{\ndisplay:none;\n}\n\ngb-vivo-head a.gb-vivo-h-logo2 img{\ndisplay:none;\n}\n\n\n</style>\n            <div style=\"display:none\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\"xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n                    <symbol id=\"vivo-allbrand-logo\"viewBox=\"0 0 218.3 88.4\">\n                        <g>\n                            <path d=\"M196.5,15.5h-23c-12.1,0-21.8,9.8-21.8,21.9v1.1c0,12.1,9.7,21.9,21.8,21.9h23c12.1,0,21.8-9.8,21.8-21.9v-1.1\n\t\tC218.3,25.3,208.5,15.5,196.5,15.5z M209.7,38.5c0,7.3-5.9,13.3-13.2,13.3h-23c-7.3-0.1-13.2-6-13.2-13.3v-1.1\n\t\tc0-7.3,5.9-13.3,13.2-13.4h23c7.3,0.1,13.2,6,13.2,13.4L209.7,38.5z\"/>\n                            <path d=\"M33,60.6h0.1c4.5,0,8.1-2,11.4-6.7l20.8-30.5c1.4-2.1,0.9-4.9-1.2-6.4c-2.1-1.4-4.9-0.9-6.3,1.1c0,0,0,0,0,0L37,48.7\n\t\tc-1.3,1.9-2.7,2.7-4,2.7l0,0c-1.6,0-2.7-0.9-4-2.7L8.3,18.2C6.9,16.1,4.1,15.6,2,17c0,0,0,0,0,0c-2.1,1.4-2.6,4.3-1.2,6.4\n\t\tl20.8,30.5C24.4,58.1,28.6,60.6,33,60.6L33,60.6z\"/>\n                            <path d=\"M151.9,20.8c0-1.5-0.7-2.9-1.9-3.8c-2.1-1.4-4.9-0.9-6.3,1.1c0,0,0,0,0,0l-20.8,30.5c-1.3,1.9-2.7,2.7-4,2.7l0,0\n\t\tc-1.6,0-2.7-0.9-4-2.7L94.1,18.2c-1.4-2.1-4.2-2.6-6.3-1.2c0,0,0,0,0,0c-2.1,1.4-2.6,4.3-1.2,6.4l20.7,30.5\n\t\tc2.9,4.2,7.1,6.7,11.5,6.7h0.1c4.5,0,8.1-2,11.4-6.7l20.8-30.5C151.7,22.6,151.9,21.7,151.9,20.8z\"/>\n                            <path d=\"M74.7,12.8c0.3,0.3,0.8,0.5,1.3,0.5c0.5,0,1-0.2,1.3-0.5l4.8-4.8c0.7-0.7,0.7-1.9,0-2.6l-4.8-4.8C76.9,0.2,76.5,0,76,0\n\t\th-0.1c-0.5,0-0.9,0.2-1.3,0.5l-4.8,4.8c-0.7,0.7-0.7,1.9,0,2.6L74.7,12.8z\"/>\n                            <path d=\"M80.5,56.1V20.7c0-2.5-2-4.5-4.5-4.5l0,0c-2.5,0-4.6,2-4.6,4.5c0,0,0,0,0,0v35.4c0.1,2.5,2.3,4.5,4.8,4.4\n\t\tC78.6,60.3,80.5,58.5,80.5,56.1L80.5,56.1z\"/>\n                            <path d=\"M32.9,85.9c-3.2,0-5.4-2.4-5.4-5.8c-0.2-3,2.1-5.6,5.1-5.8c0.1,0,0.2,0,0.4,0c1.4,0,2.7,0.6,3.6,1.6l2.1-1.7\n\t\tc-1.5-1.6-3.6-2.5-5.7-2.4c-4.9,0-8.6,3.2-8.6,8.2c-0.2,4.4,3.2,8.1,7.6,8.3c0.3,0,0.5,0,0.8,0c2.4,0.1,4.6-0.9,6.1-2.8L36.7,84\n\t\tC35.8,85.2,34.4,85.9,32.9,85.9z\"/>\n                            <path d=\"M46.1,77.3c-1.7,0-3.3,0.6-4.5,1.7l1.4,1.6c0.8-0.8,1.8-1.2,2.9-1.2c1.3,0,2.4,0.6,2.4,1.9v0.3C45,81.6,41,82,41,85.2\n\t\tc0,2.5,2.3,3.3,4,3.3c1.3,0.1,2.6-0.5,3.3-1.6h0.1v1.3h2.5v-6.5C50.8,79.6,49.9,77.3,46.1,77.3z M48.3,83.7\n\t\tc0.1,1.4-0.9,2.6-2.3,2.7c-0.2,0-0.3,0-0.5,0c-0.9,0-1.9-0.3-1.9-1.3c0-1.6,2.4-1.8,4-1.8h0.6L48.3,83.7z\"/>\n                            <path d=\"M99.3,77.3c-1.7,0-3.3,0.6-4.5,1.7l1.4,1.6c0.8-0.8,1.8-1.2,2.8-1.2c1.3,0,2.4,0.6,2.4,1.9v0.3c-3.3,0-7.3,0.4-7.3,3.6\n\t\tc0,2.5,2.3,3.3,4,3.3c1.3,0.1,2.6-0.5,3.3-1.6h0.1v1.3h2.5v-6.5C104,79.6,103.1,77.3,99.3,77.3z M101.5,83.7\n\t\tc0.1,1.4-0.9,2.6-2.3,2.7c-0.2,0-0.3,0-0.5,0c-0.9,0-1.9-0.3-1.9-1.3c0-1.6,2.4-1.8,4-1.8h0.6L101.5,83.7z\"/>\n                            <path d=\"M66.6,77.3c-1.5-0.1-2.8,0.7-3.5,2c-1-1.9-3.2-2.6-5.1-1.6c-0.7,0.4-1.3,0.9-1.6,1.6l0,0v-1.7h-2.6v10.8h2.7v-5.9\n\t\tc0-1.4,0.7-2.9,2.4-2.9c1.4,0,2,1,2,2.3v6.5h2.7v-5.9c0-1.4,0.7-3,2.4-3s2,1.6,2,2.9v6h2.7v-6.7C70.6,79.5,69.4,77.3,66.6,77.3z\"/>\n                            <path d=\"M78.4,77.3c-3-0.1-5.4,2.2-5.6,5.1c0,0.2,0,0.3,0,0.5c0.1,3.2,2.8,5.6,6,5.5c1.6-0.1,3.1-0.8,4.2-2.1l-1.8-1.4\n\t\tc-0.6,0.9-1.7,1.4-2.8,1.4c-1.5,0.1-2.8-1.1-3-2.6h8c0-0.2,0-0.5,0-0.7C83.5,79.2,81.3,77.3,78.4,77.3z M75.5,81.8\n\t\tc0.1-1.5,1.4-2.6,2.9-2.5c1.3-0.1,2.4,0.9,2.5,2.2c0,0.1,0,0.2,0,0.4H75.5z\"/>\n                            <path d=\"M88.4,79.4L88.4,79.4v-1.8h-2.6v10.8h2.7v-5.8c-0.1-1.6,1.2-2.8,2.7-2.9c0.1,0,0.1,0,0.2,0c0.3,0,0.6,0,0.8,0.1v-2.5\n\t\tc-0.2,0-0.4-0.1-0.7-0.1C90.1,77.3,88.9,78.2,88.4,79.4z\"/>\n                            <path d=\"M127.2,79.7h-3.1l-1.8,2.9l-2.6-2.7c1.8-0.8,3.2-2.2,3.2-4.2c0-2.6-2.1-3.8-4.4-3.8s-4.5,1.2-4.5,3.9\n\t\tc0.1,1.4,0.7,2.7,1.7,3.6c-1.8,0.8-3.4,2.2-3.4,4.5c0,3,2.5,4.6,5.3,4.6c1.8,0.1,3.6-0.7,4.8-2.1l1.8,1.8h3.6l-3.7-3.8L127.2,79.7z\n\t\t M118.6,74c1,0,1.8,0.7,1.8,1.7c0,0,0,0,0,0.1c0,1.2-1.1,2-2.3,2.5c-0.8-0.6-1.3-1.5-1.4-2.5C116.8,74.8,117.6,74,118.6,74\n\t\tC118.6,74,118.6,74,118.6,74z M117.7,86.2c-1.4,0-2.6-1.1-2.6-2.5c0-1.3,0.9-2.4,2.2-2.7l3.4,3.5C120.1,85.5,118.9,86.2,117.7,86.2\n\t\tz\"/>\n                            <polygon points=\"144.4,83.7 144.4,83.7 140.1,72.1 135.6,72.1 135.6,88.4 138.4,88.4 138.4,75.3 138.4,75.3 143.3,88.4 145.3,88.4\n\t\t150.3,75.3 150.3,75.3 150.3,88.4 153.2,88.4 153.2,72.1 148.6,72.1 \t\"/>\n                            <path d=\"M163.3,83.2c0.2,1.4-0.9,2.7-2.3,2.9c-0.1,0-0.1,0-0.2,0c-1.7,0-2-1.6-2-2.9v-6h-2.7V84c0,2.2,1.2,4.3,4,4.3\n\t\tc1.4,0,2.7-0.7,3.3-2l0,0v1.7h2.6V77.3h-2.7L163.3,83.2z\"/>\n                            <path d=\"M172.9,79.3c0.9,0,1.7,0.4,2.3,1.1l1.7-1.5c-1-1.1-2.5-1.7-4-1.6c-2.1,0-4.2,1-4.2,3.3c0,2,1.6,2.6,3.1,3s2.4,0.6,2.4,1.5\n\t\ts-0.9,1.2-1.7,1.2c-1,0-2-0.5-2.7-1.3l-1.7,1.6c1.1,1.1,2.7,1.8,4.3,1.7c2.3,0,4.4-0.9,4.4-3.5c0-2.1-1.8-2.8-3.4-3.1\n\t\ts-2.3-0.6-2.3-1.4S172.1,79.3,172.9,79.3z\"/>\n                            <rect x=\"179.2\"y=\"77.3\"width=\"2.7\"height=\"11.1\"/>\n                            <path d=\"M189.9,79.5c0.8,0,1.6,0.4,2.2,1l1.8-1.6c-1-1.1-2.5-1.7-4-1.6c-3.1,0-5.5,2.5-5.5,5.6c0,3.1,2.5,5.5,5.6,5.5\n\t\tc1.4,0.1,2.8-0.5,3.9-1.5l-1.6-1.7c-0.6,0.6-1.4,1-2.2,0.9c-1.7,0-3.1-1.5-3-3.2c0-0.1,0-0.1,0-0.2C187,81.2,187.9,79.5,189.9,79.5\n\t\tz\"/>\n                            <circle cx=\"180.6\"cy=\"73.5\"r=\"1.7\"/>\n                        </g>\n                    </symbol>\n                    <symbol id=\"vivo-brand-logo\"viewBox=\"0 0 218.3 60.6\">\n                        <g>\n                            <path d=\"M196.5,15.5h-23c-12.1,0-21.8,9.8-21.8,21.9v1.1c0,12.1,9.7,21.9,21.8,21.9h23c12.1,0,21.8-9.8,21.8-21.9v-1.1\n\t\tC218.3,25.3,208.5,15.5,196.5,15.5z M209.7,38.5c0,7.3-5.9,13.3-13.2,13.3h-23c-7.3-0.1-13.2-6-13.2-13.3v-1.1\n\t\tc0-7.3,5.9-13.3,13.2-13.4h23c7.3,0.1,13.2,6,13.2,13.4L209.7,38.5z\"/>\n                            <path d=\"M33,60.6h0.1c4.5,0,8.1-2,11.4-6.7l20.8-30.5c1.4-2.1,0.9-4.9-1.2-6.4c-2.1-1.4-4.9-0.9-6.3,1.1c0,0,0,0,0,0L37,48.7\n\t\tc-1.3,1.9-2.7,2.7-4,2.7l0,0c-1.6,0-2.7-0.9-4-2.7L8.3,18.2C6.9,16.1,4.1,15.6,2,17c0,0,0,0,0,0c-2.1,1.4-2.6,4.3-1.2,6.4\n\t\tl20.8,30.5C24.4,58.1,28.6,60.6,33,60.6L33,60.6z\"/>\n                            <path d=\"M151.9,20.8c0-1.5-0.7-2.9-1.9-3.8c-2.1-1.4-4.9-0.9-6.3,1.1c0,0,0,0,0,0l-20.8,30.5c-1.3,1.9-2.7,2.7-4,2.7l0,0\n\t\tc-1.6,0-2.7-0.9-4-2.7L94.1,18.2c-1.4-2.1-4.2-2.6-6.3-1.2c0,0,0,0,0,0c-2.1,1.4-2.6,4.3-1.2,6.4l20.7,30.5\n\t\tc2.9,4.2,7.1,6.7,11.5,6.7h0.1c4.5,0,8.1-2,11.4-6.7l20.8-30.5C151.7,22.6,151.9,21.7,151.9,20.8z\"/>\n                            <path d=\"M74.7,12.8c0.3,0.3,0.8,0.5,1.3,0.5c0.5,0,1-0.2,1.3-0.5l4.8-4.8c0.7-0.7,0.7-1.9,0-2.6l-4.8-4.8C76.9,0.2,76.5,0,76,0\n\t\th-0.1c-0.5,0-0.9,0.2-1.3,0.5l-4.8,4.8c-0.7,0.7-0.7,1.9,0,2.6L74.7,12.8z\"/>\n                            <path d=\"M80.5,56.1V20.7c0-2.5-2-4.5-4.5-4.5l0,0c-2.5,0-4.6,2-4.6,4.5c0,0,0,0,0,0v35.4c0.1,2.5,2.3,4.5,4.8,4.4\n\t\tC78.6,60.3,80.5,58.5,80.5,56.1L80.5,56.1z\"/>\n                        </g>\n                    </symbol>\n                </svg>\n            </div>\n            <div id=\"vivo-head-wrap\" class=\"expand-size\">\n                <div class=\"gb-vivo-head\">\n                    <div class=\"gb-vivo-h-menu\">\n                        <span class=\"menu-top\"></span>\n                        <span class=\"menu-middle\"></span>\n                        <span class=\"menu-bottom\"></span>\n                    </div>\n                    <a class=\"gb-vivo-h-logo2 J_replace_link\" burying=\"cfrom=1101&name=vivo\" href=\"//www.vivo.com.cn/\">\n                        <svg viewBox=\"0 0 73 73\"class=\"vivo-brand-logo-large\">\n                            <use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"#vivo-allbrand-logo\"></use>\n                        </svg>\n                        <svg viewBox=\"0 0 73 20\"class=\"vivo-brand-logo-small\">\n                            <use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"#vivo-brand-logo\"></use>\n                        </svg>\n                    </a>\n                    <ul class=\"gb-vivo-h-nav\" size=\"4\">\n                        <li class=\"nav-gb series\" data-wrap=\"cvs-box1\" data-type=\"circle\">\n                            <a href=\"//www.vivo.com.cn/products-nex.html\" class=\"vivo-head-category-nex\" burying=\"cfrom=1102&name=NEX系列&series=14\" data-nav=\"true\">NEX系列</a>\n                        </li>\n                        <li class=\"nav-gb series\" data-wrap=\"cvs-box2\" data-type=\"circle\">\n                            <a href=\"//www.vivo.com.cn/products-x.html\" class=\"vivo-head-category-x\" burying=\"cfrom=1102&name=X系列&series=4\" data-nav=\"true\">X系列</a>\n                        </li>\n                        <li class=\"nav-gb series\" data-wrap=\"cvs-box3\" data-type=\"circle\">\n                            <a href=\"//www.vivo.com.cn/products-z.html\" class=\"vivo-head-category-z\" burying=\"cfrom=1102&name=Z系列&series=12\" data-nav=\"true\">Z系列</a>\n                        </li>\n                        <li class=\"nav-gb series\" data-wrap=\"cvs-box4\" data-type=\"circle\">\n                            <a href=\"//www.vivo.com.cn/products-y.html\" class=\"vivo-head-category-y\" burying=\"cfrom=1102&name=Y系列&series=5\" data-nav=\"true\">Y系列</a>\n                        </li>\n                        <li class=\"nav-gb\">\n                            <a href=\"//shop.vivo.com.cn/\" burying=\"cfrom=1103&name=商城\" >商城</a>\n                        </li>\n                        <li class=\"nav-gb\">\n                            <a href=\"//www.vivo.com.cn/brand/home\"  class=\"vivo-head-brand\"    burying=\"cfrom=1121&name=品牌\">品牌</a>\n                        </li>\n                        <li class=\"nav-gb\">\n                            <a href=\"//www.vivo.com.cn/store\"  class=\"vivo-head-store\"   burying=\"cfrom=1120&name=体验店\">体验店</a>\n                        </li>\n                        <li class=\"nav-gb\">\n                            <a class=\"vivo-head-funtouchos\" href=\"//www.vivo.com.cn/funtouchos\" burying=\"cfrom=1104&name=Funtouch OS\">Funtouch OS</a>\n                        </li>\n                        <li class=\"nav-gb\">\n                            <a class=\"vivo-head-service\" href=\"//www.vivo.com.cn/service.html\" burying=\"cfrom=1105&name=服务\">服务</a>\n                        </li>\n                        <li class=\"nav-gb\">\n                            <a href=\"//bbs.vivo.com.cn/\" burying=\"cfrom=1106&name=社区\">社区</a>\n                        </li>\n                        <li class=\"nav-gb menu-search\">\n                            <a href=\"#\">\n                                <i></i>搜索\n                            </a>\n                        </li>\n                    </ul>\n                    <ul class=\"gb-vivo-s-nav\">\n                        <li class=\"nav-gb f-s-nav\">\n                            <span>全局搜索</span>\n                        </li>\n                        <li class=\"nav-gb \">\n                            <a href=\"https://shop.vivo.com.cn/product/10391\" data-word=\"NEX\">NEX</a>\n                        </li>\n                        <li class=\"nav-gb \">\n                            <a href=\"https://shop.vivo.com.cn/product/10486\" data-word=\"X23\">X23</a>\n                        </li>\n                        <li class=\"nav-gb \">\n                            <a href=\"https://shopact.vivo.com.cn/page/z3\" data-word=\"Z3\">Z3</a>\n                        </li>\n                        <li class=\"nav-gb \">\n                            <a href=\"https://shop.vivo.com.cn/product/parts\" data-word=\"手机配件\">手机配件</a>\n                        </li>\n                        <li class=\"nav-gb l-s-nav\">\n                            <a href=\"https://www.vivo.com.cn/service/map.html?VER=2017\" data-word=\"服务网点查询\">服务网点查询</a>\n                        </li>\n                        <section class=\"results\">\n\n\n            </section>\n                    </ul>\n                    <div class=\"gb-nav-tool\">\n                        <a class=\"nav-t-search\"></a>\n                        <a class=\"nav-t-bag\" href=\"//shop.vivo.com.cn/\"></a>\n                        <a class=\"nav-t-user\" burying=\"cfrom=1107&name=个人中心&position=0\"></a>\n                    </div>\n                    <div class=\"v_h_search\">\n                        <div class=\"search-top\">\n                            <input type=\"text\" placeholder=\"搜索需要查找的内容\">\n                            <a class=\"search-close\"></a>\n                        </div>\n                        <div class=\"search-content\">\n                            <dl class=\"link\">\n                                <dt>全局搜索</dt>\n                                <dd>\n                                    <a href=\"https://shop.vivo.com.cn/product/10391\" data-word=\"NEX\">NEX</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://shop.vivo.com.cn/product/10486\" data-word=\"X23\">X23</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://shopact.vivo.com.cn/page/z3\" data-word=\"Z3\">Z3</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://shop.vivo.com.cn/product/parts\" data-word=\"手机配件\">手机配件</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://www.vivo.com.cn/service/map.html?VER=2017\" data-word=\"服务网点查询\">服务网点查询</a>\n                                </dd>\n                            </dl>\n                            <section class=\"results\">\n\n\n                </section>\n                        </div>\n                    </div>\n                    <ul class=\"v_h_usercenter\">\n                        <li class=\"userlink-1\">\n                            <a href=\"//shop.vivo.com.cn/shoppingcart\" burying=\"cfrom=1107&name=个人中心&position=1\">\n                                <b></b>\n                                <span>购物车</span>\n                                <i>0</i>\n                            </a>\n                        </li>\n                        <li class=\"userlink-2\">\n                            <a href=\"//shop.vivo.com.cn/my/order\" burying=\"cfrom=1107&name=个人中心&position=2\">\n                                <b></b>\n                                <span>我的订单</span>\n                            </a>\n                        </li>\n                        <li class=\"userlink-3\">\n                            <a href=\"//shop.vivo.com.cn/my/\" burying=\"cfrom=1107&name=个人中心&position=3\">\n                                <b></b>\n                                <span>我的商城</span>\n                            </a>\n                        </li>\n                        <li class=\"userlink-4\">\n                            <a href=\"javascript:void (0)\" onclick=\"href = 'https://passport.vivo.com.cn/v3/web/login/authorize?client_id=30&redirect_uri=' + encodeURIComponent(window.location.href)\" burying=\"cfrom=1107&name=个人中心&position=4\">\n                                <b></b>\n                                <span>登录/注册</span>\n                            </a>\n                        </li>\n                    </ul>\n                </div>\n                <div class=\"gb-vivo-menu-series\">\n                    <div class=\"vms-bigbox\">\n                        <ul id=\"list1\">\n                            <li class=\"f-menu-link\">\n                                <a href=\"//www.vivo.com.cn/vivo/nexs/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"NEX旗舰版\",\"series\":\"14\"}}'>NEX旗舰版</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/nex/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"NEX & NEX屏幕指纹版\",\"series\":\"14\"}}'>NEX & NEX屏幕指纹版</a>\n                            </li>\n                            <div id=\"cvs-box1\" class=\"nav-item-can\"></div>\n                        </ul>\n                        <ul id=\"list2\">\n                            <li class=\"f-menu-link\">\n                                <a href=\"//www.vivo.com.cn/vivo/x23/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"X23\",\"series\":\"4\"}}'>X23</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/x23my/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"X23 幻彩版\",\"series\":\"4\"}}'>X23 幻彩版</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/x21/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"X21&X21屏幕指纹版\",\"series\":\"4\"}}'>X21&X21屏幕指纹版</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/x21s/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"X21s\",\"series\":\"4\"}}'>X21s</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/x21i/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"X21i\",\"series\":\"4\"}}'>X21i</a>\n                            </li>\n                            <div id=\"cvs-box2\" class=\"nav-item-can\"></div>\n                        </ul>\n                        <ul id=\"list3\">\n                            <li class=\"f-menu-link\">\n                                <a href=\"//www.vivo.com.cn/vivo/z3/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Z3\",\"series\":\"12\"}}'>Z3</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/z3i/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Z3i\",\"series\":\"12\"}}'>Z3i</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/z1/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Z1\",\"series\":\"12\"}}'>Z1</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/z1lite/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Z1青春版\",\"series\":\"12\"}}'>Z1青春版</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/z1i/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Z1i\",\"series\":\"12\"}}'>Z1i</a>\n                            </li>\n                            <div id=\"cvs-box3\" class=\"nav-item-can\"></div>\n                        </ul>\n                        <ul id=\"list4\">\n                            <li class=\"f-menu-link\">\n                                <a href=\"//www.vivo.com.cn/vivo/y97/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Y97\",\"series\":\"5\"}}'>Y97</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/y93/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Y93\",\"series\":\"5\"}}'>Y93</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/y83/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Y83\",\"series\":\"5\"}}'>Y83</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/y81s/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Y81s\",\"series\":\"5\"}}'>Y81s</a>\n                            </li>\n                            <li >\n                                <a href=\"//www.vivo.com.cn/vivo/y73/\" data-track='{\"type\":\"click\",\"params\":{\"version\":\"1.0.0\",\"pageview\":\"官网系列详情页\",\"cfrom\":\"1102\",\"name\":\"Y73\",\"series\":\"5\"}}'>Y73</a>\n                            </li>\n                            <div id=\"cvs-box4\" class=\"nav-item-can\"></div>\n                        </ul>\n                    </div>\n                </div>\n            </div>\n        </header>\n        <div id=\"vivo-contain\" class=\"J_replace_content\">\n            <div id=\"vivo-high-wrap\">\n                <div id=\"vivo-high\">\n                    <div class=\"vivo-bg-wrapper\">\n                        <div class=\"swiper-background background-0 x23yy\"></div>\n                        <div class=\"swiper-background background-1 z3ys\"></div>\n                        <div class=\"swiper-background background-2 x23hcb\"></div>\n                        <div class=\"swiper-background background-3 nexxjb\"></div>\n                    </div>\n                    <ul>\n                        <li class=\"x23yy\" data-switch=\"deep\">\n                            <a class=\"banner-link\" href=\"https://www.vivo.com.cn/vivo/x23\" target=\"_blank\" burying=\"cfrom=1108&amp;name=x23&amp;position=1\">\n                                <div class=\"section\">\n                                    <div class=\"title\">\n                                        <div class=\"_animate bigTitle\"></div>\n                                        <div class=\"_animate viseTitle\"></div>\n                                        <div class=\"_animate context\"></div>\n                                        <div class=\"more _animate\">\n                                            <span>查看详情</span>\n                                        </div>\n                                    </div>\n                                </div>\n                            </a>\n                        </li>\n                        <li class=\"z3ys\" data-switch=\"deep\">\n                            <a class=\"banner-link\" href=\"https://www.vivo.com.cn/vivo/z3\" target=\"_blank\" burying=\"cfrom=1108&amp;name=z3&amp;position=2\">\n                                <div class=\"section\">\n                                    <div class=\"title\">\n                                        <div class=\"_animate bigTitle\"></div>\n                                        <div class=\"_animate viseTitle\"></div>\n                                        <div class=\"_animate context\"></div>\n                                        <div class=\"more _animate\">\n                                            <span>立即购买</span>\n                                        </div>\n                                    </div>\n                                </div>\n                            </a>\n                        </li>\n                        <li class=\"x23hcb\" data-switch=\"deep\">\n                            <a class=\"banner-link\" href=\"https://www.vivo.com.cn/vivo/x23my\" target=\"_blank\" burying=\"cfrom=1108&amp;name=x23幻彩版&amp;position=3\">\n                                <div class=\"section\">\n                                    <div class=\"title\">\n                                        <div class=\"_animate bigTitle\"></div>\n                                        <div class=\"_animate viseTitle\"></div>\n                                        <div class=\"_animate context\"></div>\n                                        <div class=\"more _animate\">\n                                            <span>立即购买</span>\n                                        </div>\n                                    </div>\n                                </div>\n                            </a>\n                        </li>\n                        <li class=\"nexxjb\" data-ant=\"nexxjb\">\n                            <a class=\"banner-link\" href=\"https://www.vivo.com.cn/vivo/nexs\" target=\"_blank\" burying=\"cfrom=1108&amp;name=nex星迹版&amp;position=4\">\n                                <div class=\"section\">\n                                    <div class=\"title white\">\n                                        <div class=\"_animate bigTitle\"></div>\n                                        <div class=\"_animate viseTitle\"></div>\n                                        <div class=\"_animate context\"></div>\n                                        <div class=\"more _animate\">\n                                            <span>查看详情</span>\n                                        </div>\n                                    </div>\n                                    <div class=\"figure\">\n                                        <div class=\"f1\"></div>\n                                        <div class=\"f2\"></div>\n                                    </div>\n                                </div>\n                            </a>\n                        </li>\n                    </ul>\n                </div>\n                <div id=\"vivo-high-switch\"></div>\n            </div>\n            <div class=\"vc-main-promos\">\n                <ul>\n                    <li>\n                        <a href=\"https://www.vivo.com.cn/vivo/x21i\" target=\"_blank\" burying=\"cfrom=1109&amp;name=x21i&amp;position=1\">\n                            <div class=\"title\">\n                                <h2>X21i 全网通</h2>\n                                <p>查看详情</p>\n                            </div>\n                            <i>\n                                <img data-x2=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/images/vivo-promos-x21i-x2.jpg\" src=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/images/vivo-promos-x21i.jpg\" alt=\"x21i\">\n                            </i>\n                        </a>\n                    </li>\n                    <li class=\"v-c-video\">\n                        <a href=\"http://bbs.vivo.com.cn/forum.php?mod=viewthread&amp;tid=4086922&amp;fromuid=5646197\" target=\"_blank\" burying=\"cfrom=1109&amp;name=X23幻彩版深度体验&amp;position=2\">\n                            <div class=\"title white-color\">\n                                <h2>X23幻彩版深度体验</h2>\n                                <p>耀你好看，就是这么美</p>\n                            </div>\n                            <i>\n                                <img data-x2=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/images/vivo-promos-x23hcsdty-x2.jpg\" src=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/images/vivo-promos-x23hcsdty.jpg\" alt=\"X23幻彩版深度体验\">\n                            </i>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"https://www.vivo.com.cn/vivo/y97\" target=\"_blank\" burying=\"cfrom=1109&amp;name=y97&amp;position=3\">\n                            <div class=\"title\">\n                                <h2>Y97 全网通</h2>\n                                <p>查看详情</p>\n                            </div>\n                            <i>\n                                <img data-x2=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/images/vivo-promos-y97-x2.jpg\" src=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/images/vivo-promos-y97.jpg\" alt=\"y97\">\n                            </i>\n                        </a>\n                    </li>\n                    <li>\n                        <a href=\"https://bbs.vivo.com.cn/forum.php?mod=viewthread&amp;tid=4042438\" target=\"_blank\" burying=\"cfrom=1109&amp;name=Z3达人体验谈&amp;position=4\">\n                            <div class=\"title white-color\">\n                                <h2>Z3达人体验谈</h2>\n                                <p>性能实力派</p>\n                            </div>\n                            <i>\n                                <img data-x2=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/images/vivo-promos-z3drtyt-x2.jpg\" src=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/images/vivo-promos-z3drtyt.jpg\" alt=\"Z3达人体验谈\">\n                            </i>\n                        </a>\n                    </li>\n                </ul>\n            </div>\n        </div>\n        <footer >\n            <style>\n   @media screen and (max-width: 767px) {\n      .copyright-text a {\n         color: inherit !important;\n      }\n   }\n\n.redshield {\n    display: inline-block;\n    margin: 0 0 -3px 3px;\n    width: 18px;\n    height: 18px;\n    background: center no-repeat url(https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/gssw-icon-x2_db0a7f6.png);\n    background-size: contain;\n}\n</style>\n            <div id=\"vivo-foot-wrap\">\n                <div id=\"gb-vivo-foot\">\n                    <div class=\"gb-foot-directory\">\n                        <ul class=\"directory-list\">\n                            <li data-open=\"false\">\n                                <dd class=\"f-d-title\">热门链接\n                                    <b></b>\n                                </dd>\n                                <dd class=\"t-d-title\">\n                                    <a href=\"https://www.vivo.com.cn/vivo/x23/\" burying=\"cfrom=1110&name=X23\">X23</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://www.vivo.com.cn/products-x.html\" burying=\"cfrom=1110&name=X系列\">X系列</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://www.vivo.com.cn/products-xplay.html\" burying=\"cfrom=1110&name=Xplay系列\">Xplay系列</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"http://gallery.vivo.com.cn/\" burying=\"cfrom=1110&name=vivo摄影\">vivo摄影</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"http://findphone.vivo.com\" burying=\"cfrom=1110&name=查找手机\">查找手机</a>\n                                </dd>\n                                <dd class=\"l-d-title\">\n                                    <a href=\"https://www.vivo.com.cn/service/questions/all\" burying=\"cfrom=1110&name=常见问题\">常见问题</a>\n                                </dd>\n                            </li>\n                            <li data-open=\"false\">\n                                <dd class=\"f-d-title\">在线购买\n                                    <b></b>\n                                </dd>\n                                <dd class=\"t-d-title\">\n                                    <a href=\"https://shop.vivo.com.cn/\" burying=\"cfrom=1111&name=官方商城\">官方商城</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://shop.vivo.com.cn/product/phone\" burying=\"cfrom=1111&name=选购手机\">选购手机</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://shop.vivo.com.cn/product/parts\" burying=\"cfrom=1111&name=选购配件\">选购配件</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://shop.vivo.com.cn/product/brokenScreen\" burying=\"cfrom=1111&name=选购碎屏宝\">选购碎屏宝</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://shopact.vivo.com.cn/page/recycle\" burying=\"cfrom=1111&name=以旧换新\">以旧换新</a>\n                                </dd>\n                                <dd class=\"l-d-title\">\n                                    <a href=\"https://shop.vivo.com.cn/sp/xservice\" burying=\"cfrom=1111&name=服务保障\">服务保障</a>\n                                </dd>\n                            </li>\n                            <li data-open=\"false\">\n                                <dd class=\"f-d-title\">服务支持\n                                    <b></b>\n                                </dd>\n                                <dd class=\"t-d-title\">\n                                    <a href=\"https://www.vivo.com.cn/service.html\" burying=\"cfrom=1112&name=服务首页\">服务首页</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://www.vivo.com.cn/service/map.html\" burying=\"cfrom=1112&name=服务网点查询\">服务网点查询</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"//www.vivo.com.cn/service/authenticityCheck/index\" burying=\"cfrom=1112&name=真伪查询\">真伪查询</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://www.vivo.com.cn/service/policy/1\" burying=\"cfrom=1112&name=服务政策\">服务政策</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://www.vivo.com.cn/service/appointment\" burying=\"cfrom=1112&name=预约维修\">预约维修</a>\n                                </dd>\n                                <dd class=\"l-d-title\">\n                                    <a href=\"http://www.vivo.com.cn/service/accessory\" target=\"_blank\" burying=\"cfrom=1112&name=维修配件价格\">维修配件价格</a>\n                                </dd>\n                            </li>\n                            <li data-open=\"false\">\n                                <dd class=\"f-d-title\">vivo社区\n                                    <b></b>\n                                </dd>\n                                <dd class=\"t-d-title\">\n                                    <a href=\"https://bbs.vivo.com.cn/index.php\" burying=\"cfrom=1113&name=社区首页\">社区首页</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://bbs.vivo.com.cn/vpai.php\" burying=\"cfrom=1113&name=摄影专区\">摄影专区</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://weibo.com/vivomobile\" target=\"_blank\" burying=\"cfrom=1113&name=微博\">微博</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://tieba.baidu.com/f?kw=vivo\" target=\"_blank\" burying=\"cfrom=1113&name=贴吧\">贴吧</a>\n                                </dd>\n                                <dd class=\"l-d-title\">\n                                    <a href=\"https://buluo.qq.com/p/barindex.html?bid=212058\" target=\"_blank\" burying=\"cfrom=1113&name=兴趣部落\">兴趣部落</a>\n                                </dd>\n                            </li>\n                            <li data-open=\"false\">\n                                <dd class=\"f-d-title\">关于vivo\n                                    <b></b>\n                                </dd>\n                                <dd class=\"t-d-title\">\n                                    <a href=\"https://www.vivo.com/about\" burying=\"cfrom=1114&name=vivo简介\">vivo简介</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://hr.vivo.com/\" burying=\"cfrom=1114&name=工作机会\">工作机会</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://www.vivo.com.cn/brand/news/list\" burying=\"cfrom=1114&name=新闻资讯\">新闻资讯</a>\n                                </dd>\n                                <dd>\n                                    <a href=\"https://supply.vivo.com.cn/\" target=\"_blank\" burying=\"cfrom=1114&name=采购平台\">采购平台</a>\n                                </dd>\n                                <dd class=\"l-d-title\">\n                                    <a href=\"https://dev.vivo.com.cn/\" target=\"_blank\" burying=\"cfrom=1114&name=开发者平台\">开发者平台</a>\n                                </dd>\n                            </li>\n                        </ul>\n                        <ul class=\"directory-phone\">\n                            <li>\n                                <dd class=\"online\">\n                                    <b></b>\n                                    <a href=\"http://kefu.vivo.com.cn/robot-vivo/pcChat.html\" target=\"_blank\" target=\"_blank\" burying=\"cfrom=1115&name=在线客服\">在线客服</a>\n                                </dd>\n                                <dd class=\"phone-num\">400-678-9688</dd>\n                                <dd>\n                                    <span>\n                                        <a href=\"tel:400-678-9688\">400-678-9688</a>\n                                    </span>24小时全国服务热线\n                                </dd>\n                            </li>\n                        </ul>\n                    </div>\n                    <div class=\"gb-foot-copyright\">\n                        <ul class=\"other\">\n                            <li class=\"other-link follow_btn v_follow_btn notFollow-1\">\n                                <a class=\"other-text\">\n                                    <b></b>关注vivo\n                                </a>\n                                <div id=\"follow-mask\"></div>\n                                <ul class=\"vivo-f-toast follow-list\">\n                                    <li class=\"sina-follow\">\n                                        <a href=\"http://weibo.com/vivomobile\" target=\"_blank\" burying=\"cfrom=1116&name=关注vivo&position=1\">\n                                            <b></b>\n                                            <span>微博</span>\n                                        </a>\n                                    </li>\n                                    <li class=\"wechat-follow\">\n                                        <a href=\"javascript:void (0)\" burying=\"cfrom=1116&name=关注vivo&position=2\">\n                                            <b></b>\n                                            <span>微信</span>\n                                        </a>\n                                    </li>\n                                    <li class=\"ali-follow\">\n                                        <a href=\"javascript:void (0)\" burying=\"cfrom=1116&name=关注vivo&position=3\">\n                                            <b></b>\n                                            <span>支付宝</span>\n                                        </a>\n                                    </li>\n                                </ul>\n                                <i class=\"vivo-f-triangle\"></i>\n                                <div class=\"vivo-follow-toast\">\n                                    <div class=\"qr-box\">\n                                        <img class=\"wechat-qr\"data-x2=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-wechat-x2_a996450.jpg\"src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-wechat_b1e2888.jpg\">\n                                        <img class=\"ali-qr\"data-x2=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-ali-x2_4fb4a1f.jpg\"src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-ali_6f99f2c.jpg\">\n                        \n                                    </div>\n                                    <p class=\"wechat-text\">公众号：vivo智能手机</p>\n                                    <p class=\"ali-text\">生活号：vivo智能手机</p>\n                                </div>\n                            </li>\n                            <li class=\"other-link global lang_btn notFollow-2\">\n                                <a target=\"_blank\" href=\"http://www.vivo.com/intPortal/index\" class=\"other-text international-link\">\n                                    <b></b>中国\n                                </a>\n                                <div id=\"lang-mask\"></div>\n                                <i class=\"vivo-f-triangle\"></i>\n                            </li>\n                        </ul>\n                        <span class=\"copyright-text\" id=\"J-vivoportal-copyright\">Copyright ©2011-2018 广东步步高电子工业有限公司 版权所有 保留一切权利 | \n                            <a href=\"https://www.vivo.com.cn/about-vivo/privacy-policy\" target=\"_blank\">隐私政策</a> |\n                            <a href=\"https://www.vivo.com.cn/about-vivo/legal\" target=\"_blank\">法律声明</a> |\n                            <a href='http://www.miitbeian.gov.cn' target='_blank'>粤B2-20080267 | 粤ICP备05100288号</a>\n                            <a class='redshield' href=\"http://wljg.gdgs.gov.cn/corpsrch.aspx?key=441900000425711\" target=\"_blank\" title='企业名称：广东步步高电子工业有限公司\n法定代表人：甄志强\n标识状态：已激活 粤工商备P191704002445'></a>\n                        </span>\n                    </div>\n                </div>\n                <div id=\"vivo-m-toast\">\n                    <div class=\"back-cover\">\n                        <b class=\"closeIcon\"></b>\n                        <div class=\"QRContainer\">\n                            <p class=\"wechat-title titleP\">公众号：vivo智能手机</p>\n                            <p class=\"ali-title titleP\">生活号：vivo智能手机</p>\n                            <p class=\"wechat-img imgP\">\n                                <img data-x2=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-wechat-x2_a996450.jpg\" src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-wechat_b1e2888.jpg\"alt=\"\">\n                            </p>\n                            <p class=\"ali-img imgP\">\n                                <img data-x2=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-ali-x2_4fb4a1f.jpg\" src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-ali_6f99f2c.jpg\"alt=\"\">\n                            </p>\n                            <p class=\"wechat-title downloadP\">\n                                <a href=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-wechat-x2_a996450.jpg\" download=\"vivo_wechat\" >保存二维码</a>\n                            </p>\n                            <p class=\"ali-title downloadP\">\n                                <a href=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/images/vivo-follow-ali-x2_4fb4a1f.jpg\" download=\"ali\" >保存二维码</a>\n                            </p>\n                            <hr>\n                            <p class=\"wechat-title infomationP\">保存后可在微信扫码关注</p>\n                            <p class=\"ali-title infomationP\">保存后可在支付宝扫码关注</p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <script>\nif (location.href.replace(/^https?:\\/\\/([^\\/\\?#]+).*$/,'$1').indexOf('.vivo.com.cn')===-1) {\n  if(location.href.replace(/^https?:\\/\\/([^\\/\\?#]+).*$/,'$1').indexOf('.funtouchos.com') > 0){\n    document.getElementById(\"J-vivoportal-copyright\").innerHTML = \"Copyright ©2011-2018 维沃移动通信有限公司 版权所有 保留一切权利 | \n                <a href='https://www.vivo.com.cn/about-vivo/privacy-policy' target='_blank'>隐私政策</a> |\n                <a href='/about-vivo/legal' target='_blank'>法律声明</a> |\n                <a href='http://www.miitbeian.gov.cn/publish/query/indexFirst.action' target='_blank'>粤B2-20080267 | 粤ICP备17035209号-1</a>\n                <a class='redshield' href='http://wljg.gdgs.gov.cn/corpsrch.aspx?key=441900000820845' target='_blank' title='企业名称：维沃移动通信有限公司\\n法定代表人：施玉坚\\n标识状态：已激活 粤工商备P191803004785'></a>\";\n  }else{\n    document.getElementById(\"J-vivoportal-copyright\").innerHTML = \"Copyright ©2011-2018 维沃移动通信有限公司 版权所有 保留一切权利 |\n                <a href='https://www.vivo.com.cn/about-vivo/privacy-policy' target='_blank'>隐私政策</a> |\n                <a href='/about-vivo/legal' target='_blank'>法律声明</a> |\n                <a href='http://www.miitbeian.gov.cn/publish/query/indexFirst.action' target='_blank'>粤B2-20080267 | 粤ICP备17035209号-2</a>\n                <a class='redshield' href='http://wljg.gdgs.gov.cn/corpsrch.aspx?key=441900000820845' target='_blank' title='企业名称：维沃移动通信有限公司\\n法定代表人：施玉坚\\n标识状态：已激活 粤工商备P191803004785'></a>\";\n    var list = document.getElementsByTagName('a');\n    var list = document.getElementsByTagName('a');\n    for (var i = 0; i< list.length; i++) {\n        if (!(list[i].getAttribute('J-skip-replace') == '1') && list[i].href != '') {\n            list[i].href = list[i].href.replace('www.vivo.com.cn', 'www.vivo.com');\n        }\n    }\n  }\n}\n\n            </script>\n        </footer>\n        <script>\n    var vivoportalWebUrl = \"//www.vivo.com.cn/\";\n    var webCtx = \"\";\n    var imgHost = \"https://wwwstatic.vivo.com.cn/vivoportal/files/image/\";\n    //尽量避免全局变量给项目带来风险。建议所有需要被定义的全局变量都定义为gloablVAR对象的成员\n    var gloablVAR = {\n        //标记当前页面的标识，部分页面埋点需要上报页面标识\n        pageTAG: 0,\n        buryingBridge: null\n    };\n    var searchUrlConfig = {\n        getKeyWords: '/search/ajax/recWords', /** 获取关键词 */\n        getAssciate: '/search/ajax/assResult', /** 获取联想结果 */\n        globalSearch: '/search' /** 全局搜索的路由 */\n    };\n</script>\n        <script src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/script/lib_3838c4f.js\"></script>\n        <script>\n    setTimeout(function () {\n        document.documentElement.classList.remove('cookies');\n    }, 0);\n</script>\n        <script src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/js/common/buryingPoint_4858175.js\"></script>\n        <script src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/js/common/lazyloade_5556526.js\"></script>\n        <script>\n    officialWebFun.lazyloadImg(jQuery);\n</script>\n        <script src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/script/header_ab62252.js\"></script>\n        <script src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/script/header_extend_7bc9124.js\"></script>\n        <script src=\"https://wwwstatic.vivo.com.cn/vivoportal/web/dist/common_umix/script/footer_3c1174e.js\"></script>\n        <script>\n    var IMAGE_HOST = \"https://wwwstatic.vivo.com.cn/vivoportal/files/resource/home/1543409304720/\";\n    gloablVAR.pageTAG=1;\n\n    //埋点\n    $('footer .directory-phone dd:first-child a').attr('data-track', '{\"type\":\"click\",\"params\":{\"version\":\"1.2.0\",\"pageview\":\"官网首页\",\"cfrom\":\"1118\",\"name\":\"服务热线\"}}');\n    $('footer .international-link').attr('data-track','{\"type\":\"click\",\"params\":{\"version\":\"1.3.0\",\"pageview\":\"官网首页\",\"cfrom\":\"1119\"}}');\n</script>\n        <script src=\"https://wwwstatic.vivo.com.cn/vivoportal/files/resource//home/1543409304720/script/index.js\"></script>\n        <script>\n    var _hmt = _hmt || [];\n    (function () {\n        var hm = document.createElement(\"script\");\n        var siteCode = navigator.userAgent.match(/(VivoSpace|Android|ios|iPhone|iPod)/i) ? \"010739a46d3290bbc78e3b23bfd7b5af\" : \"9ef7debb81babe8b94af7f2c274869fd\";\n        hm.src = \"//hm.baidu.com/hm.js?\" + siteCode;\n        hm.async = true;\n        var s = document.getElementsByTagName(\"script\")[0];\n        s.parentNode.insertBefore(hm, s);\n    })();\n\n    (function () {\n        var cid = $$.getQueryString('cid');\n        if (cid) {\n            $$.setCookie({\n                name: 'externalCID',\n                value: cid,\n                domain: '.vivo.com.cn'\n            })\n        }\n    })();\n</script>\n    </body>\n</html>"
+								}
+							]
+						},
+						{
+							"name": "get share info Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "encodedEid",
+											"value": "eV8qeASsE+o1omr7gAphjwvIoOups1YrybHfelisA6e8pl3lRYqczi0ZBLWRDTu+",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{exercise}}/getExerciseShareInfo",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getExerciseShareInfo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{name}}/exercise/common/get",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "encodedEid",
+											"value": "UEmzvOqG+U4DtlCIlgCNgiTsNwrZTs3kL/S9qCirRW4=",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{name}}/exercise/common/get",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"exercise",
+										"common",
+										"get"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "leader board",
+					"item": [
+						{
+							"name": "create Leader Board",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/createLeaderBoard?specOpenId=1a71a00e2d68b334&specRank=1&districtCode=130109&date=2018-11-25&userNum=101",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"createLeaderBoard"
+									],
+									"query": [
+										{
+											"key": "specOpenId",
+											"value": "1a71a00e2d68b334"
+										},
+										{
+											"key": "specRank",
+											"value": "1"
+										},
+										{
+											"key": "districtCode",
+											"value": "130109"
+										},
+										{
+											"key": "date",
+											"value": "2018-11-25"
+										},
+										{
+											"key": "userNum",
+											"value": "101"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get leader board",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{exercise}}/getDayLeaderBoard?districtCode=110000&date=2019-06-13&openId=a1b1ed8952ce4a8b&token=ignore&debug=1",
+									"protocol": "http",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getDayLeaderBoard"
+									],
+									"query": [
+										{
+											"key": "districtCode",
+											"value": "110000",
+											"description": "320114,[生产1\n]"
+										},
+										{
+											"key": "date",
+											"value": "2019-06-13"
+										},
+										{
+											"key": "openId",
+											"value": "a1b1ed8952ce4a8b",
+											"description": "00ce814a0d7b3b41,[生产1]，\na89d8a0ce53ba9f0,11e337bfe728d9ed,eca3edcddfa7a734"
+										},
+										{
+											"key": "token",
+											"value": "ignore",
+											"description": "tokeninnerignore"
+										},
+										{
+											"key": "debug",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "from pre",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{exercise}}/getDayLeaderBoard?districtCode=320114&date=2018-11-30&openId=1a71a00e2d68b334&token=sys_MTk0ZDZkYzBkZTQ2OWZmMDA1NjkuOTAwMDAxMjUyLjE1NDM0NTg4OTUwMDc",
+											"host": [
+												"{{exercise}}"
+											],
+											"path": [
+												"getDayLeaderBoard"
+											],
+											"query": [
+												{
+													"key": "districtCode",
+													"value": "320114"
+												},
+												{
+													"key": "date",
+													"value": "2018-11-30"
+												},
+												{
+													"key": "openId",
+													"value": "1a71a00e2d68b334"
+												},
+												{
+													"key": "token",
+													"value": "sys_MTk0ZDZkYzBkZTQ2OWZmMDA1NjkuOTAwMDAxMjUyLjE1NDM0NTg4OTUwMDc"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 29 Nov 2018 08:16:01 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "v_server",
+											"value": "10.30.63.240:8080"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"retcode\": 0,\n    \"data\": {\n        \"adDesc\": \"广东省深圳市南山区\",\n        \"user\": {\n            \"userId\": \"1a71a00e2d68b334\",\n            \"nickname\": \"郭涛预上线\",\n            \"rank\": 1,\n            \"avatarURL\": \"https://shequwsdl.vivo.com.cn/shequ/shequ/20181129/d8ee404ce8aa4a2fbb91049f8bc654b2.jpg\",\n            \"biggerAvatar\": \"https://shequwsdl.vivo.com.cn/shequ/shequ/20181129/06f3a0b910954591a57bbc26db7d1690.jpg\",\n            \"stepNum\": 29947,\n            \"likeNum\": 1000\n        },\n        \"top\": [\n            {\n                \"userId\": \"1a71a00e2d68b334\",\n                \"nickname\": \"郭涛预上线\",\n                \"rank\": 1,\n                \"avatarURL\": \"https://shequwsdl.vivo.com.cn/shequ/shequ/20181129/d8ee404ce8aa4a2fbb91049f8bc654b2.jpg\",\n                \"biggerAvatar\": \"https://shequwsdl.vivo.com.cn/shequ/shequ/20181129/06f3a0b910954591a57bbc26db7d1690.jpg\",\n                \"stepNum\": 29947,\n                \"likeNum\": 1000\n            },\n            {\n                \"userId\": \"openId1\",\n                \"nickname\": \"nickName1\",\n                \"rank\": 2,\n                \"stepNum\": 29886,\n                \"likeNum\": 999\n            },\n            {\n                \"userId\": \"openId2\",\n                \"nickname\": \"nickName2\",\n                \"rank\": 3,\n                \"stepNum\": 29865,\n                \"likeNum\": 998\n            },\n            {\n                \"userId\": \"openId3\",\n                \"nickname\": \"nickName3\",\n                \"rank\": 4,\n                \"stepNum\": 29833,\n                \"likeNum\": 997\n            },\n            {\n                \"userId\": \"openId4\",\n                \"nickname\": \"nickName4\",\n                \"rank\": 5,\n                \"stepNum\": 29748,\n                \"likeNum\": 996\n            },\n            {\n                \"userId\": \"openId5\",\n                \"nickname\": \"nickName5\",\n                \"rank\": 6,\n                \"stepNum\": 29735,\n                \"likeNum\": 995\n            },\n            {\n                \"userId\": \"openId6\",\n                \"nickname\": \"nickName6\",\n                \"rank\": 7,\n                \"stepNum\": 29689,\n                \"likeNum\": 994\n            },\n            {\n                \"userId\": \"openId7\",\n                \"nickname\": \"nickName7\",\n                \"rank\": 8,\n                \"stepNum\": 29674,\n                \"likeNum\": 993\n            },\n            {\n                \"userId\": \"openId8\",\n                \"nickname\": \"nickName8\",\n                \"rank\": 9,\n                \"stepNum\": 29648,\n                \"likeNum\": 992\n            },\n            {\n                \"userId\": \"openId9\",\n                \"nickname\": \"nickName9\",\n                \"rank\": 10,\n                \"stepNum\": 29595,\n                \"likeNum\": 991\n            },\n            {\n                \"userId\": \"openId10\",\n                \"nickname\": \"nickName10\",\n                \"rank\": 11,\n                \"stepNum\": 29565,\n                \"likeNum\": 990\n            },\n            {\n                \"userId\": \"openId11\",\n                \"nickname\": \"nickName11\",\n                \"rank\": 12,\n                \"stepNum\": 29515,\n                \"likeNum\": 989\n            },\n            {\n                \"userId\": \"openId12\",\n                \"nickname\": \"nickName12\",\n                \"rank\": 13,\n                \"stepNum\": 29480,\n                \"likeNum\": 988\n            },\n            {\n                \"userId\": \"openId13\",\n                \"nickname\": \"nickName13\",\n                \"rank\": 14,\n                \"stepNum\": 29385,\n                \"likeNum\": 987\n            },\n            {\n                \"userId\": \"openId14\",\n                \"nickname\": \"nickName14\",\n                \"rank\": 15,\n                \"stepNum\": 29346,\n                \"likeNum\": 986\n            },\n            {\n                \"userId\": \"openId15\",\n                \"nickname\": \"nickName15\",\n                \"rank\": 16,\n                \"stepNum\": 29311,\n                \"likeNum\": 985\n            },\n            {\n                \"userId\": \"openId16\",\n                \"nickname\": \"nickName16\",\n                \"rank\": 17,\n                \"stepNum\": 29273,\n                \"likeNum\": 984\n            },\n            {\n                \"userId\": \"openId17\",\n                \"nickname\": \"nickName17\",\n                \"rank\": 18,\n                \"stepNum\": 29235,\n                \"likeNum\": 983\n            },\n            {\n                \"userId\": \"openId18\",\n                \"nickname\": \"nickName18\",\n                \"rank\": 19,\n                \"stepNum\": 29214,\n                \"likeNum\": 982\n            },\n            {\n                \"userId\": \"openId19\",\n                \"nickname\": \"nickName19\",\n                \"rank\": 20,\n                \"stepNum\": 29196,\n                \"likeNum\": 981\n            },\n            {\n                \"userId\": \"openId20\",\n                \"nickname\": \"nickName20\",\n                \"rank\": 21,\n                \"stepNum\": 29139,\n                \"likeNum\": 980\n            },\n            {\n                \"userId\": \"openId21\",\n                \"nickname\": \"nickName21\",\n                \"rank\": 22,\n                \"stepNum\": 29106,\n                \"likeNum\": 979\n            },\n            {\n                \"userId\": \"openId22\",\n                \"nickname\": \"nickName22\",\n                \"rank\": 23,\n                \"stepNum\": 29017,\n                \"likeNum\": 978\n            },\n            {\n                \"userId\": \"openId23\",\n                \"nickname\": \"nickName23\",\n                \"rank\": 24,\n                \"stepNum\": 28971,\n                \"likeNum\": 977\n            },\n            {\n                \"userId\": \"openId24\",\n                \"nickname\": \"nickName24\",\n                \"rank\": 25,\n                \"stepNum\": 28970,\n                \"likeNum\": 976\n            },\n            {\n                \"userId\": \"openId25\",\n                \"nickname\": \"nickName25\",\n                \"rank\": 26,\n                \"stepNum\": 28894,\n                \"likeNum\": 975\n            },\n            {\n                \"userId\": \"openId26\",\n                \"nickname\": \"nickName26\",\n                \"rank\": 27,\n                \"stepNum\": 28816,\n                \"likeNum\": 974\n            },\n            {\n                \"userId\": \"openId27\",\n                \"nickname\": \"nickName27\",\n                \"rank\": 28,\n                \"stepNum\": 28788,\n                \"likeNum\": 973\n            },\n            {\n                \"userId\": \"openId28\",\n                \"nickname\": \"nickName28\",\n                \"rank\": 29,\n                \"stepNum\": 28699,\n                \"likeNum\": 972\n            },\n            {\n                \"userId\": \"openId29\",\n                \"nickname\": \"nickName29\",\n                \"rank\": 30,\n                \"stepNum\": 28677,\n                \"likeNum\": 971\n            },\n            {\n                \"userId\": \"openId30\",\n                \"nickname\": \"nickName30\",\n                \"rank\": 31,\n                \"stepNum\": 28650,\n                \"likeNum\": 970\n            },\n            {\n                \"userId\": \"openId31\",\n                \"nickname\": \"nickName31\",\n                \"rank\": 32,\n                \"stepNum\": 28640,\n                \"likeNum\": 969\n            },\n            {\n                \"userId\": \"openId32\",\n                \"nickname\": \"nickName32\",\n                \"rank\": 33,\n                \"stepNum\": 28603,\n                \"likeNum\": 968\n            },\n            {\n                \"userId\": \"openId33\",\n                \"nickname\": \"nickName33\",\n                \"rank\": 34,\n                \"stepNum\": 28548,\n                \"likeNum\": 967\n            },\n            {\n                \"userId\": \"openId34\",\n                \"nickname\": \"nickName34\",\n                \"rank\": 35,\n                \"stepNum\": 28505,\n                \"likeNum\": 966\n            },\n            {\n                \"userId\": \"openId35\",\n                \"nickname\": \"nickName35\",\n                \"rank\": 36,\n                \"stepNum\": 28411,\n                \"likeNum\": 965\n            },\n            {\n                \"userId\": \"openId36\",\n                \"nickname\": \"nickName36\",\n                \"rank\": 37,\n                \"stepNum\": 28360,\n                \"likeNum\": 964\n            },\n            {\n                \"userId\": \"openId37\",\n                \"nickname\": \"nickName37\",\n                \"rank\": 38,\n                \"stepNum\": 28325,\n                \"likeNum\": 963\n            },\n            {\n                \"userId\": \"openId38\",\n                \"nickname\": \"nickName38\",\n                \"rank\": 39,\n                \"stepNum\": 28317,\n                \"likeNum\": 962\n            },\n            {\n                \"userId\": \"openId39\",\n                \"nickname\": \"nickName39\",\n                \"rank\": 40,\n                \"stepNum\": 28228,\n                \"likeNum\": 961\n            },\n            {\n                \"userId\": \"openId40\",\n                \"nickname\": \"nickName40\",\n                \"rank\": 41,\n                \"stepNum\": 28182,\n                \"likeNum\": 960\n            },\n            {\n                \"userId\": \"openId41\",\n                \"nickname\": \"nickName41\",\n                \"rank\": 42,\n                \"stepNum\": 28133,\n                \"likeNum\": 959\n            },\n            {\n                \"userId\": \"openId42\",\n                \"nickname\": \"nickName42\",\n                \"rank\": 43,\n                \"stepNum\": 28037,\n                \"likeNum\": 958\n            },\n            {\n                \"userId\": \"openId43\",\n                \"nickname\": \"nickName43\",\n                \"rank\": 44,\n                \"stepNum\": 27966,\n                \"likeNum\": 957\n            },\n            {\n                \"userId\": \"openId44\",\n                \"nickname\": \"nickName44\",\n                \"rank\": 45,\n                \"stepNum\": 27953,\n                \"likeNum\": 956\n            },\n            {\n                \"userId\": \"openId45\",\n                \"nickname\": \"nickName45\",\n                \"rank\": 46,\n                \"stepNum\": 27928,\n                \"likeNum\": 955\n            },\n            {\n                \"userId\": \"openId46\",\n                \"nickname\": \"nickName46\",\n                \"rank\": 47,\n                \"stepNum\": 27852,\n                \"likeNum\": 954\n            },\n            {\n                \"userId\": \"openId47\",\n                \"nickname\": \"nickName47\",\n                \"rank\": 48,\n                \"stepNum\": 27825,\n                \"likeNum\": 953\n            },\n            {\n                \"userId\": \"openId48\",\n                \"nickname\": \"nickName48\",\n                \"rank\": 49,\n                \"stepNum\": 27776,\n                \"likeNum\": 952\n            },\n            {\n                \"userId\": \"openId49\",\n                \"nickname\": \"nickName49\",\n                \"rank\": 50,\n                \"stepNum\": 27738,\n                \"likeNum\": 951\n            },\n            {\n                \"userId\": \"openId50\",\n                \"nickname\": \"nickName50\",\n                \"rank\": 51,\n                \"stepNum\": 27665,\n                \"likeNum\": 950\n            },\n            {\n                \"userId\": \"openId51\",\n                \"nickname\": \"nickName51\",\n                \"rank\": 52,\n                \"stepNum\": 27639,\n                \"likeNum\": 949\n            },\n            {\n                \"userId\": \"openId52\",\n                \"nickname\": \"nickName52\",\n                \"rank\": 53,\n                \"stepNum\": 27579,\n                \"likeNum\": 948\n            },\n            {\n                \"userId\": \"openId53\",\n                \"nickname\": \"nickName53\",\n                \"rank\": 54,\n                \"stepNum\": 27543,\n                \"likeNum\": 947\n            },\n            {\n                \"userId\": \"openId54\",\n                \"nickname\": \"nickName54\",\n                \"rank\": 55,\n                \"stepNum\": 27538,\n                \"likeNum\": 946\n            },\n            {\n                \"userId\": \"openId55\",\n                \"nickname\": \"nickName55\",\n                \"rank\": 56,\n                \"stepNum\": 27451,\n                \"likeNum\": 945\n            },\n            {\n                \"userId\": \"openId56\",\n                \"nickname\": \"nickName56\",\n                \"rank\": 57,\n                \"stepNum\": 27365,\n                \"likeNum\": 944\n            },\n            {\n                \"userId\": \"openId57\",\n                \"nickname\": \"nickName57\",\n                \"rank\": 58,\n                \"stepNum\": 27362,\n                \"likeNum\": 943\n            },\n            {\n                \"userId\": \"openId58\",\n                \"nickname\": \"nickName58\",\n                \"rank\": 59,\n                \"stepNum\": 27353,\n                \"likeNum\": 942\n            },\n            {\n                \"userId\": \"openId59\",\n                \"nickname\": \"nickName59\",\n                \"rank\": 60,\n                \"stepNum\": 27293,\n                \"likeNum\": 941\n            },\n            {\n                \"userId\": \"openId60\",\n                \"nickname\": \"nickName60\",\n                \"rank\": 61,\n                \"stepNum\": 27261,\n                \"likeNum\": 940\n            },\n            {\n                \"userId\": \"openId61\",\n                \"nickname\": \"nickName61\",\n                \"rank\": 62,\n                \"stepNum\": 27186,\n                \"likeNum\": 939\n            },\n            {\n                \"userId\": \"openId62\",\n                \"nickname\": \"nickName62\",\n                \"rank\": 63,\n                \"stepNum\": 27103,\n                \"likeNum\": 938\n            },\n            {\n                \"userId\": \"openId63\",\n                \"nickname\": \"nickName63\",\n                \"rank\": 64,\n                \"stepNum\": 27077,\n                \"likeNum\": 937\n            },\n            {\n                \"userId\": \"openId64\",\n                \"nickname\": \"nickName64\",\n                \"rank\": 65,\n                \"stepNum\": 26982,\n                \"likeNum\": 936\n            },\n            {\n                \"userId\": \"openId65\",\n                \"nickname\": \"nickName65\",\n                \"rank\": 66,\n                \"stepNum\": 26926,\n                \"likeNum\": 935\n            },\n            {\n                \"userId\": \"openId66\",\n                \"nickname\": \"nickName66\",\n                \"rank\": 67,\n                \"stepNum\": 26891,\n                \"likeNum\": 934\n            },\n            {\n                \"userId\": \"openId67\",\n                \"nickname\": \"nickName67\",\n                \"rank\": 68,\n                \"stepNum\": 26813,\n                \"likeNum\": 933\n            },\n            {\n                \"userId\": \"openId68\",\n                \"nickname\": \"nickName68\",\n                \"rank\": 69,\n                \"stepNum\": 26723,\n                \"likeNum\": 932\n            },\n            {\n                \"userId\": \"openId69\",\n                \"nickname\": \"nickName69\",\n                \"rank\": 70,\n                \"stepNum\": 26721,\n                \"likeNum\": 931\n            },\n            {\n                \"userId\": \"openId70\",\n                \"nickname\": \"nickName70\",\n                \"rank\": 71,\n                \"stepNum\": 26721,\n                \"likeNum\": 930\n            },\n            {\n                \"userId\": \"openId71\",\n                \"nickname\": \"nickName71\",\n                \"rank\": 72,\n                \"stepNum\": 26672,\n                \"likeNum\": 929\n            },\n            {\n                \"userId\": \"openId72\",\n                \"nickname\": \"nickName72\",\n                \"rank\": 73,\n                \"stepNum\": 26581,\n                \"likeNum\": 928\n            },\n            {\n                \"userId\": \"openId73\",\n                \"nickname\": \"nickName73\",\n                \"rank\": 74,\n                \"stepNum\": 26489,\n                \"likeNum\": 927\n            },\n            {\n                \"userId\": \"openId74\",\n                \"nickname\": \"nickName74\",\n                \"rank\": 75,\n                \"stepNum\": 26421,\n                \"likeNum\": 926\n            },\n            {\n                \"userId\": \"openId75\",\n                \"nickname\": \"nickName75\",\n                \"rank\": 76,\n                \"stepNum\": 26377,\n                \"likeNum\": 925\n            },\n            {\n                \"userId\": \"openId76\",\n                \"nickname\": \"nickName76\",\n                \"rank\": 77,\n                \"stepNum\": 26342,\n                \"likeNum\": 924\n            },\n            {\n                \"userId\": \"openId77\",\n                \"nickname\": \"nickName77\",\n                \"rank\": 78,\n                \"stepNum\": 26310,\n                \"likeNum\": 923\n            },\n            {\n                \"userId\": \"openId78\",\n                \"nickname\": \"nickName78\",\n                \"rank\": 79,\n                \"stepNum\": 26231,\n                \"likeNum\": 922\n            },\n            {\n                \"userId\": \"openId79\",\n                \"nickname\": \"nickName79\",\n                \"rank\": 80,\n                \"stepNum\": 26169,\n                \"likeNum\": 921\n            },\n            {\n                \"userId\": \"openId80\",\n                \"nickname\": \"nickName80\",\n                \"rank\": 81,\n                \"stepNum\": 26139,\n                \"likeNum\": 920\n            },\n            {\n                \"userId\": \"openId81\",\n                \"nickname\": \"nickName81\",\n                \"rank\": 82,\n                \"stepNum\": 26088,\n                \"likeNum\": 919\n            },\n            {\n                \"userId\": \"openId82\",\n                \"nickname\": \"nickName82\",\n                \"rank\": 83,\n                \"stepNum\": 26033,\n                \"likeNum\": 918\n            },\n            {\n                \"userId\": \"openId83\",\n                \"nickname\": \"nickName83\",\n                \"rank\": 84,\n                \"stepNum\": 25940,\n                \"likeNum\": 917\n            },\n            {\n                \"userId\": \"openId84\",\n                \"nickname\": \"nickName84\",\n                \"rank\": 85,\n                \"stepNum\": 25861,\n                \"likeNum\": 916\n            },\n            {\n                \"userId\": \"openId85\",\n                \"nickname\": \"nickName85\",\n                \"rank\": 86,\n                \"stepNum\": 25793,\n                \"likeNum\": 915\n            },\n            {\n                \"userId\": \"openId86\",\n                \"nickname\": \"nickName86\",\n                \"rank\": 87,\n                \"stepNum\": 25752,\n                \"likeNum\": 914\n            },\n            {\n                \"userId\": \"openId87\",\n                \"nickname\": \"nickName87\",\n                \"rank\": 88,\n                \"stepNum\": 25727,\n                \"likeNum\": 913\n            },\n            {\n                \"userId\": \"openId88\",\n                \"nickname\": \"nickName88\",\n                \"rank\": 89,\n                \"stepNum\": 25705,\n                \"likeNum\": 912\n            },\n            {\n                \"userId\": \"openId89\",\n                \"nickname\": \"nickName89\",\n                \"rank\": 90,\n                \"stepNum\": 25678,\n                \"likeNum\": 911\n            },\n            {\n                \"userId\": \"openId90\",\n                \"nickname\": \"nickName90\",\n                \"rank\": 91,\n                \"stepNum\": 25595,\n                \"likeNum\": 910\n            },\n            {\n                \"userId\": \"openId91\",\n                \"nickname\": \"nickName91\",\n                \"rank\": 92,\n                \"stepNum\": 25530,\n                \"likeNum\": 909\n            },\n            {\n                \"userId\": \"openId92\",\n                \"nickname\": \"nickName92\",\n                \"rank\": 93,\n                \"stepNum\": 25488,\n                \"likeNum\": 908\n            },\n            {\n                \"userId\": \"openId93\",\n                \"nickname\": \"nickName93\",\n                \"rank\": 94,\n                \"stepNum\": 25482,\n                \"likeNum\": 907\n            },\n            {\n                \"userId\": \"openId94\",\n                \"nickname\": \"nickName94\",\n                \"rank\": 95,\n                \"stepNum\": 25473,\n                \"likeNum\": 906\n            },\n            {\n                \"userId\": \"openId95\",\n                \"nickname\": \"nickName95\",\n                \"rank\": 96,\n                \"stepNum\": 25394,\n                \"likeNum\": 905\n            },\n            {\n                \"userId\": \"openId96\",\n                \"nickname\": \"nickName96\",\n                \"rank\": 97,\n                \"stepNum\": 25363,\n                \"likeNum\": 904\n            },\n            {\n                \"userId\": \"openId97\",\n                \"nickname\": \"nickName97\",\n                \"rank\": 98,\n                \"stepNum\": 25281,\n                \"likeNum\": 903\n            },\n            {\n                \"userId\": \"openId98\",\n                \"nickname\": \"nickName98\",\n                \"rank\": 99,\n                \"stepNum\": 25225,\n                \"likeNum\": 902\n            },\n            {\n                \"userId\": \"openId99\",\n                \"nickname\": \"nickName99\",\n                \"rank\": 100,\n                \"stepNum\": 25141,\n                \"likeNum\": 901\n            }\n        ],\n        \"userNum\": 110\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "get leader board simple",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{exercise}}/getDayLeaderBoard?districtCode=320114&date=2019-05-08&openId=a1b1ed8952ce4a8b&token=sys_NjRlZGNhZjUwMmJlOTgyYmVjODkuMTkzODcxNjcuMTU1NjAwNzU1NTY4Nw&debug=1&manual=1",
+									"protocol": "http",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getDayLeaderBoard"
+									],
+									"query": [
+										{
+											"key": "districtCode",
+											"value": "320114",
+											"description": "320114,[生产1\n]"
+										},
+										{
+											"key": "date",
+											"value": "2019-05-08"
+										},
+										{
+											"key": "openId",
+											"value": "a1b1ed8952ce4a8b",
+											"description": "00ce814a0d7b3b41,[生产1]，\na89d8a0ce53ba9f0,11e337bfe728d9ed,eca3edcddfa7a734"
+										},
+										{
+											"key": "token",
+											"value": "sys_NjRlZGNhZjUwMmJlOTgyYmVjODkuMTkzODcxNjcuMTU1NjAwNzU1NTY4Nw",
+											"description": "tokeninnerignore"
+										},
+										{
+											"key": "debug",
+											"value": "1"
+										},
+										{
+											"key": "manual",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "from pre",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{exercise}}/getDayLeaderBoard?districtCode=320114&date=2018-11-30&openId=1a71a00e2d68b334&token=sys_MTk0ZDZkYzBkZTQ2OWZmMDA1NjkuOTAwMDAxMjUyLjE1NDM0NTg4OTUwMDc",
+											"host": [
+												"{{exercise}}"
+											],
+											"path": [
+												"getDayLeaderBoard"
+											],
+											"query": [
+												{
+													"key": "districtCode",
+													"value": "320114"
+												},
+												{
+													"key": "date",
+													"value": "2018-11-30"
+												},
+												{
+													"key": "openId",
+													"value": "1a71a00e2d68b334"
+												},
+												{
+													"key": "token",
+													"value": "sys_MTk0ZDZkYzBkZTQ2OWZmMDA1NjkuOTAwMDAxMjUyLjE1NDM0NTg4OTUwMDc"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 29 Nov 2018 08:16:01 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "v_server",
+											"value": "10.30.63.240:8080"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"retcode\": 0,\n    \"data\": {\n        \"adDesc\": \"广东省深圳市南山区\",\n        \"user\": {\n            \"userId\": \"1a71a00e2d68b334\",\n            \"nickname\": \"郭涛预上线\",\n            \"rank\": 1,\n            \"avatarURL\": \"https://shequwsdl.vivo.com.cn/shequ/shequ/20181129/d8ee404ce8aa4a2fbb91049f8bc654b2.jpg\",\n            \"biggerAvatar\": \"https://shequwsdl.vivo.com.cn/shequ/shequ/20181129/06f3a0b910954591a57bbc26db7d1690.jpg\",\n            \"stepNum\": 29947,\n            \"likeNum\": 1000\n        },\n        \"top\": [\n            {\n                \"userId\": \"1a71a00e2d68b334\",\n                \"nickname\": \"郭涛预上线\",\n                \"rank\": 1,\n                \"avatarURL\": \"https://shequwsdl.vivo.com.cn/shequ/shequ/20181129/d8ee404ce8aa4a2fbb91049f8bc654b2.jpg\",\n                \"biggerAvatar\": \"https://shequwsdl.vivo.com.cn/shequ/shequ/20181129/06f3a0b910954591a57bbc26db7d1690.jpg\",\n                \"stepNum\": 29947,\n                \"likeNum\": 1000\n            },\n            {\n                \"userId\": \"openId1\",\n                \"nickname\": \"nickName1\",\n                \"rank\": 2,\n                \"stepNum\": 29886,\n                \"likeNum\": 999\n            },\n            {\n                \"userId\": \"openId2\",\n                \"nickname\": \"nickName2\",\n                \"rank\": 3,\n                \"stepNum\": 29865,\n                \"likeNum\": 998\n            },\n            {\n                \"userId\": \"openId3\",\n                \"nickname\": \"nickName3\",\n                \"rank\": 4,\n                \"stepNum\": 29833,\n                \"likeNum\": 997\n            },\n            {\n                \"userId\": \"openId4\",\n                \"nickname\": \"nickName4\",\n                \"rank\": 5,\n                \"stepNum\": 29748,\n                \"likeNum\": 996\n            },\n            {\n                \"userId\": \"openId5\",\n                \"nickname\": \"nickName5\",\n                \"rank\": 6,\n                \"stepNum\": 29735,\n                \"likeNum\": 995\n            },\n            {\n                \"userId\": \"openId6\",\n                \"nickname\": \"nickName6\",\n                \"rank\": 7,\n                \"stepNum\": 29689,\n                \"likeNum\": 994\n            },\n            {\n                \"userId\": \"openId7\",\n                \"nickname\": \"nickName7\",\n                \"rank\": 8,\n                \"stepNum\": 29674,\n                \"likeNum\": 993\n            },\n            {\n                \"userId\": \"openId8\",\n                \"nickname\": \"nickName8\",\n                \"rank\": 9,\n                \"stepNum\": 29648,\n                \"likeNum\": 992\n            },\n            {\n                \"userId\": \"openId9\",\n                \"nickname\": \"nickName9\",\n                \"rank\": 10,\n                \"stepNum\": 29595,\n                \"likeNum\": 991\n            },\n            {\n                \"userId\": \"openId10\",\n                \"nickname\": \"nickName10\",\n                \"rank\": 11,\n                \"stepNum\": 29565,\n                \"likeNum\": 990\n            },\n            {\n                \"userId\": \"openId11\",\n                \"nickname\": \"nickName11\",\n                \"rank\": 12,\n                \"stepNum\": 29515,\n                \"likeNum\": 989\n            },\n            {\n                \"userId\": \"openId12\",\n                \"nickname\": \"nickName12\",\n                \"rank\": 13,\n                \"stepNum\": 29480,\n                \"likeNum\": 988\n            },\n            {\n                \"userId\": \"openId13\",\n                \"nickname\": \"nickName13\",\n                \"rank\": 14,\n                \"stepNum\": 29385,\n                \"likeNum\": 987\n            },\n            {\n                \"userId\": \"openId14\",\n                \"nickname\": \"nickName14\",\n                \"rank\": 15,\n                \"stepNum\": 29346,\n                \"likeNum\": 986\n            },\n            {\n                \"userId\": \"openId15\",\n                \"nickname\": \"nickName15\",\n                \"rank\": 16,\n                \"stepNum\": 29311,\n                \"likeNum\": 985\n            },\n            {\n                \"userId\": \"openId16\",\n                \"nickname\": \"nickName16\",\n                \"rank\": 17,\n                \"stepNum\": 29273,\n                \"likeNum\": 984\n            },\n            {\n                \"userId\": \"openId17\",\n                \"nickname\": \"nickName17\",\n                \"rank\": 18,\n                \"stepNum\": 29235,\n                \"likeNum\": 983\n            },\n            {\n                \"userId\": \"openId18\",\n                \"nickname\": \"nickName18\",\n                \"rank\": 19,\n                \"stepNum\": 29214,\n                \"likeNum\": 982\n            },\n            {\n                \"userId\": \"openId19\",\n                \"nickname\": \"nickName19\",\n                \"rank\": 20,\n                \"stepNum\": 29196,\n                \"likeNum\": 981\n            },\n            {\n                \"userId\": \"openId20\",\n                \"nickname\": \"nickName20\",\n                \"rank\": 21,\n                \"stepNum\": 29139,\n                \"likeNum\": 980\n            },\n            {\n                \"userId\": \"openId21\",\n                \"nickname\": \"nickName21\",\n                \"rank\": 22,\n                \"stepNum\": 29106,\n                \"likeNum\": 979\n            },\n            {\n                \"userId\": \"openId22\",\n                \"nickname\": \"nickName22\",\n                \"rank\": 23,\n                \"stepNum\": 29017,\n                \"likeNum\": 978\n            },\n            {\n                \"userId\": \"openId23\",\n                \"nickname\": \"nickName23\",\n                \"rank\": 24,\n                \"stepNum\": 28971,\n                \"likeNum\": 977\n            },\n            {\n                \"userId\": \"openId24\",\n                \"nickname\": \"nickName24\",\n                \"rank\": 25,\n                \"stepNum\": 28970,\n                \"likeNum\": 976\n            },\n            {\n                \"userId\": \"openId25\",\n                \"nickname\": \"nickName25\",\n                \"rank\": 26,\n                \"stepNum\": 28894,\n                \"likeNum\": 975\n            },\n            {\n                \"userId\": \"openId26\",\n                \"nickname\": \"nickName26\",\n                \"rank\": 27,\n                \"stepNum\": 28816,\n                \"likeNum\": 974\n            },\n            {\n                \"userId\": \"openId27\",\n                \"nickname\": \"nickName27\",\n                \"rank\": 28,\n                \"stepNum\": 28788,\n                \"likeNum\": 973\n            },\n            {\n                \"userId\": \"openId28\",\n                \"nickname\": \"nickName28\",\n                \"rank\": 29,\n                \"stepNum\": 28699,\n                \"likeNum\": 972\n            },\n            {\n                \"userId\": \"openId29\",\n                \"nickname\": \"nickName29\",\n                \"rank\": 30,\n                \"stepNum\": 28677,\n                \"likeNum\": 971\n            },\n            {\n                \"userId\": \"openId30\",\n                \"nickname\": \"nickName30\",\n                \"rank\": 31,\n                \"stepNum\": 28650,\n                \"likeNum\": 970\n            },\n            {\n                \"userId\": \"openId31\",\n                \"nickname\": \"nickName31\",\n                \"rank\": 32,\n                \"stepNum\": 28640,\n                \"likeNum\": 969\n            },\n            {\n                \"userId\": \"openId32\",\n                \"nickname\": \"nickName32\",\n                \"rank\": 33,\n                \"stepNum\": 28603,\n                \"likeNum\": 968\n            },\n            {\n                \"userId\": \"openId33\",\n                \"nickname\": \"nickName33\",\n                \"rank\": 34,\n                \"stepNum\": 28548,\n                \"likeNum\": 967\n            },\n            {\n                \"userId\": \"openId34\",\n                \"nickname\": \"nickName34\",\n                \"rank\": 35,\n                \"stepNum\": 28505,\n                \"likeNum\": 966\n            },\n            {\n                \"userId\": \"openId35\",\n                \"nickname\": \"nickName35\",\n                \"rank\": 36,\n                \"stepNum\": 28411,\n                \"likeNum\": 965\n            },\n            {\n                \"userId\": \"openId36\",\n                \"nickname\": \"nickName36\",\n                \"rank\": 37,\n                \"stepNum\": 28360,\n                \"likeNum\": 964\n            },\n            {\n                \"userId\": \"openId37\",\n                \"nickname\": \"nickName37\",\n                \"rank\": 38,\n                \"stepNum\": 28325,\n                \"likeNum\": 963\n            },\n            {\n                \"userId\": \"openId38\",\n                \"nickname\": \"nickName38\",\n                \"rank\": 39,\n                \"stepNum\": 28317,\n                \"likeNum\": 962\n            },\n            {\n                \"userId\": \"openId39\",\n                \"nickname\": \"nickName39\",\n                \"rank\": 40,\n                \"stepNum\": 28228,\n                \"likeNum\": 961\n            },\n            {\n                \"userId\": \"openId40\",\n                \"nickname\": \"nickName40\",\n                \"rank\": 41,\n                \"stepNum\": 28182,\n                \"likeNum\": 960\n            },\n            {\n                \"userId\": \"openId41\",\n                \"nickname\": \"nickName41\",\n                \"rank\": 42,\n                \"stepNum\": 28133,\n                \"likeNum\": 959\n            },\n            {\n                \"userId\": \"openId42\",\n                \"nickname\": \"nickName42\",\n                \"rank\": 43,\n                \"stepNum\": 28037,\n                \"likeNum\": 958\n            },\n            {\n                \"userId\": \"openId43\",\n                \"nickname\": \"nickName43\",\n                \"rank\": 44,\n                \"stepNum\": 27966,\n                \"likeNum\": 957\n            },\n            {\n                \"userId\": \"openId44\",\n                \"nickname\": \"nickName44\",\n                \"rank\": 45,\n                \"stepNum\": 27953,\n                \"likeNum\": 956\n            },\n            {\n                \"userId\": \"openId45\",\n                \"nickname\": \"nickName45\",\n                \"rank\": 46,\n                \"stepNum\": 27928,\n                \"likeNum\": 955\n            },\n            {\n                \"userId\": \"openId46\",\n                \"nickname\": \"nickName46\",\n                \"rank\": 47,\n                \"stepNum\": 27852,\n                \"likeNum\": 954\n            },\n            {\n                \"userId\": \"openId47\",\n                \"nickname\": \"nickName47\",\n                \"rank\": 48,\n                \"stepNum\": 27825,\n                \"likeNum\": 953\n            },\n            {\n                \"userId\": \"openId48\",\n                \"nickname\": \"nickName48\",\n                \"rank\": 49,\n                \"stepNum\": 27776,\n                \"likeNum\": 952\n            },\n            {\n                \"userId\": \"openId49\",\n                \"nickname\": \"nickName49\",\n                \"rank\": 50,\n                \"stepNum\": 27738,\n                \"likeNum\": 951\n            },\n            {\n                \"userId\": \"openId50\",\n                \"nickname\": \"nickName50\",\n                \"rank\": 51,\n                \"stepNum\": 27665,\n                \"likeNum\": 950\n            },\n            {\n                \"userId\": \"openId51\",\n                \"nickname\": \"nickName51\",\n                \"rank\": 52,\n                \"stepNum\": 27639,\n                \"likeNum\": 949\n            },\n            {\n                \"userId\": \"openId52\",\n                \"nickname\": \"nickName52\",\n                \"rank\": 53,\n                \"stepNum\": 27579,\n                \"likeNum\": 948\n            },\n            {\n                \"userId\": \"openId53\",\n                \"nickname\": \"nickName53\",\n                \"rank\": 54,\n                \"stepNum\": 27543,\n                \"likeNum\": 947\n            },\n            {\n                \"userId\": \"openId54\",\n                \"nickname\": \"nickName54\",\n                \"rank\": 55,\n                \"stepNum\": 27538,\n                \"likeNum\": 946\n            },\n            {\n                \"userId\": \"openId55\",\n                \"nickname\": \"nickName55\",\n                \"rank\": 56,\n                \"stepNum\": 27451,\n                \"likeNum\": 945\n            },\n            {\n                \"userId\": \"openId56\",\n                \"nickname\": \"nickName56\",\n                \"rank\": 57,\n                \"stepNum\": 27365,\n                \"likeNum\": 944\n            },\n            {\n                \"userId\": \"openId57\",\n                \"nickname\": \"nickName57\",\n                \"rank\": 58,\n                \"stepNum\": 27362,\n                \"likeNum\": 943\n            },\n            {\n                \"userId\": \"openId58\",\n                \"nickname\": \"nickName58\",\n                \"rank\": 59,\n                \"stepNum\": 27353,\n                \"likeNum\": 942\n            },\n            {\n                \"userId\": \"openId59\",\n                \"nickname\": \"nickName59\",\n                \"rank\": 60,\n                \"stepNum\": 27293,\n                \"likeNum\": 941\n            },\n            {\n                \"userId\": \"openId60\",\n                \"nickname\": \"nickName60\",\n                \"rank\": 61,\n                \"stepNum\": 27261,\n                \"likeNum\": 940\n            },\n            {\n                \"userId\": \"openId61\",\n                \"nickname\": \"nickName61\",\n                \"rank\": 62,\n                \"stepNum\": 27186,\n                \"likeNum\": 939\n            },\n            {\n                \"userId\": \"openId62\",\n                \"nickname\": \"nickName62\",\n                \"rank\": 63,\n                \"stepNum\": 27103,\n                \"likeNum\": 938\n            },\n            {\n                \"userId\": \"openId63\",\n                \"nickname\": \"nickName63\",\n                \"rank\": 64,\n                \"stepNum\": 27077,\n                \"likeNum\": 937\n            },\n            {\n                \"userId\": \"openId64\",\n                \"nickname\": \"nickName64\",\n                \"rank\": 65,\n                \"stepNum\": 26982,\n                \"likeNum\": 936\n            },\n            {\n                \"userId\": \"openId65\",\n                \"nickname\": \"nickName65\",\n                \"rank\": 66,\n                \"stepNum\": 26926,\n                \"likeNum\": 935\n            },\n            {\n                \"userId\": \"openId66\",\n                \"nickname\": \"nickName66\",\n                \"rank\": 67,\n                \"stepNum\": 26891,\n                \"likeNum\": 934\n            },\n            {\n                \"userId\": \"openId67\",\n                \"nickname\": \"nickName67\",\n                \"rank\": 68,\n                \"stepNum\": 26813,\n                \"likeNum\": 933\n            },\n            {\n                \"userId\": \"openId68\",\n                \"nickname\": \"nickName68\",\n                \"rank\": 69,\n                \"stepNum\": 26723,\n                \"likeNum\": 932\n            },\n            {\n                \"userId\": \"openId69\",\n                \"nickname\": \"nickName69\",\n                \"rank\": 70,\n                \"stepNum\": 26721,\n                \"likeNum\": 931\n            },\n            {\n                \"userId\": \"openId70\",\n                \"nickname\": \"nickName70\",\n                \"rank\": 71,\n                \"stepNum\": 26721,\n                \"likeNum\": 930\n            },\n            {\n                \"userId\": \"openId71\",\n                \"nickname\": \"nickName71\",\n                \"rank\": 72,\n                \"stepNum\": 26672,\n                \"likeNum\": 929\n            },\n            {\n                \"userId\": \"openId72\",\n                \"nickname\": \"nickName72\",\n                \"rank\": 73,\n                \"stepNum\": 26581,\n                \"likeNum\": 928\n            },\n            {\n                \"userId\": \"openId73\",\n                \"nickname\": \"nickName73\",\n                \"rank\": 74,\n                \"stepNum\": 26489,\n                \"likeNum\": 927\n            },\n            {\n                \"userId\": \"openId74\",\n                \"nickname\": \"nickName74\",\n                \"rank\": 75,\n                \"stepNum\": 26421,\n                \"likeNum\": 926\n            },\n            {\n                \"userId\": \"openId75\",\n                \"nickname\": \"nickName75\",\n                \"rank\": 76,\n                \"stepNum\": 26377,\n                \"likeNum\": 925\n            },\n            {\n                \"userId\": \"openId76\",\n                \"nickname\": \"nickName76\",\n                \"rank\": 77,\n                \"stepNum\": 26342,\n                \"likeNum\": 924\n            },\n            {\n                \"userId\": \"openId77\",\n                \"nickname\": \"nickName77\",\n                \"rank\": 78,\n                \"stepNum\": 26310,\n                \"likeNum\": 923\n            },\n            {\n                \"userId\": \"openId78\",\n                \"nickname\": \"nickName78\",\n                \"rank\": 79,\n                \"stepNum\": 26231,\n                \"likeNum\": 922\n            },\n            {\n                \"userId\": \"openId79\",\n                \"nickname\": \"nickName79\",\n                \"rank\": 80,\n                \"stepNum\": 26169,\n                \"likeNum\": 921\n            },\n            {\n                \"userId\": \"openId80\",\n                \"nickname\": \"nickName80\",\n                \"rank\": 81,\n                \"stepNum\": 26139,\n                \"likeNum\": 920\n            },\n            {\n                \"userId\": \"openId81\",\n                \"nickname\": \"nickName81\",\n                \"rank\": 82,\n                \"stepNum\": 26088,\n                \"likeNum\": 919\n            },\n            {\n                \"userId\": \"openId82\",\n                \"nickname\": \"nickName82\",\n                \"rank\": 83,\n                \"stepNum\": 26033,\n                \"likeNum\": 918\n            },\n            {\n                \"userId\": \"openId83\",\n                \"nickname\": \"nickName83\",\n                \"rank\": 84,\n                \"stepNum\": 25940,\n                \"likeNum\": 917\n            },\n            {\n                \"userId\": \"openId84\",\n                \"nickname\": \"nickName84\",\n                \"rank\": 85,\n                \"stepNum\": 25861,\n                \"likeNum\": 916\n            },\n            {\n                \"userId\": \"openId85\",\n                \"nickname\": \"nickName85\",\n                \"rank\": 86,\n                \"stepNum\": 25793,\n                \"likeNum\": 915\n            },\n            {\n                \"userId\": \"openId86\",\n                \"nickname\": \"nickName86\",\n                \"rank\": 87,\n                \"stepNum\": 25752,\n                \"likeNum\": 914\n            },\n            {\n                \"userId\": \"openId87\",\n                \"nickname\": \"nickName87\",\n                \"rank\": 88,\n                \"stepNum\": 25727,\n                \"likeNum\": 913\n            },\n            {\n                \"userId\": \"openId88\",\n                \"nickname\": \"nickName88\",\n                \"rank\": 89,\n                \"stepNum\": 25705,\n                \"likeNum\": 912\n            },\n            {\n                \"userId\": \"openId89\",\n                \"nickname\": \"nickName89\",\n                \"rank\": 90,\n                \"stepNum\": 25678,\n                \"likeNum\": 911\n            },\n            {\n                \"userId\": \"openId90\",\n                \"nickname\": \"nickName90\",\n                \"rank\": 91,\n                \"stepNum\": 25595,\n                \"likeNum\": 910\n            },\n            {\n                \"userId\": \"openId91\",\n                \"nickname\": \"nickName91\",\n                \"rank\": 92,\n                \"stepNum\": 25530,\n                \"likeNum\": 909\n            },\n            {\n                \"userId\": \"openId92\",\n                \"nickname\": \"nickName92\",\n                \"rank\": 93,\n                \"stepNum\": 25488,\n                \"likeNum\": 908\n            },\n            {\n                \"userId\": \"openId93\",\n                \"nickname\": \"nickName93\",\n                \"rank\": 94,\n                \"stepNum\": 25482,\n                \"likeNum\": 907\n            },\n            {\n                \"userId\": \"openId94\",\n                \"nickname\": \"nickName94\",\n                \"rank\": 95,\n                \"stepNum\": 25473,\n                \"likeNum\": 906\n            },\n            {\n                \"userId\": \"openId95\",\n                \"nickname\": \"nickName95\",\n                \"rank\": 96,\n                \"stepNum\": 25394,\n                \"likeNum\": 905\n            },\n            {\n                \"userId\": \"openId96\",\n                \"nickname\": \"nickName96\",\n                \"rank\": 97,\n                \"stepNum\": 25363,\n                \"likeNum\": 904\n            },\n            {\n                \"userId\": \"openId97\",\n                \"nickname\": \"nickName97\",\n                \"rank\": 98,\n                \"stepNum\": 25281,\n                \"likeNum\": 903\n            },\n            {\n                \"userId\": \"openId98\",\n                \"nickname\": \"nickName98\",\n                \"rank\": 99,\n                \"stepNum\": 25225,\n                \"likeNum\": 902\n            },\n            {\n                \"userId\": \"openId99\",\n                \"nickname\": \"nickName99\",\n                \"rank\": 100,\n                \"stepNum\": 25141,\n                \"likeNum\": 901\n            }\n        ],\n        \"userNum\": 110\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "get leader board with user district",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{exercise}}/getDayLeaderBoard/user/district?districtCode=110000&date=2019-08-02&openId=davidtest&token=ignore&debug=1",
+									"protocol": "http",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getDayLeaderBoard",
+										"user",
+										"district"
+									],
+									"query": [
+										{
+											"key": "districtCode",
+											"value": "110000"
+										},
+										{
+											"key": "date",
+											"value": "2019-08-02"
+										},
+										{
+											"key": "openId",
+											"value": "davidtest"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "debug",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get leader board with user district Copy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{exercise}}/getDayLeaderBoard/simple/user/district?districtCode=110000&date=2019-08-02&openId=davidtest&token=ignore&debug=1",
+									"protocol": "http",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"getDayLeaderBoard",
+										"simple",
+										"user",
+										"district"
+									],
+									"query": [
+										{
+											"key": "districtCode",
+											"value": "110000"
+										},
+										{
+											"key": "date",
+											"value": "2019-08-02"
+										},
+										{
+											"key": "openId",
+											"value": "davidtest"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "debug",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "step",
+					"item": [
+						{
+							"name": "create step info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{pre_url}}/createStepInfo?openId=defc4dd6a769f5c8&date=2020-02-27&districtCode=110000&rank=1&likeNum=0&stepNum=29800&token=ignore",
+									"host": [
+										"{{pre_url}}"
+									],
+									"path": [
+										"createStepInfo"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "defc4dd6a769f5c8"
+										},
+										{
+											"key": "date",
+											"value": "2020-02-27"
+										},
+										{
+											"key": "districtCode",
+											"value": "110000"
+										},
+										{
+											"key": "rank",
+											"value": "1"
+										},
+										{
+											"key": "likeNum",
+											"value": "0"
+										},
+										{
+											"key": "stepNum",
+											"value": "29800"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get Step Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/searchStepInfos?startDate=&endDate=&openId=",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"searchStepInfos"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": ""
+										},
+										{
+											"key": "endDate",
+											"value": ""
+										},
+										{
+											"key": "openId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "rawStep",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/rawStep",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"rawStep"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "exercise",
+					"item": [
+						{
+							"name": "add exercise",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "vivo-iot-gateway-proxy",
+										"value": "true",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "token",
+										"value": "ignore",
+										"type": "text"
+									},
+									{
+										"key": "openid",
+										"value": "defc4dd6a769f5c8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"totalStep\": 0,\r\n  \"maxSpeed\": \"0.00\",\r\n  \"costTime\": 6000,\r\n  \"trackInfos\": [{\r\n    \"latitude\": 37.786893186755165,\r\n    \"longitude\": 122.41147578425483,\r\n    \"status\": 0,\r\n    \"costTime\": 0.95560300350189209,\r\n    \"speed\": \"-60000.00\",\r\n    \"last_distance\": 0,\r\n    \"total_distance\": 0,\r\n    \"time\": 1576225915110.0879,\r\n    \"calorie\": 0.00\r\n  }],\r\n  \"stepRate\": \"0.00\",\r\n  \"minSpeed\": \"0.00\",\r\n  \"source\": 1,\r\n  \"altChart\": {\r\n    \"points\": [{\r\n      \"rate\": 1,\r\n      \"time\": 1576225919484.509\r\n    }],\r\n    \"gap\": \"\"\r\n  },\r\n  \"type\": 2,\r\n  \"token\": \"sys_NzA1MzYzZjExY2ZmZTk4ZjBiYjAuMTEwMDA0NDIxNi4xNTcyNTg5OTEzMzk4\",\r\n  \"endTime\": 1576225922292.031,\r\n  \"calorie\": 0.00,\r\n  \"openId\": \"defc4dd6a769f5c8\",\r\n  \"averageSpeed\": \"0\",\r\n  \"distance\": \"0.00\",\r\n  \"startTime\": 1576225919461.9771,\r\n  \"pace\": \"63.64\",\r\n  \"screenshotUrl\" : \"http:xxxx.xx\"\r\n}"
+								},
+								"url": {
+									"raw": "{{name}}/exercise/add?",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"exercise",
+										"add"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get exercise",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/exercise/detail?eid=9284da11423b4e1f_1571713787000&token=ignore",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"exercise",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "eid",
+											"value": "9284da11423b4e1f_1571713787000"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "openId",
+											"value": "94931961bf90181a",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get exercise Copy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{exercise}}/exercise/detail?eid=a1b1ed8952ce4a8b_1526374859603",
+									"host": [
+										"{{exercise}}"
+									],
+									"path": [
+										"exercise",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "eid",
+											"value": "a1b1ed8952ce4a8b_1526374859603"
+										},
+										{
+											"key": "token",
+											"value": "tokeninnerignore",
+											"disabled": true
+										},
+										{
+											"key": "openId",
+											"value": "94931961bf90181a",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "同步数据",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/exercise/data/sync?openId=a1b1ed8952ce4a8b",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"exercise",
+										"data",
+										"sync"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "a1b1ed8952ce4a8b"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除运动记录",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{name}}/exercise/delete?eid=a1b1ed8952ce4a8b_1571713787000",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"exercise",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "eid",
+											"value": "a1b1ed8952ce4a8b_1571713787000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/exercise/stat",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{pre_url}}/exercise/stat?openId=123123123&type=3&token=ignore",
+									"host": [
+										"{{pre_url}}"
+									],
+									"path": [
+										"exercise",
+										"stat"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "123123123"
+										},
+										{
+											"key": "type",
+											"value": "3"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exercise/get/version",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "openId",
+										"value": "666666",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "ignore",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{name}}/exercise/get/version?version=0",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"exercise",
+										"get",
+										"version"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "666666",
+											"disabled": true
+										},
+										{
+											"key": "version",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getExerciseInfos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/getExerciseInfos?openId=9284da11423b4e1f&startDate=1571713787000&token=ignore&endDate=1571714190000",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"getExerciseInfos"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "9284da11423b4e1f"
+										},
+										{
+											"key": "startDate",
+											"value": "1571713787000"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "endDate",
+											"value": "1571714190000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getWeekReport",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/getWeekReport?openId=9284da11423b4e1f&startDate=1571713787000&token=ignore&endDate=1571714190000",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"getWeekReport"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "9284da11423b4e1f"
+										},
+										{
+											"key": "startDate",
+											"value": "1571713787000"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "endDate",
+											"value": "1571714190000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "searchStepInfos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/searchStepInfos?openId=18576397443&startDate=2020-02-24&token=ignore&endDate=2020-03-01",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"searchStepInfos"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "18576397443"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-02-24"
+										},
+										{
+											"key": "token",
+											"value": "ignore"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-03-01"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "upload",
+					"item": [
+						{
+							"name": "testUpload",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "body stat",
+					"item": [
+						{
+							"name": "addBodyStats",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "ignore",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"openId\" : \"123123123\",\n\t\"stat\" : [{\n\t\t\"time\" : 1581868800000,\n\t\t\"heartRate\" : {\n\t\t\t\"value\" : 120,\n\t\t\t\"moveRate\": 81,\n\t\t\t\"restRate\": 65\n\t\t},\n\t\t\"pressure\" : {\n\t\t\t\"value\" : 14,\n\t\t\t\"status\" : 1\n\t\t},\n\t\t\"bldOxg\" : {\n\t\t\t\"value\" : 434\n\t\t},\n\t\t\"fat\" : {\n\t\t\t\"value\" : 24\n\t\t},\n\t\t\"weight\" : 120,\n\t\t\"step\":{\n\t\t\t\"adcode\":\"330110\",\n\t\t\t\"currStep\":345,\n\t\t\t\"rankSwitch\":\"1\",\n\t\t\t\"totalStep\":1000\n\t\t},\n\t\t\"exerciseInfo\":{\n\t\t\t\"costCalories\":12,\n\t\t\t\"distance\":285\n\t\t}\n\n\t},\n\t{\n\t\t\"time\" : 1582253800455,\n\t\t\"heartRate\" : {\n\t\t\t\"value\" : 120,\n\t\t\t\"moveRate\": 81,\n\t\t\t\"restRate\": 65\n\t\t},\n\t\t\"pressure\" : {\n\t\t\t\"value\" : 14,\n\t\t\t\"status\" : 1\n\t\t},\n\t\t\"bldOxg\" : {\n\t\t\t\"value\" : 434\n\t\t},\n\t\t\"fat\" : {\n\t\t\t\"value\" : 24\n\t\t},\n\t\t\"weight\" : 120,\n\t\t\t\"step\":{\n\t\t\t\"adcode\":\"330110\",\n\t\t\t\"currStep\":345,\n\t\t\t\"rankSwitch\":\"1\",\n\t\t\t\"totalStep\":1000\n\t\t},\n\t\t\"exerciseInfo\":{\n\t\t\t\"costCalories\":12,\n\t\t\t\"distance\":285\n\t\t}\n\n\t}\n\t]\n}"
+								},
+								"url": {
+									"raw": "{{pre_url}}/body/stat/add",
+									"host": [
+										"{{pre_url}}"
+									],
+									"path": [
+										"body",
+										"stat",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "body/stat/get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "body/stat/heartRate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "openid",
+										"value": "666666",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "ignore",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{name}}/body/stat/heartRate?type=1",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"body",
+										"stat",
+										"heartRate"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "666666",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "body/stat/bldOxg",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/body/stat/bldOxg?openId=&type=",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"body",
+										"stat",
+										"bldOxg"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": ""
+										},
+										{
+											"key": "type",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "body/stat/pressure",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{name}}/body/stat/pressure?openId=&type=",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"body",
+										"stat",
+										"pressure"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": ""
+										},
+										{
+											"key": "type",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "sleep",
+					"item": [
+						{
+							"name": "addSleep",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSleep",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "OPENID",
+										"value": "666666",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "ignore",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{name}}/sleep/get?startTime=1575041972000&num=1",
+									"host": [
+										"{{name}}"
+									],
+									"path": [
+										"sleep",
+										"get"
+									],
+									"query": [
+										{
+											"key": "openId",
+											"value": "666666",
+											"disabled": true
+										},
+										{
+											"key": "startTime",
+											"value": "1575041972000"
+										},
+										{
+											"key": "num",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSleepDetail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "/general/stat",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "openid",
+								"value": "defc4dd6a769f5c8",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "vivo-iot-gateway-proxy",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{name}}/general/stat?",
+							"host": [
+								"{{name}}"
+							],
+							"path": [
+								"general",
+								"stat"
+							],
+							"query": [
+								{
+									"key": "openId",
+									"value": "defc4dd6a769f5c8",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "alipay",
+			"item": [
+				{
+					"name": "sign/alipay",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{name}}/sign/alipay?content=",
+							"host": [
+								"{{name}}"
+							],
+							"path": [
+								"sign",
+								"alipay"
+							],
+							"query": [
+								{
+									"key": "content",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/acct/bound/alipay",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unbound",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

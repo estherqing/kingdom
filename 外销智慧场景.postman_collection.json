@@ -1,0 +1,764 @@
+{
+	"info": {
+		"_postman_id": "998ed028-5494-40b3-b5a0-3c024768f173",
+		"name": "外销智慧场景",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "exscene-intellig-ipl",
+			"item": [
+				{
+					"name": "运营广播",
+					"item": [
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \n\t\"contentCN\":\"测试\",\n\t\"contentEN\":\"test\",\n\t\"contentIN\":\"test\",\n\t\"startTime\":\"2020-02-25 00:00:00\",\n\t\"endTime\":\"2020-02-29 00:00:00\",\n\t\"sort\":\"1\",\n\t\"status\":\"0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/broadcast/add",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"broadcast",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":1,\n\t\"contentCN\":\"测试\",\n\t\"contentEN\":\"test\",\n\t\"contentIN\":\"test\",\n\t\"startTime\":\"2020-02-26 00:00:00\",\n\t\"endTime\":\"2020-02-29 00:00:00\",\n\t\"sort\":2,\n\t\"status\":1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/broadcast/update",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"broadcast",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/broadcast/delete?id=2",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"broadcast",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": 1,\n    \"field\": \"status\",\n    \"order\": \"asc\",\n    \"page\": 1,\n    \"size\": 20\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/broadcast/list",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"broadcast",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "upperShelf",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/broadcast/upperShelf?id=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"broadcast",
+										"upperShelf"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "offShelf",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/broadcast/offShelf?id=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"broadcast",
+										"offShelf"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getDetail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/broadcast/getDetail?id=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"broadcast",
+										"getDetail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getPrizeUserEnable",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/broadcast/getDetail?id=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"broadcast",
+										"getDetail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "prizeUserEnable",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/broadcast/prizeUserEnable?id=1&prizeUserEnable=0",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"broadcast",
+										"prizeUserEnable"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										},
+										{
+											"key": "prizeUserEnable",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "任务配置",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"activityCode\": \"IPL2020\",\r\n    \"status\": 4,\r\n    \"field\": \"status\",\r\n    \"order\": \"asc\",\r\n    \"page\": 1,\r\n    \"size\": 20\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/taskConfig/list",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"taskConfig",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"activityCode\": \"IPL2020\",  \r\n    \"code\": \"tc\",  \r\n    \"type\": \"download\", \r\n    \"downloadAppId\": \"1\",  \r\n    \"downloadAppName\": \"互传\",  \r\n    \"downloadLink\": \"http://baidu.com\", \r\n    \"downloadJumpLink\": \"assistant://com.vivo.assistant/oper_guide_ex?from=notify&to=main&scene=movie&type=1\",  \r\n    \"downloadJumpAppName\": \"互传\", \r\n    \"downloadVersion\": \"2.2\",  \r\n    \"deeplinkMinVersion\": \"2.2\",  \r\n    \"deeplinkJumpLink\": \"assistant://com.vivo.assistant/oper_guide_ex?from=notify&to=main&scene=movie&type=1\", \r\n    \"deeplinkJumpAppName\": \"cc\", \r\n    \"deeplinkCutomParams\": \"\", \r\n    \"H5JumpLink\": \"assistant://com.vivo.assistant/oper_guide_ex?from=notify&to=main&scene=movie&type=1\", \r\n    \"H5CustomParams\": \"\", \r\n    \"status\": 1,  \r\n    \"icon\": \"http://test-bj-ws.vivo.com.cn/Zlf73fDGXFlrC6ST/2020021514/5f683bfab2981532748beedf0d8f82c2/0709b455-6e14-435b-80d5-dfea500a59e3.jpg\", \r\n    \"descriptionCN\": \"测试\",  \r\n    \"descriptionEN\": \"test\", \r\n    \"descriptionIN\": \"test\", \r\n    \"buttonCN\": \"测试\",  \r\n    \"buttonEN\": \"test\",  \r\n    \"buttonIN\": \"test\", \r\n    \"once\": 1,  \r\n    \"priority\": 1,  \r\n    \"sort\": 1,  \r\n    \"startTime\": \"2020-02-23 15:38:41\",  \r\n    \"endTime\": \"2020-02-28 15:38:41\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/taskConfig/add",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"taskConfig",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getActivities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/taskConfig/getActivities",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"taskConfig",
+										"getActivities"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"id\":1,\r\n    \"activityCode\": \"IPL2020\",  \r\n    \"code\": \"tcc\",  \r\n    \"type\": \"download\", \r\n    \"downloadAppId\": \"1\",  \r\n    \"downloadAppName\": \"互传\",  \r\n    \"downloadLink\": \"http://baidu.com\", \r\n    \"downloadJumpLink\": \"assistant://com.vivo.assistant/oper_guide_ex?from=notify&to=main&scene=movie&type=1\",  \r\n    \"downloadJumpAppName\": \"互传\", \r\n    \"downloadVersion\": \"2.2\",  \r\n    \"deeplinkMinVersion\": \"2.2\",  \r\n    \"deeplinkJumpLink\": \"assistant://com.vivo.assistant/oper_guide_ex?from=notify&to=main&scene=movie&type=1\", \r\n    \"deeplinkJumpAppName\": \"cc\", \r\n    \"deeplinkCutomParams\": \"\", \r\n    \"H5JumpLink\": \"assistant://com.vivo.assistant/oper_guide_ex?from=notify&to=main&scene=movie&type=1\", \r\n    \"H5CustomParams\": \"\", \r\n    \"status\": 0,  \r\n    \"icon\": \"http://test-bj-ws.vivo.com.cn/Zlf73fDGXFlrC6ST/2020021514/5f683bfab2981532748beedf0d8f82c2/0709b455-6e14-435b-80d5-dfea500a59e3.jpg\", \r\n    \"descriptionCN\": \"测试1\",  \r\n    \"descriptionEN\": \"test1\", \r\n    \"descriptionIN\": \"test1\", \r\n    \"buttonCN\": \"测试1\",  \r\n    \"buttonEN\": \"test1\",  \r\n    \"buttonIN\": \"test1\", \r\n    \"once\": 1,  \r\n    \"priority\": 2,  \r\n    \"sort\": 2,  \r\n    \"startTime\": \"2020-02-25 00:00:00\",  \r\n    \"endTime\": \"2020-02-29 00:00:00\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/taskConfig/update",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"taskConfig",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getDetail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/taskConfig/getDetail?id=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"taskConfig",
+										"getDetail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/taskConfig/delete?id=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"taskConfig",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "upload",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "iconFile",
+											"type": "file",
+											"src": "/C:/Users/11112001/Pictures/08718889-2767-42bc-84b8-6d17b459f223.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/taskConfig/uploadIcon",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"taskConfig",
+										"uploadIcon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "test",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "奖品配置",
+					"item": [
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"activityCode\": \"IPL2020\",\n    \"probability\": \"0.2\",\n    \"type\": \"coupon\",\n    \"cost\": 999,\n    \"num\": 9,\n    \"priority\":1,\n    \"redeemJumpEnable\": \"1\",\n    \"redeemButtonCN\": \"测试\",\n    \"redeemButtonEN\": \"test\",\n    \"redeemButtonIN\": \"test\",\n    \"redeemEmailEnable\": 1,\n    \"redeemDeeplinkMinVersion\": \"4.21\",\n    \"redeemDeeplinkJumpLink\": \"http://baidu.com\",\n    \"redeemDeeplinkJumpAppName\": \"百度\",\n    \"redeemDeeplinkCutomParams\": \"\",\n    \"redeemH5JumpLink\": \"\",\n    \"redeemH5CustomParams\": \"\",\n    \"status\": 1,\n    \"img\": \"http://test-bj-ws.vivo.com.cn/Zlf73fDGXFlrC6ST/2020022510/5f683bfab2981532748beedf0d8f82c2/586b64d0-4da1-4b7a-bb04-672f8634111c.jpg\",\n    \"descriptionCN\": \"测试\",\n    \"descriptionEN\": \"test\",\n    \"descriptionIN\": \"test\",\n    \"nameCN\": \"测试\",\n    \"nameEN\": \"test\",\n    \"nameIN\": \"test\", \n    \"endTime\": \"2020-03-05 12:12:12\",\n    \"fileName\":\"prizeCode.xlsx\",\n    \"fileUrl\":\"http://test-bj-ws.vivo.com.cn/Zlf73fDGXFlrC6ST/2020022511/d6724e1ee48072289e92d2c5b2ea902e/8d5ca4e4-18e0-40e7-b345-9c7c4c445468.xlsx\",\n    \"filePrizeCodeNum\":9\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/prizeConfig/add",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"prizeConfig",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":1,\n    \"activityCode\": \"IPL2020\",\n    \"probability\": \"0.3\",\n    \"type\": \"coupon\",\n    \"cost\": 999,\n    \"num\": 9,\n    \"priority\":1,\n    \"redeemJumpEnable\": \"1\",\n    \"redeemButtonCN\": \"测试\",\n    \"redeemButtonEN\": \"test\",\n    \"redeemButtonIN\": \"test\",\n    \"redeemEmailEnable\": 1,\n    \"redeemDeeplinkMinVersion\": \"4.21\",\n    \"redeemDeeplinkJumpLink\": \"http://baidu.com\",\n    \"redeemDeeplinkJumpAppName\": \"百度\",\n    \"redeemDeeplinkCutomParams\": \"\",\n    \"redeemH5JumpLink\": \"\",\n    \"redeemH5CustomParams\": \"\",\n    \"status\": 1,\n    \"img\": \"http://test-bj-ws.vivo.com.cn/Zlf73fDGXFlrC6ST/2020022510/5f683bfab2981532748beedf0d8f82c2/586b64d0-4da1-4b7a-bb04-672f8634111c.jpg\",\n    \"descriptionCN\": \"测试\",\n    \"descriptionEN\": \"test\",\n    \"descriptionIN\": \"test\",\n    \"nameCN\": \"测试\",\n    \"nameEN\": \"test\",\n    \"nameIN\": \"test\", \n    \"endTime\": \"2020-03-05 12:12:12\",\n    \"fileName\":\"prizeCode.xlsx\",\n    \"fileUrl\":\"http://test-bj-ws.vivo.com.cn/Zlf73fDGXFlrC6ST/2020022511/d6724e1ee48072289e92d2c5b2ea902e/8d5ca4e4-18e0-40e7-b345-9c7c4c445468.xlsx\",\n    \"filePrizeCodeNum\":9\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/prizeConfig/update",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"prizeConfig",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/prizeConfig/delete?id=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"prizeConfig",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getDetail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/prizeConfig/getDetail?id=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"prizeConfig",
+										"getDetail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"activityCode\": \"IPL2020\",\r\n    \"status\": 0,\r\n    \"field\": \"status\",\r\n    \"order\": \"asc\",\r\n    \"page\": 1,\r\n    \"size\": 20\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/prizeConfig/list",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"prizeConfig",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadImg",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "iconFile",
+											"type": "file",
+											"src": "/C:/Users/11112001/Pictures/08718889-2767-42bc-84b8-6d17b459f223.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/prizeConfig/uploadIcon",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"prizeConfig",
+										"uploadIcon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadFile",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "importFile",
+											"type": "file",
+											"src": "/H:/prizeCode.xlsx"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/prizeConfig/importPrizeCode",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"prizeConfig",
+										"importPrizeCode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "upperShelf",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/prizeConfig/upperShelf?id=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"prizeConfig",
+										"upperShelf"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "offShelf",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "export",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/prizeConfig/exportUsers",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"prizeConfig",
+										"exportUsers"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
